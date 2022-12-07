@@ -274,7 +274,7 @@ body {
 }
 
 .trending__images__column__minimize-images__more-button {
-    flex-grow: 1;
+    width: 100px;
     padding: 0 5px;
     cursor: pointer;
     border-radius: 20px;
@@ -328,6 +328,10 @@ body {
 
     .trending__images__column__minimize-images__more-button {
         font-size: 16px;
+    }
+
+    .trending__images__column__minimize-images {
+        justify-content: space-between;
     }
 }
 
