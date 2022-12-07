@@ -19,7 +19,6 @@
     --SM-h4: 700 28px 'Space Mono', monospace;
     --SM-h5: 700 22px 'Space Mono', monospace;
     --SM-base: 400 16px 'Space Mono', monospace;
-    --SM-caption: 400 12px 'Space Mono', monospace;
 
     --WS-h1: 600 67px 'Work Sans', sans-serif;
     --WS-h2: 600 51px 'Work Sans', sans-serif;
@@ -27,10 +26,11 @@
     --WS-h4: 28px 600 'Work Sans', sans-serif;
     --WS-h5: 600 22px 'Work Sans', sans-serif;
     --WS-base: 400 16px 'Work Sans', sans-serif;
-    --WS-caption: 400 12px 'Work Sans', sans-serif;
 }
 
 .button-template {
+    display: inline-flex;
+    align-items: center;
     font: var(--SM-h5);
     border: 2px solid var(--action);
     border-radius: 20px;
@@ -43,7 +43,6 @@
 }
 
 .button-template img {
-    transform: translateY(25%);
     width: 20px;
     height: 20px;
     margin-right: 12px;
