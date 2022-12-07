@@ -28,6 +28,10 @@
     --WS-base: 400 16px 'Work Sans', sans-serif;
 }
 
+/*////////// Templates /////////////*/
+
+/*////////// Button /////////////*/
+
 .button-template {
     display: inline-flex;
     align-items: center;
@@ -60,4 +64,18 @@
 .button-tertiary {
     font-size: 16px;
     height: 46px;
+}
+
+/*////////// Author /////////////*/
+
+.author-template {
+    display: flex;
+    align-items: center;
+    font: var(--WS-base);
+}
+
+.author-template img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
 }
