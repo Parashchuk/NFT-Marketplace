@@ -273,6 +273,10 @@ body {
     margin-bottom: 15px;
 }
 
+.trending__images__column__minimize-images > div {
+    flex-grow: 1;
+}
+
 .trending__images__column__minimize-images__more-button {
     width: 100px;
     padding: 0 5px;
