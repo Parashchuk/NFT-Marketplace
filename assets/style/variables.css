@@ -23,7 +23,7 @@
     --WS-h1: 600 67px 'Work Sans', sans-serif;
     --WS-h2: 600 51px 'Work Sans', sans-serif;
     --WS-h3: 600 38px 'Work Sans', sans-serif;
-    --WS-h4: 28px 600 'Work Sans', sans-serif;
+    --WS-h4: 600 28px 'Work Sans', sans-serif;
     --WS-h5: 600 22px 'Work Sans', sans-serif;
     --WS-base: 400 16px 'Work Sans', sans-serif;
 }
@@ -33,6 +33,7 @@
 /*////////// Button /////////////*/
 
 .button-template {
+    white-space: nowrap;
     display: inline-flex;
     align-items: center;
     font: var(--SM-h5);
