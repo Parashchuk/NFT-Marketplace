@@ -1,0 +1,20 @@
+import React from "react"
+import ContentLoader from "react-content-loader"
+
+const MyLoader = (props) => (
+  <ContentLoader 
+    speed={2}
+    width={240}
+    height={240}
+    viewBox="0 0 240 240"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    {...props}
+  >
+    <circle cx="36" cy="41" r="15" /> 
+    <circle cx="117" cy="97" r="55" /> 
+    <rect x="18" y="167" rx="0" ry="0" width="200" height="60" />
+  </ContentLoader>
+)
+
+export default MyLoader

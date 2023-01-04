@@ -1,0 +1,36 @@
+@use '../variables' as *;
+
+.button-template {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  font: $SM-h5;
+  border: 2px solid $action;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0 50px;
+}
+
+.button-template:hover {
+  background-color: $action;
+}
+
+.button-template img {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.button-primary {
+  height: 72px;
+}
+
+.button-secondary {
+  font-size: 16px;
+  height: 60px;
+}
+
+.button-tertiary {
+  font-size: 16px;
+  height: 46px;
+}
