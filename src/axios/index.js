@@ -1,7 +1,7 @@
 import axiosInstance from 'axios';
 
 const axios = axiosInstance.create({
-    baseURL: 'http://marketplace-backend-dev.eu-central-1.elasticbeanstalk.com/',
+  baseURL: 'https://marketplace-server-4tlp.onrender.com',
 });
 
 export default axios;

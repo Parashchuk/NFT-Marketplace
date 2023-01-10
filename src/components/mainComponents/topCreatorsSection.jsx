@@ -10,7 +10,7 @@ const TopCreatorsSection = () => {
     async function fetchTopCreatorsList() {
       const response = await axios.get('/users', {
         params: {
-          limit: 12,
+          limit: 13,
           sort: 'soldNfts',
         },
       });
