@@ -1,0 +1,239 @@
+@use '../variables' as *;
+
+.hero-section__container {
+  display: flex;
+  gap: 30px;
+}
+
+.hero-section__text-column {
+  flex: 1;
+}
+
+.hero-section__text-column__title {
+  font: $WS-h1;
+  line-height: 73.7px;
+  margin-bottom: 20px;
+}
+
+.hero-section__text-column__subtitle {
+  font: $WS-base;
+  font-size: 22px;
+  line-height: 35.2px;
+}
+
+.hero-section__text-column__image {
+  margin: 40px 0 20px 0;
+  font-size: 0;
+  display: none;
+}
+
+.hero-section__text-column__get-started {
+  margin: 40px 0;
+}
+
+.hero-section__text-column__additional-ifno {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.hero-section__text-column__additional-ifno__item span:nth-of-type(1) {
+  display: block;
+  font: $SM-h4;
+}
+
+.hero-section__text-column__additional-ifno__item span:nth-of-type(2) {
+  display: block;
+  font: $WS-base;
+  font-size: 24px;
+}
+
+.hero-section__image-column {
+  font-size: 0;
+  flex: 1;
+}
+
+.hero-section__image-column__image {
+  width: 100%;
+}
+
+.hero-section__image-column__caption {
+  padding: 20px;
+  font: $WS-h5;
+  background-color: $background-secondary;
+  border-radius: 0 0 20px 20px;
+}
+
+.hero-section__image-column__caption__author {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 834px) {
+  .hero-section__text-column__title {
+    font: $WS-h3;
+    line-height: 45.6px;
+  }
+
+  .hero-section__text-column__subtitle {
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+
+  .hero-section__text-column__get-started {
+    margin: 20px 0;
+  }
+
+  .hero-section__text-column__additional-ifno__item span:nth-of-type(1) {
+    font: $SM-h5;
+  }
+
+  .hero-section__text-column__additional-ifno__item span:nth-of-type(2) {
+    font: $WS-base;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-section__text-column__title {
+    font-size: 28px;
+    line-height: 39px;
+  }
+
+  .hero-section__image-column {
+    display: none;
+  }
+
+  .hero-section__container {
+    flex-direction: column;
+  }
+
+  .hero-section__text-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-section__text-column__image {
+    display: block;
+  }
+
+  .hero-section__text-column__get-started {
+    justify-content: center;
+  }
+}
+
+/*/////////// Hero-Section End ///////////////*/
+
+/*/////////// Trending-Section Start ///////////////*/
+
+.trending-section__title {
+  font: $WS-h3;
+  margin-bottom: 10px;
+}
+
+.trending-section__subtitle {
+  font: $WS-base;
+  font-size: 22px;
+  margin-bottom: 60px;
+}
+
+.trending-section__images-container {
+  display: flex;
+  gap: 30px;
+}
+
+.trending-section__images__column__preview img {
+  object-fit: cover;
+  width: 380px;
+  height: 380px;
+}
+
+.trending-section__images__column__preview img,
+.trending-section__images__column__minimize-images img {
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.trending-section__images__column {
+  flex-basis: 33.3%;
+}
+
+.trending-section__images__column__preview {
+  margin-bottom: 15px;
+}
+
+.trending-section__images__column__minimize-images {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.trending-section__images__column__minimize-images > div {
+  flex-basis: 33.3%;
+}
+
+.trending-section__images__column__minimize-images img {
+  height: 100px;
+  object-fit: cover;
+}
+
+.trending-section__images__column__minimize-images__more-button {
+  width: 100px;
+  padding: 0 5px;
+  cursor: pointer;
+  border-radius: 20px;
+  font: $SM-h5;
+  background-color: $action;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trending-section__images__column__name {
+  font: $WS-h5;
+  margin-bottom: 10px;
+}
+
+.trending-section__images__column__author {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 834px) {
+  .trending-section__title {
+    font-size: 28px;
+  }
+
+  .trending-section__subtitle {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .trending-section__images__column {
+    flex-basis: 50%;
+  }
+
+  .trending-section__images-container .trending-section__images__column:nth-of-type(3) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .trending-section__images__column {
+    flex-basis: 100%;
+  }
+
+  .trending-section__images__column__minimize-images img {
+    height: 150px;
+  }
+
+  .trending-section__images-container .trending-section__images__column:nth-of-type(2) {
+    display: none;
+  }
+
+  .trending-section__images__column__minimize-images__more-button {
+    font-size: 16px;
+  }
+
+  .trending-section__images__column__minimize-images {
+    justify-content: space-between;
+  }
+}

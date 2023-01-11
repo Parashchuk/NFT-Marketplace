@@ -1,0 +1,66 @@
+@use '../variables' as *;
+
+.categories-section-title {
+  font: $WS-h3;
+  margin-bottom: 60px;
+}
+
+.categories-section__navigation-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.categories-section__navigation-cards__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories-section__navigation-cards__card-image {
+  display: block;
+  height: 240px;
+  border-radius: 22px 22px 0 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.categories-section__navigation-cards__card-image div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(7.5px);
+  border-radius: 22px 22px 0 0;
+  width: 100%;
+  height: 100%;
+}
+
+.categories-section__navigation-cards__card-image img {
+  width: 100%;
+  max-width: 70px;
+  max-height: 70px;
+}
+
+.categories-section__navigation-cards__card-description {
+  flex-grow: 1;
+  background-color: $background-secondary;
+  border-radius: 0 0 22px 22px;
+  display: block;
+  font: $WS-h5;
+  padding: 20px 30px;
+}
+
+@media screen and (max-width: 834px) {
+  .categories-section__navigation-cards__card-description {
+    font-size: 16px;
+  }
+
+  .categories-section__navigation-cards__card-image {
+    height: 142px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .categories-section__navigation-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -17,27 +17,27 @@ const Header = () => {
           <img className='header__burger-menu' src={BurgetButton} alt='List' />
           <ul className='header__navigation'>
             <li>
-              <a className='navigation-item' href='#'>
+              <Link className='navigation-item' to='#'>
                 Marketplace
-              </a>
+              </Link>
             </li>
             <li>
-              <a className='navigation-item' href='#'>
+              <Link className='navigation-item' to='#'>
                 Rankings
-              </a>
+              </Link>
             </li>
             <li>
-              <a className='navigation-item' href='#'>
+              <Link className='navigation-item' to='#'>
                 Connect a wallet
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className='navigation-item navagation-item--button button-template button-secondary'
-                href='#'>
+                to='#'>
                 <img src={User} alt='user' />
                 <span>Sign Up</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

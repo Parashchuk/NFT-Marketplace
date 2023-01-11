@@ -1,0 +1,27 @@
+.preloader {
+  background-color: unset;
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.5s;
+}
+
+.preloader-active {
+  background-color: #2b2b2b;
+  visibility: visible;
+}
+
+.preloader img {
+  visibility: hidden;
+  transition: all 0.1s;
+}
+
+.preloader-active img {
+  visibility: visible;
+}

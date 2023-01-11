@@ -1,7 +1,7 @@
-import HeroSection from '../components/mainComponents/heroSection';
-import TrendingSection from '../components/mainComponents/trendingSection';
-import TopCreatorsSection from '../components/mainComponents/topCreatorsSection';
-import CategoriesSection from '../components/mainComponents/categoriesSection';
+import HeroSection from '../components/main/heroSection';
+import TrendingSection from '../components/main/trendingSection';
+import TopCreatorsSection from '../components/main/topCreatorsSection';
+import CategoriesSection from '../components/main/categoriesSection';
 
 const Main = () => {
   return (

@@ -1,7 +1,9 @@
 import axios from '../../axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import launchRocket from '../../assets/img/svg/RocketLaunch.svg';
+import Preloader from '../utils/preloader';
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,11 +23,11 @@ const HeroSection = () => {
         setIsLoading(false);
       });
   }, []);
-  console.log(heroUser);
 
   return (
     <>
-      {(isLoading && <div>Hey</div>) || (
+      <Preloader active={isLoading} />
+      {(isLoading && <></>) || (
         <section>
           <div className='hero-section wrapper'>
             <div className='hero-section__container wrapper-container'>
@@ -51,12 +53,12 @@ const HeroSection = () => {
                     </div>
                   </div>
                 </div>
-                <a
+                <Link
                   className='hero-section__text-column__get-started button-template button-secondary'
-                  href='#'>
+                  to='#'>
                   <img src={launchRocket} alt='rocket' />
                   Get Started
-                </a>
+                </Link>
                 <div className='hero-section__text-column__additional-ifno'>
                   <div className='hero-section__text-column__additional-ifno__item'>
                     <span>240k+</span>
