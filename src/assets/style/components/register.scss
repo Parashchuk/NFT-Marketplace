@@ -1,0 +1,140 @@
+@use '../variables' as *;
+
+.register {
+  height: calc(100vh - 100px);
+  display: flex;
+  gap: 100px;
+
+  @media (max-width: 1400px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 875px) {
+    height: calc(100vh - 55px);
+  }
+
+  @media (max-width: 735px) {
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  &__placeholder-column {
+    img {
+      height: 100%;
+      border-radius: 0 20px 0 0;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__form-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+    margin-right: 100px;
+
+    @media (max-width: 1320px) {
+      margin-right: 2%;
+    }
+
+    @media (max-width: 735px) {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    &__title {
+      white-space: nowrap;
+      font: $WS-h2;
+      margin-bottom: 20px;
+
+      @media (max-width: 1000px) {
+        font: $WS-h3;
+      }
+    }
+
+    &__subtitle {
+      font: $WS-base;
+      margin-bottom: 40px;
+
+      @media (max-width: 834px) {
+        margin-right: 50px;
+      }
+
+      @media (max-width: 735px) {
+        margin-right: 0;
+      }
+    }
+
+    &__input-field {
+      height: 46px;
+      font: $WS-base;
+      color: #2b2b2b;
+      display: flex;
+      width: 90%;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 20px;
+      border: 1px solid #858584;
+      background-color: white;
+      color: #2b2b2b;
+      border-radius: 20px;
+
+      @media (max-width: 735px) {
+        width: 100%;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        filter: invert(61%) sepia(6%) saturate(43%) hue-rotate(21deg) brightness(85%) contrast(87%);
+        opacity: 0.5;
+      }
+
+      input {
+        font: $WS-base;
+        color: #2b2b2b;
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      ::placeholder {
+        font: $WS-base;
+        color: #2b2b2b;
+        opacity: 0.5;
+      }
+    }
+
+    &__input-error {
+      font: $WS-base;
+      padding-left: 10px;
+      color: #fb3b1e;
+    }
+
+    &__input-submit {
+      cursor: pointer;
+      background-color: $action;
+      display: flex;
+      width: 90%;
+      justify-content: center;
+      font: $WS-base;
+      color: white;
+
+      @media (max-width: 735px) {
+        width: 100%;
+      }
+    }
+  }
+}

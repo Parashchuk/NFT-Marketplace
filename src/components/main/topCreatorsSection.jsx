@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from '../../axios';
 import { Link } from 'react-router-dom';
 
-import rocketLauch from '../../assets/img/svg/RocketLaunch.svg';
+import rocketLauch from '../../assets/img/svg/rocketLaunch.svg';
 import Preloader from '../utils/preloader';
 
 const TopCreatorsSection = () => {

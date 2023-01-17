@@ -54,6 +54,7 @@
 }
 
 .top-creators-section__list__card-avatar img {
+  height: 120px;
   width: 100%;
 }
 
@@ -116,6 +117,10 @@
   .top-creators-section__list__card-avatar {
     max-width: 60px;
     margin: 0 20px 0 0;
+  }
+
+  .top-creators-section__list__card-avatar img {
+    height: 60px;
   }
 
   .top-creators-section__list__card-name {

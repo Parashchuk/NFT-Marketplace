@@ -2,7 +2,7 @@ import axios from '../../axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import launchRocket from '../../assets/img/svg/RocketLaunch.svg';
+import launchRocket from '../../assets/img/svg/rocketLaunch.svg';
 import Preloader from '../utils/preloader';
 
 const HeroSection = () => {
