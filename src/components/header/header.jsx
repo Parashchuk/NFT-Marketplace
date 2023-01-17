@@ -7,7 +7,6 @@ import User from '../../assets/img/svg/user.svg';
 
 const Header = () => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <header>
@@ -34,18 +33,15 @@ const Header = () => {
                 Connect a wallet
               </Link>
             </li>
-            {location.pathname !== '/register' ? (
-              <li>
-                <Link
-                  className='navigation-item navagation-item--button button-template button-secondary'
-                  to='/register'>
-                  <img src={User} alt='user' />
-                  <span>Sign Up</span>
-                </Link>
-              </li>
-            ) : (
-              ''
-            )}
+
+            <li>
+              <Link
+                className='navigation-item navagation-item--button button-template button-secondary'
+                to={location.pathname === '/register' ? '/login' : '/register'}>
+                <img src={User} alt='user' />
+                <span>{location.pathname === '/register' ? 'Sign In' : 'Sign Up'}</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

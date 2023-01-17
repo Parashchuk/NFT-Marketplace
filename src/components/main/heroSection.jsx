@@ -55,7 +55,7 @@ const HeroSection = () => {
                 </div>
                 <Link
                   className='hero-section__text-column__get-started button-template button-secondary'
-                  to='#'>
+                  to='/register'>
                   <img src={launchRocket} alt='rocket' />
                   Get Started
                 </Link>

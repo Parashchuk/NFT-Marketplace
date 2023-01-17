@@ -1,6 +1,8 @@
 import close from '../../assets/img/svg/close.svg';
 import errorImg from '../../assets/img/svg/error.svg';
 
+import { useState } from 'react';
+
 const ErrorAlert = ({ error }) => {
   const [alertStatus, setAlertStatus] = useState(true);
 
@@ -9,20 +11,22 @@ const ErrorAlert = ({ error }) => {
       {alertStatus && (
         <div className='errorAlert'>
           <div className='errorAlert__container'>
-            <div className='errorAlert__image'>
-              <img src={errorImg} alt='error' />
+            <div className='errorAlert__text-container'>
+              <div className='errorAlert__image'>
+                <img src={errorImg} alt='error' />
+              </div>
+              <div className='errorAlert__description'>
+                <div className='errorAlert__description__title'>Error</div>
+                {error}
+              </div>
             </div>
-            <div className='errorAlert__description'>
-              <div className='errorAlert__description__title'>Error</div>
-              {error}
-            </div>
+            <img
+              className='errorAlert__close'
+              onClick={() => setAlertStatus(false)}
+              src={close}
+              alt='close'
+            />
           </div>
-          <img
-            className='errorAlert__close'
-            onClick={() => setAlertStatus(false)}
-            src={close}
-            alt='close'
-          />
         </div>
       )}
     </>

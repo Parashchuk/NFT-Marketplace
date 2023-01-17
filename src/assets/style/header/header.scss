@@ -36,6 +36,16 @@
 
 .navigation-item {
   padding: 12px 20px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $action;
+    border-bottom: 1px solid $action;
+  }
+}
+
+.navagation-item--button:hover {
+  color: white;
 }
 
 @media screen and (max-width: 1040px) {

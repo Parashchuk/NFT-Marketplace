@@ -1,18 +1,29 @@
 @use '../variables' as *;
 
 .errorAlert {
-  position: absolute;
+  z-index: 100;
+  position: fixed;
+  top: 20px;
   left: 0;
   right: 0;
   color: rgb(244, 199, 199);
 
   &__container {
     background-color: rgba(110, 30, 30, 0.9);
-    padding: 15px 20px 20px 15px;
+    padding: 15px 15px 20px;
     display: flex;
+    justify-content: space-between;
     width: 70%;
     margin: 0 auto;
     border-radius: 20px;
+
+    @media (max-width: 735px) {
+      width: 90%;
+    }
+  }
+
+  &__text-container {
+    display: flex;
   }
 
   &__image {
@@ -38,9 +49,6 @@
     cursor: pointer;
     width: 25px;
     height: 25px;
-    position: absolute;
-    top: 10px;
-    right: 15.6%;
 
     &:hover {
       filter: invert(100%) sepia(9%) saturate(6613%) hue-rotate(188deg) brightness(120%)
