@@ -4,9 +4,9 @@
 @use './templates/buttonTemplate';
 @use './templates/authorTemplate.scss';
 @use './utils/preloader.scss';
-@use './main/categoriesNavgation.scss';
-@use './main/hero.scss';
-@use './main/topCreators.scss';
+@use './landing/categoriesNavgation.scss';
+@use './landing/hero.scss';
+@use './landing/topCreators.scss';
 @use './auth/register.scss';
 @use './utils/errorAlert.scss';
 @use './utils//notFound.scss';

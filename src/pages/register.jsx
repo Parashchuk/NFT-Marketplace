@@ -7,12 +7,14 @@ import ErrorAlert from '../components/utils/errorAlert';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from '../axios';
 import { useState } from 'react';
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [error, setError] = useState(null);
 
   const shcema = yup.object().shape({
@@ -54,7 +56,7 @@ const Register = () => {
         password,
       })
       .then((res) => {
-        console.log(res);
+        setRegistrationSuccess(true);
       })
       .catch((err) => {
         setError(err.response.data.message);
@@ -63,6 +65,8 @@ const Register = () => {
         setIsLoading(false);
       });
   };
+
+  if (registrationSuccess) return <Navigate to='/' />;
 
   return (
     <>
