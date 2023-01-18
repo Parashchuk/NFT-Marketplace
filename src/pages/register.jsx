@@ -1,13 +1,13 @@
 import user from '../assets/img/svg/user.svg';
-import email from '../assets/img/svg/envelopeSimple.svg';
-import lock from '../assets/img/svg/lockKey.svg';
+import email from '../assets/img/svg/email.svg';
+import lock from '../assets/img/svg/lock.svg';
 import placeholder from '../assets/img/placeholders/register_placeholder.png';
 import Preloader from '../components/utils/preloader';
 import ErrorAlert from '../components/utils/errorAlert';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from '../axios';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ import { useState } from 'react';
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  const [error, setError] = useState(null);
+  const [alertError, setAlertError] = useState(null);
 
   const shcema = yup.object().shape({
     username: yup
@@ -38,6 +38,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(shcema),
@@ -59,7 +60,11 @@ const Register = () => {
         setRegistrationSuccess(true);
       })
       .catch((err) => {
-        setError(err.response.data.message);
+        setError(err.response.data.field, {
+          type: 'server',
+          message: err.response.data.message,
+        });
+        setAlertError(err.response.data.message);
       })
       .finally(() => {
         setIsLoading(false);
@@ -70,7 +75,7 @@ const Register = () => {
 
   return (
     <>
-      {error && <ErrorAlert error={error} />}
+      {alertError && <ErrorAlert error={alertError} />}
       {isLoading && <Preloader active={isLoading} />}
       <div className='register'>
         <div className='register__placeholder-column'>
@@ -82,59 +87,95 @@ const Register = () => {
             Welcome! enter your details and start creating, collecting and selling NFTs.
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='register__form-column__input-field'>
-              <label htmlFor='username'>
-                <img src={user} alt='user' />
+            <div className='register__form-column__wrapper'>
+              <label className='register__form-column__input-title' htmlFor='username'>
+                Username
               </label>
-              <input
-                autoComplete='off'
-                id='username'
-                type='text'
-                placeholder='Username'
-                {...register('username')}
-              />
+              <div
+                className={
+                  'register__form-column__input-field' +
+                  (errors.username?.message ? ' register__inpurt-border-error' : '')
+                }>
+                <label htmlFor='username'>
+                  <img src={user} alt='user' />
+                </label>
+                <input
+                  autoComplete='off'
+                  id='username'
+                  type='text'
+                  placeholder='Enter your name'
+                  {...register('username')}
+                />
+              </div>
+              <div className='register__form-column__input-error'>{errors.username?.message}</div>
             </div>
-            <div className='register__form-column__input-error'>{errors.username?.message}</div>
-            <div className='register__form-column__input-field'>
-              <label htmlFor='email'>
-                <img src={email} alt='email' />
+            <div className='register__form-column__wrapper'>
+              <label className='register__form-column__input-title' htmlFor='email'>
+                Email
               </label>
-              <input
-                autoComplete='off'
-                id='email'
-                type='text'
-                placeholder='Email Address'
-                {...register('email')}
-              />
+              <div
+                className={
+                  'register__form-column__input-field' +
+                  (errors.email?.message ? ' register__inpurt-border-error' : '')
+                }>
+                <label htmlFor='email'>
+                  <img src={email} alt='email' />
+                </label>
+                <input
+                  autoComplete='off'
+                  id='email'
+                  type='text'
+                  placeholder='Enter your email address'
+                  {...register('email')}
+                />
+              </div>
+              <div className='register__form-column__input-error'>{errors.email?.message}</div>
             </div>
-            <div className='register__form-column__input-error'>{errors.email?.message}</div>
-            <div className='register__form-column__input-field'>
-              <label htmlFor='password'>
-                <img src={lock} alt='lock' />
+            <div className='register__form-column__wrapper'>
+              <label className='register__form-column__input-title' htmlFor='password'>
+                Password
               </label>
-              <input
-                autoComplete='off'
-                id='password'
-                type='password'
-                placeholder='Password'
-                {...register('password')}
-              />
+              <div
+                className={
+                  'register__form-column__input-field' +
+                  (errors.password?.message ? ' register__inpurt-border-error' : '')
+                }>
+                <label htmlFor='password'>
+                  <img src={lock} alt='lock' />
+                </label>
+                <input
+                  autoComplete='off'
+                  id='password'
+                  type='password'
+                  placeholder='Enter your password'
+                  {...register('password')}
+                />
+              </div>
+              <div className='register__form-column__input-error'>{errors.password?.message}</div>
             </div>
-            <div className='register__form-column__input-error'>{errors.password?.message}</div>
-            <div className='register__form-column__input-field'>
-              <label htmlFor='passwordConfirm'>
-                <img src={lock} alt='lock' />
+            <div className='register__form-column__wrapper'>
+              <label className='register__form-column__input-title' htmlFor='passwordConfirm'>
+                Confirm Password
               </label>
-              <input
-                autoComplete='off'
-                id='passwordConfirm'
-                type='password'
-                placeholder='Confirm Password'
-                {...register('passwordConfirm')}
-              />
-            </div>
-            <div className='register__form-column__input-error'>
-              {errors.passwordConfirm?.message}
+              <div
+                className={
+                  'register__form-column__input-field' +
+                  (errors.passwordConfirm?.message ? ' register__inpurt-border-error' : '')
+                }>
+                <label htmlFor='passwordConfirm'>
+                  <img src={lock} alt='lock' />
+                </label>
+                <input
+                  autoComplete='off'
+                  id='passwordConfirm'
+                  type='password'
+                  placeholder='Confirm your password'
+                  {...register('passwordConfirm')}
+                />
+              </div>
+              <div className='register__form-column__input-error'>
+                {errors.passwordConfirm?.message}
+              </div>
             </div>
             <button
               className='register__form-column__input-submit button-template button-tertiary'
@@ -142,6 +183,10 @@ const Register = () => {
               Create Account
             </button>
           </form>
+
+          <div className='register__form-column__login-suggest'>
+            Already have an account ? <Link to='/login'>Sign In</Link>
+          </div>
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 @use '../variables' as *;
 
 .button-template {
+  cursor: pointer;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;

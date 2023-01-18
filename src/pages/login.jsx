@@ -1,0 +1,123 @@
+import loginPlaceholder from '../assets/img/placeholders/login_placeholder.jpeg';
+import ErrorAlert from '../components/utils/errorAlert';
+import Preloader from '../components/utils/preloader';
+import email from '../assets/img/svg/email.svg';
+import password from '../assets/img/svg/lock.svg';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Link, Navigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import axios from '../axios';
+import * as yup from 'yup';
+
+const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
+  const shema = yup.object().shape({
+    email: yup.string().email('Enter a valid Email').required("Email can't be blank"),
+    password: yup
+      .string()
+      .min(4, 'Password must have at least 4 symbols')
+      .max(20, "Password can't be more then 20 symbols")
+      .required("Password can't be blank"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(shema),
+  });
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+
+    setIsLoading(true);
+    axios
+      .post('/auth/login', {
+        email,
+        password,
+      })
+      .then((res) => {
+        setRegistrationSuccess(true);
+      })
+      .catch((err) => {
+        reset({ password: '' });
+        setError(err.response.data.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  if (registrationSuccess) return <Navigate to='/' />;
+  return (
+    <>
+      {isLoading && <Preloader active={isLoading} />}
+      {error && <ErrorAlert error={error} />}
+      <div className='login'>
+        <div
+          style={{ backgroundImage: `url(${loginPlaceholder})` }}
+          className='login__placeholder'
+        />
+        <div className='login__container'>
+          <div className='login__title'>Welcome Back</div>
+          <div className='login__subtitle'>Enter your email and password manually</div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='login__form-field'>
+              <label className='login__form-field__input-title' htmlFor='email'>
+                Email
+              </label>
+              <div className='login__input-field'>
+                <label htmlFor='email'>
+                  <img src={email} alt='email' />
+                </label>
+                <input
+                  placeholder='Enter your email adress'
+                  type='text'
+                  id='email'
+                  {...register('email')}
+                />
+              </div>
+              <div className='login__input-error'>{errors.email?.message}</div>
+            </div>
+            <div className='login__form-field'>
+              <label className='login__form-field__input-title' htmlFor='password'>
+                Password
+              </label>
+              <div className='login__input-field'>
+                <label htmlFor='email'>
+                  <img src={password} alt='password' />
+                </label>
+                <input
+                  placeholder='Enter your pasworrd'
+                  type='password'
+                  id='password'
+                  {...register('password')}
+                />
+              </div>
+              <div className='login__input-error'>{errors.password?.message}</div>
+            </div>
+            <div className='login__remember-me'>
+              <input id='rememberMe' type='checkbox' />
+              <label htmlFor='rememberMe'>Remember me</label>
+            </div>
+            <button className='login__button button-template button-tertiary' type='submit'>
+              Login
+            </button>
+          </form>
+          <div className='login__register-suggest'>
+            Don't have an account ? <Link to='/register'>Sign up for free</Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Login;
