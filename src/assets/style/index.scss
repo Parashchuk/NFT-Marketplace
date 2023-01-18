@@ -11,6 +11,7 @@
 @use './auth/login.scss';
 @use './utils/errorAlert.scss';
 @use './utils//notFound.scss';
+@use './profile//profile.scss';
 
 :root {
   font-size: 10px;

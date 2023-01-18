@@ -149,7 +149,16 @@
           contrast(105%);
       }
 
-      img {
+      &__show {
+        cursor: pointer;
+        margin-right: 15px;
+        width: 25px;
+        height: 25px;
+        filter: invert(35%) sepia(6%) saturate(43%) hue-rotate(21deg) brightness(100%)
+          contrast(100%);
+      }
+
+      &__label img {
         margin-left: 15px;
         width: 20px;
         height: 20px;

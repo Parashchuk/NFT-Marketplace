@@ -3,11 +3,13 @@ import ErrorAlert from '../components/utils/errorAlert';
 import Preloader from '../components/utils/preloader';
 import email from '../assets/img/svg/email.svg';
 import password from '../assets/img/svg/lock.svg';
+import eye from '../assets/img/svg/eye.svg';
+import eyeSlash from '../assets/img/svg/eyeSlash.svg';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from '../axios';
 import * as yup from 'yup';
 
@@ -15,6 +17,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const [visiblePassword, setVisiblePassword] = useState(false);
 
   const shema = yup.object().shape({
     email: yup.string().email('Enter a valid Email').required("Email can't be blank"),
@@ -36,6 +39,9 @@ const Login = () => {
 
   const onSubmit = (data) => {
     const { email, password } = data;
+
+    //Reset error state
+    setError(null);
 
     setIsLoading(true);
     axios
@@ -74,7 +80,7 @@ const Login = () => {
                 Email
               </label>
               <div className='login__input-field'>
-                <label htmlFor='email'>
+                <label className='login__input-field__label' htmlFor='email'>
                   <img src={email} alt='email' />
                 </label>
                 <input
@@ -91,14 +97,20 @@ const Login = () => {
                 Password
               </label>
               <div className='login__input-field'>
-                <label htmlFor='email'>
+                <label className='login__input-field__label' htmlFor='email'>
                   <img src={password} alt='password' />
                 </label>
                 <input
                   placeholder='Enter your pasworrd'
-                  type='password'
+                  type={visiblePassword ? 'text' : 'password'}
                   id='password'
                   {...register('password')}
+                />
+                <img
+                  onClick={() => setVisiblePassword((prev) => !prev)}
+                  className='register__form-column__input-field__show'
+                  src={visiblePassword ? eye : eyeSlash}
+                  alt='show'
                 />
               </div>
               <div className='login__input-error'>{errors.password?.message}</div>

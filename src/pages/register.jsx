@@ -1,4 +1,6 @@
 import user from '../assets/img/svg/user.svg';
+import eye from '../assets/img/svg/eye.svg';
+import eyeSlash from '../assets/img/svg/eyeSlash.svg';
 import email from '../assets/img/svg/email.svg';
 import lock from '../assets/img/svg/lock.svg';
 import placeholder from '../assets/img/placeholders/register_placeholder.png';
@@ -16,6 +18,8 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [alertError, setAlertError] = useState(null);
+  const [visiblePassword, setVisiblePassword] = useState(false);
+  const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
   const shcema = yup.object().shape({
     username: yup
@@ -96,7 +100,7 @@ const Register = () => {
                   'register__form-column__input-field' +
                   (errors.username?.message ? ' register__inpurt-border-error' : '')
                 }>
-                <label htmlFor='username'>
+                <label className='register__form-column__input-field__label' htmlFor='username'>
                   <img src={user} alt='user' />
                 </label>
                 <input
@@ -118,7 +122,7 @@ const Register = () => {
                   'register__form-column__input-field' +
                   (errors.email?.message ? ' register__inpurt-border-error' : '')
                 }>
-                <label htmlFor='email'>
+                <label className='register__form-column__input-field__label' htmlFor='email'>
                   <img src={email} alt='email' />
                 </label>
                 <input
@@ -140,15 +144,21 @@ const Register = () => {
                   'register__form-column__input-field' +
                   (errors.password?.message ? ' register__inpurt-border-error' : '')
                 }>
-                <label htmlFor='password'>
+                <label className='register__form-column__input-field__label' htmlFor='password'>
                   <img src={lock} alt='lock' />
                 </label>
                 <input
                   autoComplete='off'
                   id='password'
-                  type='password'
+                  type={visiblePassword ? 'text' : 'password'}
                   placeholder='Enter your password'
                   {...register('password')}
+                />
+                <img
+                  onClick={() => setVisiblePassword((prev) => !prev)}
+                  className='register__form-column__input-field__show'
+                  src={visiblePassword ? eye : eyeSlash}
+                  alt='show'
                 />
               </div>
               <div className='register__form-column__input-error'>{errors.password?.message}</div>
@@ -162,15 +172,23 @@ const Register = () => {
                   'register__form-column__input-field' +
                   (errors.passwordConfirm?.message ? ' register__inpurt-border-error' : '')
                 }>
-                <label htmlFor='passwordConfirm'>
+                <label
+                  className='register__form-column__input-field__label'
+                  htmlFor='passwordConfirm'>
                   <img src={lock} alt='lock' />
                 </label>
                 <input
                   autoComplete='off'
                   id='passwordConfirm'
-                  type='password'
+                  type={visibleConfirmPassword ? 'text' : 'password'}
                   placeholder='Confirm your password'
                   {...register('passwordConfirm')}
+                />
+                <img
+                  onClick={() => setVisibleConfirmPassword((prev) => !prev)}
+                  className='register__form-column__input-field__show'
+                  src={visibleConfirmPassword ? eye : eyeSlash}
+                  alt='show'
                 />
               </div>
               <div className='register__form-column__input-error'>
