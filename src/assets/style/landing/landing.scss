@@ -1,0 +1,14 @@
+@use './categoriesNavgation.scss';
+@use './hero.scss';
+@use './topCreators.scss';
+
+.wrapper {
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper-container {
+  margin: 0 25px;
+  flex: 0 1 1050px;
+}

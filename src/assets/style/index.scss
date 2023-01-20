@@ -1,17 +1,13 @@
 @use './variables' as *;
 @use './reset';
-@use './header/header';
-@use './templates/buttonTemplate';
-@use './templates/authorTemplate.scss';
-@use './utils/preloader.scss';
-@use './landing/categoriesNavgation.scss';
-@use './landing/hero.scss';
-@use './landing/topCreators.scss';
-@use './auth/register.scss';
-@use './auth/login.scss';
-@use './utils/errorAlert.scss';
-@use './utils//notFound.scss';
-@use './profile//profile.scss';
+
+@use './header/header.scss';
+@use './landing/landing.scss';
+@use './auth/auth.scss';
+@use './profile/profile.scss';
+
+@use './templates/templates.scss';
+@use './utils/utils.scss';
 
 :root {
   font-size: 10px;
