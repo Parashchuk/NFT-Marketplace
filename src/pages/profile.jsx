@@ -5,7 +5,7 @@ const Profile = () => {
         <div className='profile__container'>
           <div className='profile__container__header'>
             <div className='profile__container__header__placeholder'>
-              <img src='' alt='' />
+              <img src='' alt='avatar' />
             </div>
             <div className='profile__container__header__avatar'></div>
           </div>
