@@ -6,6 +6,7 @@ import Landing from './pages/landing';
 import './assets/style/index.scss';
 import NotFound from './pages/notFound';
 import Login from './pages/login';
+import Profile from './pages/profile';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
