@@ -17,7 +17,8 @@
   font-size: 20px;
 }
 
-.top-creators-section__info-button {
+.top-creators-section__container .top-creators-section__info-button {
+  display: inline;
   font-size: 16px;
   padding: 19px 50px;
 }
@@ -54,6 +55,7 @@
 }
 
 .top-creators-section__list__card-avatar img {
+  border-radius: 50%;
   height: 120px;
   width: 100%;
 }
@@ -78,7 +80,7 @@
   color: $background-caption;
 }
 
-.top-creators-section__list-button {
+.top-creators-section__container .top-creators-section__list-button {
   display: none;
   padding: 20px 50px;
   margin-top: 40px;
@@ -137,11 +139,11 @@
     margin: 0;
   }
 
-  .top-creators-section__info-button {
+  .top-creators-section__container .top-creators-section__info-button {
     display: none;
   }
 
-  .top-creators-section__list-button {
+  .top-creators-section__container .top-creators-section__list-button {
     display: block;
   }
 }
