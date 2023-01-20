@@ -51,6 +51,7 @@ const Login = () => {
       })
       .then((res) => {
         setRegistrationSuccess(true);
+        window.localStorage.setItem('token', res.data.token);
       })
       .catch((err) => {
         reset({ password: '' });
@@ -61,7 +62,7 @@ const Login = () => {
       });
   };
 
-  if (registrationSuccess) return <Navigate to='/' />;
+  if (registrationSuccess) return <Navigate to='/profile' />;
   return (
     <>
       {isLoading && <Preloader active={isLoading} />}

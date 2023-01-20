@@ -61,6 +61,7 @@
 }
 
 .top-creators-section__list__card-name {
+  white-space: nowrap;
   text-align: center;
   font: $WS-h5;
   margin-bottom: 10px;

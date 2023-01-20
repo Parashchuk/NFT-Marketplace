@@ -75,7 +75,7 @@ const Register = () => {
       });
   };
 
-  if (registrationSuccess) return <Navigate to='/' />;
+  if (registrationSuccess) return <Navigate to='/profile' />;
 
   return (
     <>
