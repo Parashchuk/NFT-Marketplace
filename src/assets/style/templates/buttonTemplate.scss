@@ -16,7 +16,12 @@
   background-color: $action;
 }
 
+.button-template:hover img {
+  filter: none;
+}
+
 .button-template img {
+  filter: invert(58%) sepia(56%) saturate(7493%) hue-rotate(243deg) brightness(120%) contrast(101%);
   width: 20px;
   height: 20px;
   margin-right: 12px;

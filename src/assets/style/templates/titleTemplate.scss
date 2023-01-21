@@ -1,0 +1,11 @@
+@use '../variables' as *;
+
+.title-template {
+  margin-bottom: 10px;
+  color: #858584;
+  font: $SM-h5;
+
+  @media (max-width: 834px) {
+    font: $SM-base;
+  }
+}
