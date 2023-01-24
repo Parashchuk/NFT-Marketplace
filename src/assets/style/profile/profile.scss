@@ -31,7 +31,7 @@
 
     &__header {
       &__avatar {
-        margin-top: -60px;
+        margin-top: -100px;
 
         @media (max-width: 480px) {
           display: flex;
@@ -40,8 +40,8 @@
 
         img {
           border-radius: 20px;
-          height: 120px;
-          width: 120px;
+          height: 200px;
+          width: 200px;
         }
       }
     }
@@ -49,13 +49,19 @@
     &__user-info {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 40px;
 
       &__column {
         display: flex;
         flex-direction: column;
         gap: 30px;
 
+        @media (max-width: 630px) {
+          width: 100%;
+        }
+
         &__name {
+          margin-top: 40px;
           font: $WS-h2;
 
           @media (max-width: 834px) {
@@ -68,8 +74,12 @@
         }
 
         &__stats {
-          gap: 220px;
+          gap: 20px 80px;
           display: flex;
+
+          @media (max-width: 630px) {
+            flex-wrap: wrap;
+          }
 
           &__item {
             &__title {
@@ -93,7 +103,55 @@
         &__container {
           display: flex;
           gap: 20px;
+
+          @media (max-width: 630px) {
+            flex-direction: column;
+          }
+
+          @media (max-width: 930px) {
+            display: none;
+          }
+
+          @media (min-width: 931px) and (max-width: 1200px) {
+            flex-direction: column;
+
+            & div:nth-child(2) {
+              order: 1;
+            }
+
+            & div:nth-child(1) {
+              order: 2;
+            }
+          }
+
+          &__adaptive {
+            display: none;
+
+            @media (max-width: 930px) {
+              display: flex;
+            }
+          }
         }
+      }
+      &__column-second {
+        @media (max-width: 630px) {
+          display: none;
+        }
+      }
+    }
+    &__filter {
+      display: flex;
+      margin-bottom: 80px;
+
+      &__items {
+        cursor: pointer;
+        padding: 15px 30px;
+        color: #858584;
+      }
+
+      &__active {
+        color: white;
+        border-bottom: 2px solid #858584;
       }
     }
   }

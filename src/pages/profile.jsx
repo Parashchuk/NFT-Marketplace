@@ -17,6 +17,9 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [alertError, setAlertError] = useState();
 
+  const [filterActiveIndex, setFilterActiveIndex] = useState();
+  const FILTERS = ['Created', 'Owned', 'Collection'];
+
   async function copyTextToClipboard(text) {
     if ('clipboard' in navigator) {
       return await navigator.clipboard.writeText(text);
@@ -48,6 +51,7 @@ const Profile = () => {
   }, []);
 
   console.log(userData);
+
   return (
     <>
       {alertError && <ErrorAlert error={alertError} />}
@@ -72,6 +76,18 @@ const Profile = () => {
               <div className='profile__container__user-info__column'>
                 <div className='profile__container__user-info__column__name'>
                   {userData.username}
+                </div>
+                <div className='profile__container__user-info__column__container profile__container__user-info__column__container__adaptive'>
+                  <div
+                    onClick={() => copyTextToClipboard('0xc0E3...B79C')}
+                    className='profile__container__user-info__column__button button-template button-secondary'>
+                    <img src={copy} alt='copy' />
+                    0xc0E3...B79C
+                  </div>
+                  <div className='profile__container__user-info__column__button button-template button-secondary'>
+                    <img src={plus} alt='plus' />
+                    <span>Follow</span>
+                  </div>
                 </div>
                 <div className='profile__container__user-info__column__stats'>
                   <div className='profile__container__user-info__column__stats__item'>
@@ -106,27 +122,37 @@ const Profile = () => {
                   <img src={instagram} alt='instagram' />
                 </div>
               </div>
-              <div className='profile__container__user-info__column'>
+              <div className='profile__container__user-info__column profile__container__user-info__column-second'>
                 <div className='profile__container__user-info__column__container'>
                   <div
                     onClick={() => copyTextToClipboard('0xc0E3...B79C')}
-                    className='profile__container__user-info__column__copyButton button-template button-secondary'>
+                    className='profile__container__user-info__column__button button-template button-secondary'>
                     <img src={copy} alt='copy' />
                     0xc0E3...B79C
                   </div>
-                  <div className='profile__container__user-info__column__followButton button-template button-secondary'>
+                  <div className='profile__container__user-info__column__button button-template button-secondary'>
                     <img src={plus} alt='plus' />
                     <span>Follow</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='porfile__container__filter'>
-              <div className='profile__container__filter__items'>Created</div>
-              <div className='profile__container__filter__items'>Owned</div>
-              <div className='profile__container__filter__items'>Collection</div>
+            <div className='profile__container__filter'>
+              {FILTERS.map((filter, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={
+                      'profile__container__filter__items' +
+                      (filterActiveIndex === index ? ' profile__container__filter__active' : '')
+                    }
+                    onClick={() => setFilterActiveIndex(index)}>
+                    {filter}
+                  </div>
+                );
+              })}
             </div>
-            <div className='profile__container__nft-cards'></div>
+            <div className='profile__container__nft-cards'>{}</div>
           </div>
         </div>
       )}

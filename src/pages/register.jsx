@@ -62,6 +62,7 @@ const Register = () => {
       })
       .then((res) => {
         setRegistrationSuccess(true);
+        window.localStorage.setItem('token', res.data.token);
       })
       .catch((err) => {
         setError(err.response.data.field, {
