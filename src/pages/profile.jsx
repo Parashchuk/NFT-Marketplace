@@ -11,13 +11,15 @@ import youtube from '../assets/img/svg/youtubeLogo.svg';
 import twitter from '../assets/img/svg/twitterLogo.svg';
 import copy from '../assets/img/svg/copy.svg';
 import plus from '../assets/img/svg/plus.svg';
+import { useSearchParams } from 'react-router-dom';
 
 const Profile = () => {
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [alertError, setAlertError] = useState();
+  const [params] = useSearchParams();
 
-  const [filterActiveIndex, setFilterActiveIndex] = useState();
+  const [filterActiveIndex, setFilterActiveIndex] = useState(0);
   const FILTERS = ['Created', 'Owned', 'Collection'];
 
   async function copyTextToClipboard(text) {
@@ -45,12 +47,32 @@ const Profile = () => {
       });
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    isAuth();
-  }, []);
+  const fetchUserData = () => {
+    setAlertError(null);
 
-  console.log(userData);
+    axios
+      .get('/users/' + params.get('id'))
+      .then((res) => {
+        setIsLoading(false);
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        setAlertError(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    if (!params.get('id')) {
+      setIsLoading(true);
+      isAuth();
+    } else {
+      setIsLoading(true);
+      fetchUserData();
+    }
+  }, []);
 
   return (
     <>

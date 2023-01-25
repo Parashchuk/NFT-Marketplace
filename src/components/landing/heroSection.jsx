@@ -42,7 +42,7 @@ const HeroSection = () => {
                 <div className='hero-section__text-column__image'>
                   <img
                     className='hero-section__image-column__image'
-                    src={heroUser.images[0]}
+                    src={heroUser.images[0].picture}
                     alt='placeholder'
                   />
                   <div className='hero-section__image-column__caption'>
@@ -77,7 +77,7 @@ const HeroSection = () => {
               <div className='hero-section__image-column'>
                 <img
                   className='hero-section__image-column__image'
-                  src={heroUser.images[0]}
+                  src={heroUser.images[0].picture}
                   alt='spacewalk'
                 />
                 <div className='hero-section__image-column__caption'>

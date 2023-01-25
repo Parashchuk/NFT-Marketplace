@@ -40,14 +40,14 @@ const TrendingSection = () => {
                   return (
                     <div key={id} className='trending-section__images__column'>
                       <div className='trending-section__images__column__preview'>
-                        <img src={el.images[iter++]} alt='collection image' />
+                        <img src={el.images[iter++].picture} alt='collection image' />
                       </div>
                       <div className='trending-section__images__column__minimize-images'>
                         <div>
-                          <img src={el.images[iter++]} alt='collection image' />
+                          <img src={el.images[iter++].picture} alt='collection image' />
                         </div>
                         <div>
-                          <img src={el.images[iter++]} alt='collection image' />
+                          <img src={el.images[iter++].picture} alt='collection image' />
                         </div>
                         <div className='trending-section__images__column__minimize-images__more-button'>
                           {el.images.length - iter}+

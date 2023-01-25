@@ -14,7 +14,7 @@ const TopCreatorsSection = () => {
     axios
       .get('/users', {
         params: {
-          limit: 13,
+          limit: 12,
           sort: 'soldNfts',
         },
       })
@@ -46,7 +46,10 @@ const TopCreatorsSection = () => {
               <div className='top-creators-section__list'>
                 {topCreatorsList.map((obj, index) => {
                   return (
-                    <div key={index} className='top-creators-section__list__card'>
+                    <Link
+                      to={'/profile?id=' + obj._id}
+                      key={index}
+                      className='top-creators-section__list__card'>
                       <div className='top-creators-section__list__card-number'>{index + 1}</div>
                       <div className='top-creators-section__list__card-avatar'>
                         <img src={obj.avatar} alt='avatar' />
@@ -58,7 +61,7 @@ const TopCreatorsSection = () => {
                           {obj.totalSales}
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
                 <Link to='#' className='top-creators-section__list-button button-template'>
