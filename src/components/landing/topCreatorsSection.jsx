@@ -9,6 +9,7 @@ const TopCreatorsSection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [topCreatorsList, setTopCreatorsList] = useState([]);
 
+  //Fetch data to users, will remake to Redux
   useEffect(() => {
     setIsLoading(true);
     axios

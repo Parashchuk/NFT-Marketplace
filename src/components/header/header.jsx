@@ -6,6 +6,7 @@ import LogoImage from '../../assets/img/svg/storefront.svg';
 import User from '../../assets/img/svg/user.svg';
 
 const Header = () => {
+  //Check if auth
   const location = useLocation();
   const isAuth = !!window.localStorage.getItem('token');
 

@@ -31,6 +31,7 @@ const Profile = () => {
     }
   }
 
+  //Fecth current user data
   const isAuth = () => {
     setAlertError(null);
 
@@ -44,6 +45,7 @@ const Profile = () => {
       });
   };
 
+  //Feth other user data
   const fetchUserData = () => {
     setAlertError(null);
 
@@ -57,6 +59,7 @@ const Profile = () => {
       });
   };
 
+  //Fetch inventory items by sort
   const fetchDataInventory = (path) => {
     setAlertError(null);
 
@@ -78,6 +81,7 @@ const Profile = () => {
       });
   };
 
+  //Load user info
   useEffect(() => {
     if (!params.get('id')) {
       setIsLoading(true);
@@ -88,6 +92,7 @@ const Profile = () => {
     }
   }, []);
 
+  //Load inventory
   useEffect(() => {
     if (!params.get('id')) {
       setIsLoading(true);
@@ -204,7 +209,7 @@ const Profile = () => {
                   return (
                     <div key={index} className='profile__container__nft-cards__grid__item'>
                       <div className='profile__container__nft-cards__grid__item__image'>
-                        <img src={el.picture} alt='nft' />
+                        <img src={el.picture ? el.picture : el.images[0].picture} alt='nft' />
                       </div>
                       <div className='profile__container__nft-cards__grid__item__info'>
                         <div className='profile__container__nft-cards__grid__item__info__name'>
@@ -221,7 +226,7 @@ const Profile = () => {
                         <div className='profile__container__nft-cards__grid__item__info__properties'>
                           <div className='profile__container__nft-cards__grid__item__info__properties__item'>
                             <span>Price</span>
-                            <div>{el.price} ETH</div>
+                            <div>{el.price ? el.price : 0} ETH</div>
                           </div>
                           <div className='profile__container__nft-cards__grid__item__info__properties__item'>
                             <span>Highest Bid</span>

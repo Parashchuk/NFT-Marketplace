@@ -19,6 +19,7 @@ const Login = () => {
   const [error, setError] = useState(null);
   const [visiblePassword, setVisiblePassword] = useState(false);
 
+  //Create validations to login form
   const shema = yup.object().shape({
     email: yup.string().email('Enter a valid Email').required("Email can't be blank"),
     password: yup
@@ -28,6 +29,7 @@ const Login = () => {
       .required("Password can't be blank"),
   });
 
+  //Create instance of valitator to conncect to form
   const {
     register,
     handleSubmit,

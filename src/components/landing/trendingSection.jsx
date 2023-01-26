@@ -7,6 +7,7 @@ const TrendingSection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [trendCollection, setTrendCollection] = useState([]);
 
+  //Fetch data and soon to Redux
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -35,6 +36,7 @@ const TrendingSection = () => {
               </div>
               <div className='trending-section__images-container'>
                 {trendCollection.map((el, id) => {
+                  //Skip the first top collection cause it's already shown
                   if (id === 0) return null;
                   let iter = 0;
                   return (

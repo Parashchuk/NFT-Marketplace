@@ -9,6 +9,7 @@ const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [heroUser, setHeroUser] = useState();
 
+  //Fetch user Data
   useEffect(() => {
     setIsLoading(true);
     axios

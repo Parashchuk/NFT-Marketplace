@@ -20,6 +20,7 @@ import {
 } from '../../assets/img/categories/index';
 
 const CategoriesSection = () => {
+  //Array of categories items to set up img tag placholder and name of category
   const categories = [
     { name: 'Art', img: paintBrush, placeholder: placeholder_paintBrush },
     { name: 'Collectibles', img: swatches, placeholder: placeholder_swatches },

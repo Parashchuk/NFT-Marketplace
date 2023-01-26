@@ -21,6 +21,7 @@ const Register = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
+  //Create chema validation for register form
   const shcema = yup.object().shape({
     username: yup
       .string()
@@ -39,6 +40,7 @@ const Register = () => {
       .required("Password confirmation can't be blank"),
   });
 
+  //Create instance of validation to connect to register form
   const {
     register,
     handleSubmit,
