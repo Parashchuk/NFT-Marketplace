@@ -128,18 +128,29 @@ const Profile = () => {
                 <div className='profile__container__user-info__column__name'>
                   {userData.username}
                 </div>
-                <div className='profile__container__user-info__column__container profile__container__user-info__column__container__adaptive'>
-                  <div
-                    onClick={() => copyTextToClipboard('0xc0E3...B79C')}
-                    className='profile__container__user-info__column__button button-template button-secondary'>
-                    <img src={copy} alt='copy' />
-                    0xc0E3...B79C
+                {params.get('id') ? (
+                  <div className='profile__container__user-info__column__container profile__container__user-info__column__container__adaptive'>
+                    <div
+                      onClick={() => copyTextToClipboard('0xc0E3...B79C')}
+                      className='profile__container__user-info__column__button button-template button-secondary'>
+                      <img src={copy} alt='copy' />
+                      0xc0E3...B79C
+                    </div>
+                    <div className='profile__container__user-info__column__button button-template button-secondary'>
+                      <img src={plus} alt='plus' />
+                      <span>Follow</span>
+                    </div>
                   </div>
-                  <div className='profile__container__user-info__column__button button-template button-secondary'>
-                    <img src={plus} alt='plus' />
-                    <span>Follow</span>
+                ) : (
+                  <div className='profile__container__user-info__column__container profile__container__user-info__column__container__adaptive'>
+                    <div
+                      onClick={() => console.log('editMode')}
+                      className='profile__container__user-info__column__button button-template button-secondary'>
+                      <img src={copy} alt='copy' />
+                      Edit
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className='profile__container__user-info__column__stats'>
                   <div className='profile__container__user-info__column__stats__item'>
                     <div className='profile__container__user-info__column__stats__item__title'>
@@ -174,18 +185,29 @@ const Profile = () => {
                 </div>
               </div>
               <div className='profile__container__user-info__column profile__container__user-info__column-second'>
-                <div className='profile__container__user-info__column__container'>
-                  <div
-                    onClick={() => copyTextToClipboard('0xc0E3...B79C')}
-                    className='profile__container__user-info__column__button button-template button-secondary'>
-                    <img src={copy} alt='copy' />
-                    0xc0E3...B79C
+                {params.get('id') ? (
+                  <div className='profile__container__user-info__column__container'>
+                    <div
+                      onClick={() => copyTextToClipboard('0xc0E3...B79C')}
+                      className='profile__container__user-info__column__button button-template button-secondary'>
+                      <img src={copy} alt='copy' />
+                      0xc0E3...B79C
+                    </div>
+                    <div className='profile__container__user-info__column__button button-template button-secondary'>
+                      <img src={plus} alt='plus' />
+                      <span>Follow</span>
+                    </div>
                   </div>
-                  <div className='profile__container__user-info__column__button button-template button-secondary'>
-                    <img src={plus} alt='plus' />
-                    <span>Follow</span>
+                ) : (
+                  <div className='profile__container__user-info__column__container'>
+                    <div
+                      onClick={() => console.log('editMode')}
+                      className='profile__container__user-info__column__button button-template button-secondary'>
+                      <img src={copy} alt='copy' />
+                      Edit
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
             <div className='profile__container__filter'>
@@ -204,39 +226,45 @@ const Profile = () => {
               })}
             </div>
             <div className='profile__container__nft-cards'>
+              {!inventoryData.length && (
+                <div className='profile__container__nft-cards__nothing-here'>
+                  Looks like here is a little empty
+                </div>
+              )}
               <div className='profile__container__nft-cards__grid'>
-                {inventoryData.map((el, index) => {
-                  return (
-                    <div key={index} className='profile__container__nft-cards__grid__item'>
-                      <div className='profile__container__nft-cards__grid__item__image'>
-                        <img src={el.picture ? el.picture : el.images[0].picture} alt='nft' />
+                {!!inventoryData.length &&
+                  inventoryData.map((el, index) => {
+                    return (
+                      <div key={index} className='profile__container__nft-cards__grid__item'>
+                        <div className='profile__container__nft-cards__grid__item__image'>
+                          <img src={el.picture ? el.picture : el.images[0].picture} alt='nft' />
+                        </div>
+                        <div className='profile__container__nft-cards__grid__item__info'>
+                          <div className='profile__container__nft-cards__grid__item__info__name'>
+                            {el.name}
+                          </div>
+                          <div className='profile__container__nft-cards__grid__item__info__author'>
+                            <div className='profile__container__nft-cards__grid__item__info__author__avatar'>
+                              <img src={el.author.avatar} alt='avatar' />
+                            </div>
+                            <div className='profile__container__nft-cards__grid__item__info__author__name'>
+                              {el.author.username}
+                            </div>
+                          </div>
+                          <div className='profile__container__nft-cards__grid__item__info__properties'>
+                            <div className='profile__container__nft-cards__grid__item__info__properties__item'>
+                              <span>Price</span>
+                              <div>{el.price ? el.price : 0} ETH</div>
+                            </div>
+                            <div className='profile__container__nft-cards__grid__item__info__properties__item'>
+                              <span>Highest Bid</span>
+                              <div>{el.bidHistory[0] ? el.bidHistory[0] : 0} wETH</div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className='profile__container__nft-cards__grid__item__info'>
-                        <div className='profile__container__nft-cards__grid__item__info__name'>
-                          {el.name}
-                        </div>
-                        <div className='profile__container__nft-cards__grid__item__info__author'>
-                          <div className='profile__container__nft-cards__grid__item__info__author__avatar'>
-                            <img src={el.author.avatar} alt='avatar' />
-                          </div>
-                          <div className='profile__container__nft-cards__grid__item__info__author__name'>
-                            {el.author.username}
-                          </div>
-                        </div>
-                        <div className='profile__container__nft-cards__grid__item__info__properties'>
-                          <div className='profile__container__nft-cards__grid__item__info__properties__item'>
-                            <span>Price</span>
-                            <div>{el.price ? el.price : 0} ETH</div>
-                          </div>
-                          <div className='profile__container__nft-cards__grid__item__info__properties__item'>
-                            <span>Highest Bid</span>
-                            <div>{el.bidHistory[0] ? el.bidHistory[0] : 0} wETH</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
           </div>

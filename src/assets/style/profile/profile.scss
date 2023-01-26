@@ -157,6 +157,17 @@
 
     &__nft-cards {
       margin-bottom: 80px;
+
+      &__nothing-here {
+        color: #858584;
+        text-align: center;
+        font: $SM-h3;
+
+        @media (max-width: 700px) {
+          font: $SM-h5;
+        }
+      }
+
       &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
