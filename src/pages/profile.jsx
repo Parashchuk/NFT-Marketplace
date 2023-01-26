@@ -15,12 +15,13 @@ import { useSearchParams } from 'react-router-dom';
 
 const Profile = () => {
   const [userData, setUserData] = useState();
+  const [inventoryData, setInvetoryData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [alertError, setAlertError] = useState();
   const [params] = useSearchParams();
 
   const [filterActiveIndex, setFilterActiveIndex] = useState(0);
-  const FILTERS = ['Created', 'Owned', 'Collection'];
+  const FILTERS = ['NFTs', 'Collections'];
 
   async function copyTextToClipboard(text) {
     if ('clipboard' in navigator) {
@@ -36,14 +37,10 @@ const Profile = () => {
     axios
       .post('/auth/me')
       .then((res) => {
-        setIsLoading(false);
         setUserData(res.data);
       })
       .catch((err) => {
         setAlertError(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   };
 
@@ -53,8 +50,25 @@ const Profile = () => {
     axios
       .get('/users/' + params.get('id'))
       .then((res) => {
-        setIsLoading(false);
         setUserData(res.data);
+      })
+      .catch((err) => {
+        setAlertError(err);
+      });
+  };
+
+  const fetchDataInventory = (path) => {
+    setAlertError(null);
+
+    const sort = filterActiveIndex ? 'collections' : 'nfts';
+    axios
+      .get(path, {
+        params: {
+          sort,
+        },
+      })
+      .then((res) => {
+        setInvetoryData(res.data);
       })
       .catch((err) => {
         setAlertError(err);
@@ -73,6 +87,16 @@ const Profile = () => {
       fetchUserData();
     }
   }, []);
+
+  useEffect(() => {
+    if (!params.get('id')) {
+      setIsLoading(true);
+      fetchDataInventory('/users/inventory');
+    } else {
+      setIsLoading(true);
+      fetchDataInventory('/users/' + params.get('id') + '/inventory');
+    }
+  }, [filterActiveIndex]);
 
   return (
     <>
@@ -174,7 +198,42 @@ const Profile = () => {
                 );
               })}
             </div>
-            <div className='profile__container__nft-cards'>{}</div>
+            <div className='profile__container__nft-cards'>
+              <div className='profile__container__nft-cards__grid'>
+                {inventoryData.map((el, index) => {
+                  return (
+                    <div key={index} className='profile__container__nft-cards__grid__item'>
+                      <div className='profile__container__nft-cards__grid__item__image'>
+                        <img src={el.picture} alt='nft' />
+                      </div>
+                      <div className='profile__container__nft-cards__grid__item__info'>
+                        <div className='profile__container__nft-cards__grid__item__info__name'>
+                          {el.name}
+                        </div>
+                        <div className='profile__container__nft-cards__grid__item__info__author'>
+                          <div className='profile__container__nft-cards__grid__item__info__author__avatar'>
+                            <img src={el.author.avatar} alt='avatar' />
+                          </div>
+                          <div className='profile__container__nft-cards__grid__item__info__author__name'>
+                            {el.author.username}
+                          </div>
+                        </div>
+                        <div className='profile__container__nft-cards__grid__item__info__properties'>
+                          <div className='profile__container__nft-cards__grid__item__info__properties__item'>
+                            <span>Price</span>
+                            <div>{el.price} ETH</div>
+                          </div>
+                          <div className='profile__container__nft-cards__grid__item__info__properties__item'>
+                            <span>Highest Bid</span>
+                            <div>{el.bidHistory[0] ? el.bidHistory[0] : 0} wETH</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       )}
