@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/NFT-Marketplace/static/css/main.73d4ce1b.css",
-    "main.js": "/NFT-Marketplace/static/js/main.9250ee82.js",
-    "static/media/register_placeholder.png": "/NFT-Marketplace/static/media/register_placeholder.baf6b90ad900e5ea3850.png",
-    "static/media/login_placeholder.jpeg": "/NFT-Marketplace/static/media/login_placeholder.682fa921856be8cd7847.jpeg",
-    "static/media/notFound_placeholder.png": "/NFT-Marketplace/static/media/notFound_placeholder.f2f95607f35d04029608.png",
-    "static/media/placeholder-basketball.jpg": "/NFT-Marketplace/static/media/placeholder-basketball.8dff2b76ca6798866a64.jpg",
-    "static/media/placeholder-camera.jpg": "/NFT-Marketplace/static/media/placeholder-camera.2e5adb35ee9ee239fd39.jpg",
-    "static/media/placeholder-swatches.jpg": "/NFT-Marketplace/static/media/placeholder-swatches.5ada4e26c158fb50e06e.jpg",
-    "static/media/placeholder-musicNotes.jpg": "/NFT-Marketplace/static/media/placeholder-musicNotes.2c5308990bb77f95e2d0.jpg",
-    "static/media/placeholder-planet.jpg": "/NFT-Marketplace/static/media/placeholder-planet.6e7625c8ab340ea563bc.jpg",
-    "static/media/placeholder-magicWand.jpg": "/NFT-Marketplace/static/media/placeholder-magicWand.ff6d4ca23df26e9b9337.jpg",
-    "static/media/placeholder-videoCamera.jpg": "/NFT-Marketplace/static/media/placeholder-videoCamera.bc3577fe629097d939c3.jpg",
-    "static/media/placeholder-paintBrush.jpg": "/NFT-Marketplace/static/media/placeholder-paintBrush.fe20c8d851d6496c9dab.jpg",
+    "main.css": "/NFT-Marketplace/static/css/main.493ffa1e.css",
+    "main.js": "/NFT-Marketplace/static/js/main.9015afdb.js",
+    "static/media/register_placeholder.png": "/NFT-Marketplace/static/media/register_placeholder.e750b7ff6c38c40cec55.png",
+    "static/media/login_placeholder.jpeg": "/NFT-Marketplace/static/media/login_placeholder.62faa7e05b13fbb72910.jpeg",
+    "static/media/placeholder-basketball.jpg": "/NFT-Marketplace/static/media/placeholder-basketball.d98c375072b09b78623c.jpg",
+    "static/media/placeholder-swatches.jpg": "/NFT-Marketplace/static/media/placeholder-swatches.4f66f563c841650244bf.jpg",
+    "static/media/placeholder-camera.jpg": "/NFT-Marketplace/static/media/placeholder-camera.2fe825c38eeff55ae950.jpg",
+    "static/media/placeholder-musicNotes.jpg": "/NFT-Marketplace/static/media/placeholder-musicNotes.69b50acb7f00e6702345.jpg",
+    "static/media/notFound_placeholder.png": "/NFT-Marketplace/static/media/notFound_placeholder.dbdb11cab460fbec305b.png",
+    "static/media/placeholder-planet.jpg": "/NFT-Marketplace/static/media/placeholder-planet.ee93e76688ce138cd279.jpg",
+    "static/media/placeholder-magicWand.jpg": "/NFT-Marketplace/static/media/placeholder-magicWand.8a2422655f2fba0b95ae.jpg",
+    "static/media/placeholder-videoCamera.jpg": "/NFT-Marketplace/static/media/placeholder-videoCamera.d69fdf7e336f5aa80868.jpg",
+    "static/media/placeholder-paintBrush.jpg": "/NFT-Marketplace/static/media/placeholder-paintBrush.e0c0673348b135c715ab.jpg",
     "static/media/logo.svg": "/NFT-Marketplace/static/media/logo.f16a6ac79f9f522813c990286565582b.svg",
     "static/media/discordLogo.svg": "/NFT-Marketplace/static/media/discordLogo.83d058a725443ad77d607a121aebc738.svg",
     "static/media/eyeSlash.svg": "/NFT-Marketplace/static/media/eyeSlash.640ec8b42847d26dfea83571ed150b07.svg",
@@ -41,11 +41,11 @@
     "static/media/copy.svg": "/NFT-Marketplace/static/media/copy.5810da3f3403f731b7af5be77ad6b13b.svg",
     "static/media/plus.svg": "/NFT-Marketplace/static/media/plus.5aec3834c8f111d026af979d2f13fb4d.svg",
     "index.html": "/NFT-Marketplace/index.html",
-    "main.73d4ce1b.css.map": "/NFT-Marketplace/static/css/main.73d4ce1b.css.map",
-    "main.9250ee82.js.map": "/NFT-Marketplace/static/js/main.9250ee82.js.map"
+    "main.493ffa1e.css.map": "/NFT-Marketplace/static/css/main.493ffa1e.css.map",
+    "main.9015afdb.js.map": "/NFT-Marketplace/static/js/main.9015afdb.js.map"
   },
   "entrypoints": [
-    "static/css/main.73d4ce1b.css",
-    "static/js/main.9250ee82.js"
+    "static/css/main.493ffa1e.css",
+    "static/js/main.9015afdb.js"
   ]
 }
