@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import placeholder from '../assets/img/placeholders/notFound_placeholder.png';
+import placeholder from '../../assets/img/placeholders/notFound_placeholder.png';
 
 const NotFound = () => {
   return (

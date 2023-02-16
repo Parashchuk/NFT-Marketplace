@@ -1,17 +1,17 @@
-import user from '../assets/img/svg/user.svg';
-import eye from '../assets/img/svg/eye.svg';
-import eyeSlash from '../assets/img/svg/eyeSlash.svg';
-import email from '../assets/img/svg/email.svg';
-import lock from '../assets/img/svg/lock.svg';
-import placeholder from '../assets/img/placeholders/register_placeholder.png';
-import Preloader from '../components/utils/preloader';
-import ErrorAlert from '../components/utils/errorAlert';
+import user from '../../assets/img/svg/user.svg';
+import eye from '../../assets/img/svg/eye.svg';
+import eyeSlash from '../../assets/img/svg/eyeSlash.svg';
+import email from '../../assets/img/svg/email.svg';
+import lock from '../../assets/img/svg/lock.svg';
+import placeholder from '../../assets/img/placeholders/register_placeholder.png';
+import Preloader from '../../components/utils/preloader';
+import ErrorAlert from '../../components/utils/errorAlert';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate } from 'react-router-dom';
 import * as yup from 'yup';
-import axios from '../axios';
+import axios from '../../axios';
 import { useState } from 'react';
 
 const Register = () => {

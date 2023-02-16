@@ -1,16 +1,16 @@
-import loginPlaceholder from '../assets/img/placeholders/login_placeholder.jpeg';
-import ErrorAlert from '../components/utils/errorAlert';
-import Preloader from '../components/utils/preloader';
-import email from '../assets/img/svg/email.svg';
-import password from '../assets/img/svg/lock.svg';
-import eye from '../assets/img/svg/eye.svg';
-import eyeSlash from '../assets/img/svg/eyeSlash.svg';
+import loginPlaceholder from '../../assets/img/placeholders/login_placeholder.jpeg';
+import ErrorAlert from '../../components/utils/errorAlert';
+import Preloader from '../../components/utils/preloader';
+import email from '../../assets/img/svg/email.svg';
+import password from '../../assets/img/svg/lock.svg';
+import eye from '../../assets/img/svg/eye.svg';
+import eyeSlash from '../../assets/img/svg/eyeSlash.svg';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import axios from '../axios';
+import axios from '../../axios';
 import * as yup from 'yup';
 
 const Login = () => {

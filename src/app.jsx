@@ -1,12 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/header/header';
-import Register from './pages/register';
-import Landing from './pages/landing';
+import Header from './components/landing/header';
+import Register from './pages/landing/register';
+import Landing from './pages/landing/landing';
 import './assets/style/index.scss';
-import NotFound from './pages/notFound';
-import Login from './pages/login';
-import Profile from './pages/profile';
+import NotFound from './pages/landing/notFound';
+import Login from './pages/landing/login';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/profile' element={<Profile />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

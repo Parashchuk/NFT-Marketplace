@@ -1,10 +1,7 @@
 @use './variables' as *;
 @use './reset';
 
-@use './header/header.scss';
 @use './landing/landing.scss';
-@use './auth/auth.scss';
-@use './profile/profile.scss';
 
 @use './templates/templates.scss';
 @use './utils/utils.scss';
