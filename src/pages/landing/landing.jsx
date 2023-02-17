@@ -3,6 +3,7 @@ import TrendingSection from '../../components/landing/trendingSection';
 import TopCreatorsSection from '../../components/landing/topCreatorsSection';
 import CategoriesSection from '../../components/landing/categoriesSection';
 import Discover from '../../components/landing/discover';
+import Highlight from '../../components/landing/highlight';
 import Preloader from '../../components/utils/preloader';
 
 import { fetchCollections } from '../../store/reducers/collections';
@@ -29,6 +30,7 @@ const Main = () => {
         <TopCreatorsSection />
         <CategoriesSection />
         <Discover />
+        <Highlight />
       </div>
     </main>
   );

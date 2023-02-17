@@ -1,0 +1,124 @@
+@use '../variables' as *;
+
+.highlight {
+  margin: 30px 0;
+  display: flex;
+  align-items: flex-end;
+  height: 640px;
+  background-position: center;
+  background-size: cover;
+
+  &__wrapper {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  &__wrapper-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__columns {
+    margin-bottom: 60px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-basis: 1050px;
+
+    @media (max-width: 834px) {
+      flex: 0 1 690px;
+    }
+
+    @media (max-width: 634px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__description {
+      margin-right: 20px;
+      &__button {
+        background-color: white;
+        color: black;
+
+        &:hover {
+          color: white;
+          border-color: white;
+        }
+
+        @media (max-width: 634px) {
+          display: none !important;
+        }
+
+        &__adaptive {
+          margin-top: 30px;
+          display: none !important;
+
+          @media (max-width: 634px) {
+            display: inline-flex !important;
+            width: 60%;
+          }
+        }
+      }
+
+      &__author {
+        padding: 10px 20px;
+        background-color: #3b3b3b;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 20px;
+        margin-bottom: 30px;
+
+        &__name {
+          font: $WS-base;
+        }
+
+        &__img {
+          img {
+            border-radius: 20px;
+            width: 24px;
+            height: 24px;
+            border-radius: 20px;
+            margin-right: 10px;
+          }
+        }
+      }
+
+      &__title {
+        font: $WS-h2;
+        margin-bottom: 30px;
+
+        @media (max-width: 920px) {
+          font: $WS-h3;
+        }
+      }
+    }
+
+    &__timer {
+      padding: 30px;
+      background: rgba(59, 59, 59, 0.5);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+
+      &__title {
+        font: $SM-base;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+      &__digits {
+        font: $SM-h3;
+        line-height: 37px;
+        display: flex;
+        gap: 20px;
+
+        div {
+          line-height: 42px;
+        }
+
+        span {
+          font: $SM-base;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
