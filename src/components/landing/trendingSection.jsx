@@ -1,29 +1,8 @@
-import { useEffect, useState } from 'react';
-import axios from '../../axios';
-
-import Preloader from '../utils/preloader';
+import { useSelector } from 'react-redux';
 
 const TrendingSection = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [trendCollection, setTrendCollection] = useState([]);
+  const trendCollection = useSelector((state) => state.collections.data);
 
-  //Fetch data and soon to Redux
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get('/collections', {
-        params: {
-          limit: 4,
-          sort: 'ratings',
-        },
-      })
-      .then((res) => {
-        setTrendCollection(res.data);
-        setIsLoading(false);
-      });
-  }, []);
-
-  if (isLoading) return <Preloader active={isLoading} />;
   return (
     <section>
       <div className='trending-section wrapper'>

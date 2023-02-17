@@ -1,31 +1,11 @@
-import { useState, useEffect } from 'react';
-import axios from '../../axios';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import rocketLauch from '../../assets/img/svg/rocketLaunch.svg';
-import Preloader from '../utils/preloader';
 
 const TopCreatorsSection = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [topCreatorsList, setTopCreatorsList] = useState([]);
+  const topCreatorsList = useSelector((state) => state.users.data);
 
-  //Fetch data to users, will remake to Redux
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get('/users', {
-        params: {
-          limit: 12,
-          sort: 'soldNfts',
-        },
-      })
-      .then((response) => {
-        setTopCreatorsList(response.data);
-      });
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) return <Preloader active={isLoading} />;
   return (
     <section>
       <div className='top-creators-section wrapper'>
@@ -45,10 +25,7 @@ const TopCreatorsSection = () => {
           <div className='top-creators-section__list'>
             {topCreatorsList.map((obj, index) => {
               return (
-                <Link
-                  to={'/profile?id=' + obj._id}
-                  key={index}
-                  className='top-creators-section__list__card'>
+                <div key={index} className='top-creators-section__list__card'>
                   <div className='top-creators-section__list__card-number'>{index + 1}</div>
                   <div className='top-creators-section__list__card-avatar'>
                     <img src={obj.avatar} alt='avatar' />
@@ -60,7 +37,7 @@ const TopCreatorsSection = () => {
                       {obj.totalSales}
                     </div>
                   </div>
-                </Link>
+                </div>
               );
             })}
             <Link to='#' className='top-creators-section__list-button button-template'>

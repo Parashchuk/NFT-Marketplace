@@ -1,8 +1,8 @@
 import axios from '../../axios';
 
-const SET_COLLECTIONS = 'Collections/SET_COLLECTIONS';
-const SET_ERROR = 'Collections/SET_ERROR';
-const SET_LOADING = 'Collections/SET_LOADING';
+const SET_USERS = 'Users/SET_USERS';
+const SET_ERROR = 'Users/SET_ERROR';
+const SET_LOADING = 'Users/SET_LOADING';
 
 const initialState = {
   isLoading: true,
@@ -10,9 +10,9 @@ const initialState = {
   errors: [],
 };
 
-const CollectionsReducer = (state = initialState, action) => {
+const UsersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_COLLECTIONS: {
+    case SET_USERS: {
       return { ...state, data: action.payload };
     }
     case SET_ERROR: {
@@ -25,17 +25,17 @@ const CollectionsReducer = (state = initialState, action) => {
   return state;
 };
 
-export const fetchCollections = (limit) => (dispatch) => {
+export const fetchUsers = (limit) => (dispatch) => {
   dispatch({ type: SET_LOADING, payload: true });
   axios
-    .get('/collections', {
+    .get('/users', {
       params: {
         limit,
-        sort: 'ratings',
+        sort: 'soldNfts',
       },
     })
     .then((res) => {
-      dispatch({ type: SET_COLLECTIONS, payload: res.data });
+      dispatch({ type: SET_USERS, payload: res.data });
     })
     .catch((err) => {
       dispatch({ type: SET_ERROR, payload: err });
@@ -45,4 +45,4 @@ export const fetchCollections = (limit) => (dispatch) => {
     });
 };
 
-export default CollectionsReducer;
+export default UsersReducer;

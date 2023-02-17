@@ -1,31 +1,11 @@
-import axios from '../../axios';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import launchRocket from '../../assets/img/svg/rocketLaunch.svg';
-import Preloader from '../utils/preloader';
 
 const HeroSection = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [heroUser, setHeroUser] = useState();
+  const heroUser = useSelector((state) => state.collections.data[0]);
 
-  //Fetch user Data
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get('/collections', {
-        params: {
-          limit: 1,
-          sort: 'ratings',
-        },
-      })
-      .then((res) => {
-        setHeroUser(res.data[0]);
-        setIsLoading(false);
-      });
-  }, []);
-
-  if (isLoading) return <Preloader />;
   return (
     <section>
       <div className='hero-section wrapper'>
