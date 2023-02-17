@@ -6,10 +6,6 @@ import LogoImage from '../../assets/img/svg/storefront.svg';
 import User from '../../assets/img/svg/user.svg';
 
 const Header = () => {
-  //Check if auth
-  const location = useLocation();
-  const isAuth = !!window.localStorage.getItem('token');
-
   return (
     <header>
       <div className='header'>
@@ -37,20 +33,12 @@ const Header = () => {
             </li>
 
             <li>
-              {isAuth ? (
-                <Link
-                  className='navigation-item navagation-item--button button-template button-secondary'
-                  to='/profile'>
-                  Profile
-                </Link>
-              ) : (
-                <Link
-                  className='navigation-item navagation-item--button button-template button-secondary'
-                  to={location.pathname === '/register' ? '/login' : '/register'}>
-                  <img src={User} alt='user' />
-                  <span>{location.pathname === '/register' ? 'Sign In' : 'Sign Up'}</span>
-                </Link>
-              )}
+              <Link
+                className='navigation-item navagation-item--button button-template button-secondary'
+                to='/register'>
+                <img src={User} alt='user' />
+                <span>Sign Up</span>
+              </Link>
             </li>
           </ul>
         </nav>
