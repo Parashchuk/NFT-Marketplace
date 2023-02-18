@@ -6,6 +6,7 @@ import Discover from '../../components/landing/discover';
 import Highlight from '../../components/landing/highlight';
 import Instructions from '../../components/landing/instructions';
 import Preloader from '../../components/utils/preloader';
+import SubscribeWidget from '../../components/landing/subscribeWidget';
 
 import { fetchCollections } from '../../store/reducers/collections';
 import { fetchUsers } from '../../store/reducers/users';
@@ -33,6 +34,7 @@ const Main = () => {
         <Discover />
         <Highlight />
         <Instructions />
+        <SubscribeWidget />
       </div>
     </main>
   );

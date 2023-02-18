@@ -146,6 +146,7 @@
   }
 
   .top-creators-section__container .top-creators-section__list-button {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 }
