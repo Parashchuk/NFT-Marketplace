@@ -4,6 +4,7 @@ import TopCreatorsSection from '../../components/landing/topCreatorsSection';
 import CategoriesSection from '../../components/landing/categoriesSection';
 import Discover from '../../components/landing/discover';
 import Highlight from '../../components/landing/highlight';
+import Instructions from '../../components/landing/instructions';
 import Preloader from '../../components/utils/preloader';
 
 import { fetchCollections } from '../../store/reducers/collections';
@@ -31,6 +32,7 @@ const Main = () => {
         <CategoriesSection />
         <Discover />
         <Highlight />
+        <Instructions />
       </div>
     </main>
   );

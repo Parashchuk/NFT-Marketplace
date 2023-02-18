@@ -16,6 +16,7 @@
 }
 
 .hero-section__text-column__subtitle {
+  text-transform: capitalize;
   font: $WS-base;
   font-size: 22px;
   line-height: 35.2px;
@@ -118,123 +119,5 @@
 
   .hero-section__text-column__get-started {
     justify-content: center;
-  }
-}
-
-/*/////////// Hero-Section End ///////////////*/
-
-/*/////////// Trending-Section Start ///////////////*/
-
-.trending-section__title {
-  font: $WS-h3;
-  margin-bottom: 10px;
-}
-
-.trending-section__subtitle {
-  font: $WS-base;
-  font-size: 22px;
-  margin-bottom: 60px;
-}
-
-.trending-section__images-container {
-  display: flex;
-  gap: 30px;
-}
-
-.trending-section__images__column__preview img {
-  object-fit: cover;
-  width: 380px;
-  height: 380px;
-}
-
-.trending-section__images__column__preview img,
-.trending-section__images__column__minimize-images img {
-  border-radius: 20px;
-  cursor: pointer;
-  width: 100%;
-}
-
-.trending-section__images__column {
-  flex-basis: 33.3%;
-}
-
-.trending-section__images__column__preview {
-  margin-bottom: 15px;
-}
-
-.trending-section__images__column__minimize-images {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.trending-section__images__column__minimize-images > div {
-  flex-basis: 33.3%;
-}
-
-.trending-section__images__column__minimize-images img {
-  height: 100px;
-  object-fit: cover;
-}
-
-.trending-section__images__column__minimize-images__more-button {
-  width: 100px;
-  padding: 0 5px;
-  cursor: pointer;
-  border-radius: 20px;
-  font: $SM-h5;
-  background-color: $action;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.trending-section__images__column__name {
-  font: $WS-h5;
-  margin-bottom: 10px;
-}
-
-.trending-section__images__column__author {
-  cursor: pointer;
-}
-
-@media screen and (max-width: 834px) {
-  .trending-section__title {
-    font-size: 28px;
-  }
-
-  .trending-section__subtitle {
-    font-size: 16px;
-    margin-bottom: 40px;
-  }
-
-  .trending-section__images__column {
-    flex-basis: 50%;
-  }
-
-  .trending-section__images-container .trending-section__images__column:nth-of-type(3) {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .trending-section__images__column {
-    flex-basis: 100%;
-  }
-
-  .trending-section__images__column__minimize-images img {
-    height: 150px;
-  }
-
-  .trending-section__images-container .trending-section__images__column:nth-of-type(2) {
-    display: none;
-  }
-
-  .trending-section__images__column__minimize-images__more-button {
-    font-size: 16px;
-  }
-
-  .trending-section__images__column__minimize-images {
-    justify-content: space-between;
   }
 }
