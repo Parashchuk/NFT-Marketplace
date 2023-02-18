@@ -1,3 +1,5 @@
+import eye from '../../assets/img/svg/eye.svg';
+
 import { useSelector } from 'react-redux';
 
 const Discover = () => {
@@ -14,6 +16,7 @@ const Discover = () => {
             </div>
           </div>
           <div className='discover__container__description__subtitle__button button-template button-secondary'>
+            <img src={eye} alt='eye' />
             See All
           </div>
         </div>

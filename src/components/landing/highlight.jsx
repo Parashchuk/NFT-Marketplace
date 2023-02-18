@@ -1,3 +1,5 @@
+import eye from '../../assets/img/svg/eye.svg';
+
 import { useSelector } from 'react-redux';
 
 const Highlight = () => {
@@ -23,6 +25,7 @@ const Highlight = () => {
               </div>
               <div className='highlight__columns__description__title'>{collectionEvent.name}</div>
               <div className='highlight__columns__description__button button-template button-secondary'>
+                <img src={eye} alt='eye' />
                 See NFT
               </div>
             </div>
