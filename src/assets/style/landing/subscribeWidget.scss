@@ -69,6 +69,7 @@
       }
 
       &__input {
+        margin-bottom: 10px;
         background-color: white;
         display: flex;
         align-items: center;
@@ -107,7 +108,6 @@
 
         button {
           background-color: $background;
-          margin-bottom: 10px;
 
           @media (max-width: 950px) {
             height: 50px;
