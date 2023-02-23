@@ -1,0 +1,109 @@
+@use '../variables' as *;
+
+.landingFooter {
+  font: $WS-base;
+  color: #cccccc;
+  background-color: $background-secondary;
+  margin-bottom: 0 !important;
+
+  &__container {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+
+    &__copyright {
+      padding-top: 25px;
+      border-top: 1px solid #858584;
+    }
+
+    &__columns {
+      margin-bottom: 50px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 2fr;
+      gap: 85px;
+
+      &__column {
+        display: flex;
+        flex-direction: column;
+        gap: 30px 0;
+
+        &__title {
+          font: $SM-h5;
+          color: white;
+          margin-bottom: 25px;
+
+          &__img {
+            margin-right: 12px;
+            filter: invert(73%) sepia(79%) saturate(6836%) hue-rotate(241deg) brightness(100%)
+              contrast(104%);
+          }
+
+          &__text {
+            transform: translateY(-10%);
+          }
+        }
+
+        &__social {
+          div {
+            margin-bottom: 15px;
+          }
+          img {
+            margin-right: 10px;
+            filter: invert(54%) sepia(6%) saturate(43%) hue-rotate(22deg) brightness(96%)
+              contrast(85%);
+          }
+        }
+
+        &__input {
+          margin-bottom: 10px;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-radius: 20px;
+
+          @media (max-width: 950px) {
+            flex-direction: column;
+            background-color: transparent;
+          }
+
+          input {
+            font: $WS-base;
+            font-size: 16px;
+            color: #2b2b2b;
+            width: 100%;
+            min-width: 230px;
+            border-radius: 20px 0 0 20px;
+            padding: 0;
+            padding: 0 12px 0 20px;
+            height: 60px;
+            border: none;
+
+            @media (max-width: 950px) {
+              min-width: 150px;
+              height: auto;
+              border: 1px solid #858584;
+              padding: 16px 20px;
+              border-radius: 20px;
+              margin-bottom: 16px;
+            }
+
+            &::placeholder {
+              font: $WS-base;
+              font-size: 16px;
+              color: #2b2b2b;
+            }
+          }
+
+          button {
+            background-color: $background;
+
+            @media (max-width: 950px) {
+              height: 50px;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

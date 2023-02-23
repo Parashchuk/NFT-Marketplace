@@ -12,6 +12,7 @@ import { fetchCollections } from '../../store/reducers/collections';
 import { fetchUsers } from '../../store/reducers/users';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import LandingFooter from '../../components/landing/footer';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Main = () => {
         <Highlight />
         <Instructions />
         <SubscribeWidget />
+        <LandingFooter />
       </div>
     </main>
   );

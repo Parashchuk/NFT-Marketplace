@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/landing/header';
+import LandingHeader from './components/landing/header';
 import Register from './pages/landing/register';
 import Landing from './pages/landing/landing';
 import './assets/style/index.scss';
@@ -10,7 +10,7 @@ import Login from './pages/landing/login';
 function App() {
   return (
     <>
-      <Header />
+      <LandingHeader />
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/register' element={<Register />} />

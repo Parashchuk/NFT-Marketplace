@@ -1,6 +1,6 @@
 @use '../variables' as *;
 
-.header {
+.landingHeader {
   background-color: $background;
   display: flex;
   min-height: 100px;
@@ -10,23 +10,23 @@
   white-space: nowrap;
 }
 
-.header__logo-image {
+.landingHeader__logo-image {
   margin-right: 12px;
   filter: invert(73%) sepia(79%) saturate(6836%) hue-rotate(241deg) brightness(100%) contrast(104%);
 }
 
-.header__logo-text {
+.landingHeader__logo-text {
   transform: translateY(-10%);
 }
 
-.header__burger-menu {
+.landingHeader__burger-menu {
   width: 24px;
   height: 24px;
   cursor: pointer;
   display: none;
 }
 
-.header__navigation {
+.landingHeader__navigation {
   font: $WS-base;
   font-weight: 600;
   display: flex;
@@ -50,7 +50,7 @@
 }
 
 @media screen and (max-width: 1040px) {
-  .header__navigation .navagation-item--button {
+  .landingHeader__navigation .navagation-item--button {
     display: none;
   }
 
@@ -60,32 +60,32 @@
 }
 
 @media screen and (max-width: 974px) {
-  .header__navigation {
+  .landingHeader__navigation {
     display: none;
   }
 
-  .header__burger-menu {
+  .landingHeader__burger-menu {
     display: block;
   }
 }
 
 @media screen and (max-width: 874px) {
-  .header {
+  .landingHeader {
     min-height: 55px;
   }
 
-  .header__logo-image {
+  .landingHeader__logo-image {
     height: 24px;
     width: 24px;
   }
 
-  .header__logo-text {
+  .landingHeader__logo-text {
     height: 15px;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .header {
+  .landingHeader {
     padding: 0 15px;
   }
 }
