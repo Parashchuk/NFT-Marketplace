@@ -1,7 +1,10 @@
+@use '../variables' as *;
+
 .preloader {
   z-index: 1000;
   background-color: unset;
   display: flex;
+  flex-direction: column;
   background-color: #2b2b2b;
   justify-content: center;
   align-items: center;
@@ -10,4 +13,26 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.preloader img {
+  margin-bottom: 50px;
+}
+
+.preloader div {
+  text-align: center;
+  font: $WS-h3;
+  padding: 10px 20px;
+  background-color: $background-secondary;
+  border-radius: 20px;
+}
+
+.preloader span {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.preloader span:nth-of-type(2) {
+  color: #33b864;
+  font: $WS-base;
 }
