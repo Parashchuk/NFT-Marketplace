@@ -49,6 +49,7 @@ const Highlight = () => {
               </div>
             </div>
             <div className='highlight__columns__description__button highlight__columns__description__button__adaptive button-template button-secondary'>
+              <img src={eye} alt='eye' />
               See NFT
             </div>
           </div>

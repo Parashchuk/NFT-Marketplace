@@ -21,3 +21,13 @@
   margin: 0 25px;
   flex: 0 1 1050px;
 }
+
+@media screen and (max-width: 834px) {
+  .wrapper {
+    margin: 40px 0;
+  }
+
+  .wrapper-container {
+    flex: 0 1 690px;
+  }
+}
