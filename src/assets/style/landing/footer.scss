@@ -5,6 +5,11 @@
   color: #cccccc;
   background-color: $background-secondary;
   margin-bottom: 0 !important;
+  line-height: 140%;
+
+  @media (max-width: 400px) {
+    line-height: 100%;
+  }
 
   &__container {
     margin-top: 40px !important;
@@ -21,6 +26,15 @@
       grid-template-columns: 2fr 1fr 2fr;
       gap: 85px;
 
+      @media (max-width: 1040px) {
+        gap: 40px;
+      }
+
+      @media (max-width: 870px) {
+        display: flex;
+        flex-direction: column;
+      }
+
       &__column {
         display: flex;
         flex-direction: column;
@@ -29,7 +43,6 @@
         &__title {
           font: $SM-h5;
           color: white;
-          margin-bottom: 25px;
 
           &__img {
             margin-right: 12px;
@@ -61,9 +74,13 @@
           justify-content: space-between;
           border-radius: 20px;
 
-          @media (max-width: 950px) {
+          @media (min-width: 870px) and (max-width: 950px), (max-width: 480px) {
             flex-direction: column;
             background-color: transparent;
+          }
+
+          @media (max-width: 870px) and (min-width: 480px) {
+            display: inline-flex;
           }
 
           input {
@@ -78,7 +95,7 @@
             height: 60px;
             border: none;
 
-            @media (max-width: 950px) {
+            @media (min-width: 870px) and (max-width: 950px), (max-width: 480px) {
               min-width: 150px;
               height: auto;
               border: 1px solid #858584;
@@ -97,7 +114,7 @@
           button {
             background-color: $background;
 
-            @media (max-width: 950px) {
+            @media (min-width: 870px) and (max-width: 950px), (max-width: 480px) {
               height: 50px;
               width: 100%;
             }

@@ -5,6 +5,7 @@ import discord from '../../assets/img/svg/discordLogo.svg';
 import youtube from '../../assets/img/svg/youtubeLogo.svg';
 import twitter from '../../assets/img/svg/twitterLogo.svg';
 import instagram from '../../assets/img/svg/instagramLogo.svg';
+import { Link } from 'react-router-dom';
 
 const LandingFooter = () => {
   return (
@@ -36,12 +37,18 @@ const LandingFooter = () => {
             </div>
           </div>
           <div className='landingFooter__container__columns__column'>
-            <div className='landingFooter__container__columns__column__title'>Explore</div>
-            <div className='landingFooter__container__columns__column__nav-item'>Marketplace</div>
-            <div className='landingFooter__container__columns__column__nav-item'>Rankings</div>
-            <div className='landingFooter__container__columns__column__nav-item'>
+            <Link to='#' className='landingFooter__container__columns__column__title'>
+              Explore
+            </Link>
+            <Link to='#' className='landingFooter__container__columns__column__nav-item'>
+              Marketplace
+            </Link>
+            <Link to='#' className='landingFooter__container__columns__column__nav-item'>
+              Rankings
+            </Link>
+            <Link to='#' className='landingFooter__container__columns__column__nav-item'>
               Connect a wallet
-            </div>
+            </Link>
           </div>
           <div className='landingFooter__container__columns__column'>
             <div className='landingFooter__container__columns__column__title'>
