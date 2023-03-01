@@ -1,9 +1,38 @@
 import eye from '../../assets/img/svg/eye.svg';
 
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const Highlight = () => {
+  const DAY_IN_SECONDS = 86399;
+
   const collectionEvent = useSelector((state) => state.collections.data[2]);
+  const [timeCounter, setTimeCounter] = useState(0);
+
+  useEffect(() => {
+    let initialTime = localStorage.getItem('initialTime');
+    let currentTime = Date.now();
+
+    if (!initialTime) {
+      localStorage.setItem('initialTime', currentTime);
+      initialTime = currentTime;
+    } else if (Date.now() - initialTime > DAY_IN_SECONDS) {
+      localStorage.setItem('initialTime', currentTime);
+      initialTime = currentTime;
+    }
+
+    const interval = setInterval(() => {
+      setTimeCounter(DAY_IN_SECONDS - Math.floor((Date.now() - initialTime) / 1000));
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  let hours = Math.floor(timeCounter / 3600);
+  let minutes = Math.floor((timeCounter - hours * 3600) / 60);
+  let seconds = timeCounter - hours * 3600 - minutes * 60;
 
   return (
     <section
@@ -33,17 +62,17 @@ const Highlight = () => {
               <div className='highlight__columns__timer__title'>Auction ends in:</div>
               <div className='highlight__columns__timer__digits'>
                 <div className='highlight__columns__timer__digits__col'>
-                  <div>59</div>
+                  <div>{hours}</div>
                   <span>Hours</span>
                 </div>
                 :
                 <div className='highlight__columns__timer__digits__col'>
-                  <div>59</div>
+                  <div>{minutes < 10 ? `0${minutes}` : minutes}</div>
                   <span>Minutes</span>
                 </div>
                 :
                 <div className='highlight__columns__timer__digits__col'>
-                  <div>59</div>
+                  <div>{seconds < 10 ? `0${seconds}` : seconds}</div>
                   <span>Seconds</span>
                 </div>
               </div>
