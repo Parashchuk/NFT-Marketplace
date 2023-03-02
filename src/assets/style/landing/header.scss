@@ -78,6 +78,7 @@
 }
 
 .landingHeader__burger-background {
+  display: none;
   position: absolute;
   left: 0;
   top: 65px;
@@ -91,7 +92,8 @@
 }
 
 .landingHeader__burger-navigation {
-  display: flex;
+  display: none;
+
   flex-direction: column;
   gap: 5px;
   background-color: $background-secondary;
@@ -107,6 +109,7 @@
 }
 
 .burger-active {
+  display: flex;
   opacity: 1;
   transform: translateX(0);
 }
