@@ -67,42 +67,43 @@ const LandingHeader = () => {
               </Link>
             </li>
           </ul>
-          {burgerMenuStatus && (
-            <>
-              <div
-                onClick={burgerMenuStatusHandler}
-                className='landingHeader__burger-background'></div>
-              <ul className='landingHeader__burger-navigation'>
-                <li>
-                  <Link className='burger-navigation-item' to='#'>
-                    Marketplace
-                  </Link>
-                </li>
-                <li>
-                  <Link className='burger-navigation-item' to='#'>
-                    Rankings
-                  </Link>
-                </li>
-                <li>
-                  <Link className='burger-navigation-item' to='#'>
-                    Connect a wallet
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className='burger-navigation-item burger-navagation-item--button button-template button-secondary'
-                    to='/register'>
-                    <span>Sign Up</span>
-                  </Link>
-                  <Link
-                    className='burger-navigation-item burger-navagation-item--button button-template button-secondary'
-                    to='/login'>
-                    Sign In
-                  </Link>
-                </li>
-              </ul>
-            </>
-          )}
+          <div
+            onClick={burgerMenuStatusHandler}
+            className={`landingHeader__burger-background ${
+              burgerMenuStatus ? 'burger-active' : ''
+            }`}></div>
+          <ul
+            className={`landingHeader__burger-navigation ${
+              burgerMenuStatus ? 'burger-active' : ''
+            }`}>
+            <li>
+              <Link className='burger-navigation-item ' to='#'>
+                Marketplace
+              </Link>
+            </li>
+            <li>
+              <Link className='burger-navigation-item' to='#'>
+                Rankings
+              </Link>
+            </li>
+            <li>
+              <Link className='burger-navigation-item' to='#'>
+                Connect a wallet
+              </Link>
+            </li>
+            <li>
+              <Link
+                className='burger-navigation-item burger-navagation-item--button button-template button-secondary'
+                to='/register'>
+                <span>Sign Up</span>
+              </Link>
+              <Link
+                className='burger-navigation-item burger-navagation-item--button button-template button-secondary'
+                to='/login'>
+                Sign In
+              </Link>
+            </li>
+          </ul>
         </nav>
       </div>
     </header>
