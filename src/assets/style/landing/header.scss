@@ -46,6 +46,17 @@
   gap: 10px;
 }
 
+.landingHeader__navigation li {
+  display: flex;
+  align-items: center;
+}
+
+.navagation-item--button {
+  height: 52px !important;
+  padding: 0 20px !important;
+  margin-right: 0 !important;
+}
+
 .navigation-item {
   margin: 0 8px;
   padding: 12px;
@@ -57,8 +68,24 @@
   }
 }
 
+.navigation-item__login {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
 .navagation-item--button:hover {
   color: white;
+}
+
+.landingHeader__burger-background {
+  position: absolute;
+  left: 0;
+  top: 65px;
+  height: calc(100vh - 65px);
+  width: 100vw;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
 }
 
 .landingHeader__burger-navigation {
@@ -76,13 +103,14 @@
 }
 
 .burger-navigation-item {
+  vertical-align: top;
   display: inline-block;
   padding: 15px 20px;
   font: $WS-h4;
 }
 
 .burger-navagation-item--button {
-  margin-top: 25px;
+  margin: 25px 20px 0 0;
 }
 
 @media screen and (max-width: 1040px) {
@@ -91,31 +119,32 @@
   }
 
   .navagation-item--button {
-    padding: 0 25px !important;
-  }
-}
-
-@media screen and (max-width: 874px) {
-  .landingHeader {
-    min-height: 55px;
+    margin-left: 10px;
   }
 
-  .landingHeader__logo-image {
-    height: 24px;
-    width: 24px;
-  }
-
-  .landingHeader__logo-text {
-    height: 15px;
+  .navigation-item__login {
+    margin-left: 10px;
   }
 
   .navagation-item--button {
-    height: 35px !important;
-    padding: 0 20px !important;
+    padding: 0 15px !important;
   }
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 990px) {
+  .landingHeader {
+    min-height: 65px;
+  }
+
+  .landingHeader__logo-image {
+    height: 25px;
+    width: 25px;
+  }
+
+  .landingHeader__logo-text {
+    height: 18px;
+  }
+
   .landingHeader__navigation {
     display: none;
   }

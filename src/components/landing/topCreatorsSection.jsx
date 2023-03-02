@@ -17,7 +17,9 @@ const TopCreatorsSection = () => {
                 Checkout Top Rated Creators on the NFT Marketplace
               </div>
             </div>
-            <Link to='#' className='top-creators-section__info-button button-template'>
+            <Link
+              to='/register/creators'
+              className='top-creators-section__info-button button-template'>
               <img src={rocketLauch} alt='rocket' />
               View Rankings
             </Link>
@@ -40,7 +42,9 @@ const TopCreatorsSection = () => {
                 </div>
               );
             })}
-            <Link to='#' className='top-creators-section__list-button button-template'>
+            <Link
+              to='/register/creators'
+              className='top-creators-section__list-button button-template'>
               <img src={rocketLauch} alt='rocket' />
               View Rankings
             </Link>

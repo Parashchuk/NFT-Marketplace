@@ -2,6 +2,7 @@ import eye from '../../assets/img/svg/eye.svg';
 
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Highlight = () => {
   const DAY_IN_SECONDS = 86399;
@@ -53,10 +54,12 @@ const Highlight = () => {
                 </div>
               </div>
               <div className='highlight__columns__description__title'>{collectionEvent.name}</div>
-              <div className='highlight__columns__description__button button-template button-secondary'>
+              <Link
+                to='register/highlight'
+                className='highlight__columns__description__button button-template button-secondary'>
                 <img src={eye} alt='eye' />
                 See NFT
-              </div>
+              </Link>
             </div>
             <div className='highlight__columns__timer'>
               <div className='highlight__columns__timer__title'>Auction ends in:</div>
@@ -77,10 +80,12 @@ const Highlight = () => {
                 </div>
               </div>
             </div>
-            <div className='highlight__columns__description__button highlight__columns__description__button__adaptive button-template button-secondary'>
+            <Link
+              to='/register/highlight'
+              className='highlight__columns__description__button highlight__columns__description__button__adaptive button-template button-secondary'>
               <img src={eye} alt='eye' />
               See NFT
-            </div>
+            </Link>
           </div>
         </div>
       </div>

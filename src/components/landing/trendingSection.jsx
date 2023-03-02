@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const TrendingSection = () => {
   const trendCollection = useSelector((state) => state.collections.data);
@@ -18,19 +19,23 @@ const TrendingSection = () => {
               let iter = 0;
               return (
                 <div key={id} className='trending-section__images__column'>
-                  <div className='trending-section__images__column__preview'>
+                  <Link
+                    to='register/collection'
+                    className='trending-section__images__column__preview'>
                     <img src={el.images[iter++].picture} alt='collection image' />
-                  </div>
+                  </Link>
                   <div className='trending-section__images__column__minimize-images'>
-                    <div>
+                    <Link to='register/collection'>
                       <img src={el.images[iter++].picture} alt='collection image' />
-                    </div>
-                    <div>
+                    </Link>
+                    <Link to='register/collection'>
                       <img src={el.images[iter++].picture} alt='collection image' />
-                    </div>
-                    <div className='trending-section__images__column__minimize-images__more-button'>
+                    </Link>
+                    <Link
+                      to='register/collection'
+                      className='trending-section__images__column__minimize-images__more-button'>
                       {el.images.length - iter}+
-                    </div>
+                    </Link>
                   </div>
                   <div className='trending-section__images__column__name'>{el.name}</div>
                   <div className='trending-section__images__column__author author-template'>

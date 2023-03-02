@@ -1,6 +1,7 @@
 import eye from '../../assets/img/svg/eye.svg';
 
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Discover = () => {
   const discoverCollection = useSelector((state) => state.collections.data[0]);
@@ -15,10 +16,12 @@ const Discover = () => {
               Explore new trending NFTs
             </div>
           </div>
-          <div className='discover__container__description__subtitle__button button-template button-secondary'>
+          <Link
+            to='/register/discover'
+            className='discover__container__description__subtitle__button button-template button-secondary'>
             <img src={eye} alt='eye' />
             See All
-          </div>
+          </Link>
         </div>
         <div className='discover__container__nfts'>
           {discoverCollection.images.map((nft, id) => {

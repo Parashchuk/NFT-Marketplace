@@ -34,7 +34,7 @@ const HeroSection = () => {
             </div>
             <Link
               className='hero-section__text-column__get-started button-template button-secondary'
-              to='/register'>
+              to='/register/hero'>
               <img src={launchRocket} alt='rocket' />
               Get Started
             </Link>

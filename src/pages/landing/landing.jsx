@@ -13,6 +13,7 @@ import { fetchUsers } from '../../store/reducers/users';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import LandingFooter from '../../components/landing/footer';
+import LandingHeader from '../../components/landing/header';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Main = () => {
   return (
     <main>
       <div className='main'>
+        <LandingHeader />
         <HeroSection />
         <TrendingSection />
         <TopCreatorsSection />

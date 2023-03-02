@@ -10,10 +10,10 @@ import Login from './pages/landing/login';
 function App() {
   return (
     <>
-      <LandingHeader />
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/register/:component' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
