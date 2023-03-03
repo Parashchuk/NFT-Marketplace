@@ -17,6 +17,10 @@ const LandingHeader = () => {
     } else {
       document.body.classList.remove('disable-scroll');
     }
+
+    return () => {
+      document.body.classList.remove('disable-scroll');
+    };
   }, [burgerMenuStatus]);
 
   const burgerMenuStatusHandler = () => {
