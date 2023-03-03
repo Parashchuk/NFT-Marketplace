@@ -1,10 +1,11 @@
-import loginPlaceholder from '../../assets/img/placeholders/login_placeholder.jpeg';
 import ErrorAlert from '../../components/utils/errorAlert';
 import Preloader from '../../components/utils/preloader';
 import email from '../../assets/img/svg/email.svg';
 import password from '../../assets/img/svg/lock.svg';
 import eye from '../../assets/img/svg/eye.svg';
 import eyeSlash from '../../assets/img/svg/eyeSlash.svg';
+import backgroundShape from '../../assets/img/svg/backgroundShape1.svg';
+import AuthHeader from '../../components/landing/authHeader';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Navigate } from 'react-router-dom';
@@ -69,11 +70,8 @@ const Login = () => {
     <>
       {isLoading && <Preloader active={isLoading} />}
       {error && <ErrorAlert error={error} />}
-      <div className='login'>
-        <div
-          style={{ backgroundImage: `url(${loginPlaceholder})` }}
-          className='login__placeholder'
-        />
+      <div style={{ backgroundImage: `url(${backgroundShape})` }} className='login'>
+        <AuthHeader />
         <div className='login__container'>
           <div className='login__title'>Welcome Back</div>
           <div className='login__subtitle'>Enter your email and password manually</div>

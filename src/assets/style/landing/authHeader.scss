@@ -1,0 +1,62 @@
+@use '../variables' as *;
+
+.auth-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  width: 100vw;
+
+  @media (max-width: 410px) {
+    padding: 15px 10px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-image {
+      margin-right: 12px;
+      filter: invert(73%) sepia(79%) saturate(6836%) hue-rotate(241deg) brightness(100%)
+        contrast(104%);
+
+      @media (max-width: 500px) {
+        height: 25px;
+      }
+    }
+    &-text {
+      transform: translateY(10%);
+
+      @media (max-width: 500px) {
+        height: 15px;
+      }
+    }
+  }
+
+  &__suggest {
+    font: $WS-base;
+    color: rgb(169, 164, 175);
+
+    span {
+      @media (max-width: 700px) {
+        display: none;
+      }
+    }
+
+    a {
+      margin-left: 10px;
+      padding: 5px;
+      color: white;
+
+      @media (max-width: 700px) {
+        border: 1px solid $action;
+        border-radius: 20px;
+        padding: 10px 20px;
+      }
+
+      &:hover {
+        color: $action;
+      }
+    }
+  }
+}

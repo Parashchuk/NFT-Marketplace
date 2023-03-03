@@ -3,9 +3,10 @@ import eye from '../../assets/img/svg/eye.svg';
 import eyeSlash from '../../assets/img/svg/eyeSlash.svg';
 import email from '../../assets/img/svg/email.svg';
 import lock from '../../assets/img/svg/lock.svg';
-import placeholder from '../../assets/img/placeholders/register_placeholder.png';
+import backgroundShape from '../../assets/img/svg/backgroundShape.svg';
 import Preloader from '../../components/utils/preloader';
 import ErrorAlert from '../../components/utils/errorAlert';
+import AuthHeader from '../../components/landing/authHeader';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -83,11 +84,9 @@ const Register = () => {
   return (
     <>
       {alertError && <ErrorAlert error={alertError} />}
-      {isLoading && <Preloader active={isLoading} />}
-      <div className='register'>
-        <div className='register__placeholder-column'>
-          <img src={placeholder} alt='placeholder' />
-        </div>
+      {isLoading && <Preloader />}
+      <div style={{ backgroundImage: `url(${backgroundShape})` }} className='register'>
+        <AuthHeader />
         <div className='register__form-column'>
           <h1 className='register__form-column__title'>Create Account</h1>
           <div className='register__form-column__subtitle'>

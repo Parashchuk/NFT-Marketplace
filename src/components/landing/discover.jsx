@@ -56,6 +56,12 @@ const Discover = () => {
               </div>
             );
           })}
+          <Link
+            to='/register/discover'
+            className='discover__container__description__subtitle__button button-template button-secondary'>
+            <img src={eye} alt='eye' />
+            See All
+          </Link>
         </div>
       </div>
     </section>
