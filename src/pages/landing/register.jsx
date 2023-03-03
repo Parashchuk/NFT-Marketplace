@@ -8,83 +8,28 @@ import Preloader from '../../components/utils/preloader';
 import ErrorAlert from '../../components/utils/errorAlert';
 import AuthHeader from '../../components/landing/authHeader';
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
+import { useRegisterValidator } from '../../validations/register';
+import { onSubmit } from '../../store/reducers/auth';
 import { Link, Navigate } from 'react-router-dom';
-import * as yup from 'yup';
-import axios from '../../axios';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Register = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  const [alertError, setAlertError] = useState(null);
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
+  const [alertError, setAlertError] = useState(null);
 
-  //Create chema validation for register form
-  const shcema = yup.object().shape({
-    username: yup
-      .string()
-      .min(4, 'Username must have at least 4 symbols')
-      .max(15, "Username can't be more then 15 symbols")
-      .required("Username can't be blank"),
-    email: yup.string().email('Enter a valid Email').required("Email can't be blank"),
-    password: yup
-      .string()
-      .min(4, 'Password must have at least 4 symbols')
-      .max(20, "Password can't be more then 20 symbols")
-      .required("Password can't be blank"),
-    passwordConfirm: yup
-      .string()
-      .oneOf([yup.ref('password'), null], 'Passwords do not match')
-      .required("Password confirmation can't be blank"),
-  });
+  const { register, handleSubmit, setError, errors } = useRegisterValidator();
 
-  //Create instance of validation to connect to register form
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(shcema),
-  });
+  const { isLoading } = useSelector((state) => state.auth.isLoading);
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    //Reset previous state
-    setError(null);
-
-    const { username, password, email } = data;
-    setIsLoading(true);
-    axios
-      .post('/auth/register', {
-        username,
-        email,
-        password,
-      })
-      .then((res) => {
-        setRegistrationSuccess(true);
-        window.localStorage.setItem('token', res.data.token);
-      })
-      .catch((err) => {
-        setError(err.response.data.field, {
-          type: 'server',
-          message: err.response.data.message,
-        });
-        setAlertError(err.response.data.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  if (registrationSuccess) return <Navigate to='/profile' />;
+  if (isLoading) return <Preloader />;
+  if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
 
   return (
     <>
       {alertError && <ErrorAlert error={alertError} />}
-      {isLoading && <Preloader />}
       <div style={{ backgroundImage: `url(${backgroundShape})` }} className='register'>
         <AuthHeader />
         <div className='register__form-column'>
@@ -92,7 +37,10 @@ const Register = () => {
           <div className='register__form-column__subtitle'>
             Welcome! enter your details and start creating, collecting and selling NFTs.
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={handleSubmit((data) =>
+              dispatch(onSubmit({ data, setError, setAlertError }))
+            )}>
             <div className='register__form-column__wrapper'>
               <label className='register__form-column__input-title' htmlFor='username'>
                 Username
@@ -203,7 +151,6 @@ const Register = () => {
               Create Account
             </button>
           </form>
-
           <div className='register__form-column__login-suggest'>
             Already have an account ? <Link to='/login'>Sign In</Link>
           </div>

@@ -8,10 +8,6 @@
   background-position: bottom;
   background-repeat: no-repeat;
 
-  @media (max-height: 700px) {
-    height: auto;
-  }
-
   @media (max-width: 500px) {
     background-image: unset !important;
   }
