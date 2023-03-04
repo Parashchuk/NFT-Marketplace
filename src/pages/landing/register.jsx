@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Register = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
+
   const [alertError, setAlertError] = useState(null);
 
   const { register, handleSubmit, setError, errors } = useRegisterValidator();

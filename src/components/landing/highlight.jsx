@@ -17,7 +17,7 @@ const Highlight = () => {
     if (!initialTime) {
       localStorage.setItem('initialTime', currentTime);
       initialTime = currentTime;
-    } else if (Date.now() - initialTime > DAY_IN_SECONDS) {
+    } else if (Math.floor((Date.now() - initialTime) / 1000) > DAY_IN_SECONDS) {
       localStorage.setItem('initialTime', currentTime);
       initialTime = currentTime;
     }

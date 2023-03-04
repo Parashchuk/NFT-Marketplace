@@ -7,7 +7,8 @@
   justify-content: space-around;
   height: calc(100vh - 100px);
 
-  @media (max-width: 780px) {
+  @media (max-width: 990px) {
+    height: calc(100vh - 65px);
   }
 
   img {

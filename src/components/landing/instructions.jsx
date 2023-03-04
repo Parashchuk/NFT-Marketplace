@@ -1,6 +1,6 @@
-import wallet from '../../assets/img/placeholders/wallet.svg';
-import collections from '../../assets/img/placeholders/collections.svg';
-import earning from '../../assets/img/placeholders/earning.svg';
+import wallet from '../../assets/img/cards/wallet.svg';
+import collections from '../../assets/img/cards/collections.svg';
+import earning from '../../assets/img/cards/earning.svg';
 
 const Instructions = () => {
   return (
