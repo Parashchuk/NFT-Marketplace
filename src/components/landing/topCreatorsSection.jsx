@@ -6,6 +6,8 @@ import rocketLauch from '../../assets/img/svg/rocketLaunch.svg';
 const TopCreatorsSection = () => {
   const topCreatorsList = useSelector((state) => state.users.data);
 
+  console.log(topCreatorsList);
+
   return (
     <section>
       <div className='top-creators-section wrapper'>
@@ -36,7 +38,7 @@ const TopCreatorsSection = () => {
                     <div className='top-creators-section__list__card-name'>{obj.username}</div>
                     <div className='top-creators-section__list__card-total'>
                       <span>Total Sales: </span>
-                      {obj.totalSales}
+                      {obj.totalSales} NFTs
                     </div>
                   </div>
                 </div>

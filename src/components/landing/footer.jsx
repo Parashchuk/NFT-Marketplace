@@ -37,16 +37,20 @@ const LandingFooter = () => {
             </div>
           </div>
           <div className='landingFooter__container__columns__column'>
-            <Link to='#' className='landingFooter__container__columns__column__title'>
-              Explore
+            <div className='landingFooter__container__columns__column__title'>Explore</div>
+            <Link
+              to='/register/colletions'
+              className='landingFooter__container__columns__column__nav-item'>
+              Collections
             </Link>
-            <Link to='#' className='landingFooter__container__columns__column__nav-item'>
-              Marketplace
-            </Link>
-            <Link to='#' className='landingFooter__container__columns__column__nav-item'>
+            <Link
+              to='/register/creators'
+              className='landingFooter__container__columns__column__nav-item'>
               Rankings
             </Link>
-            <Link to='#' className='landingFooter__container__columns__column__nav-item'>
+            <Link
+              to='/connectWallet'
+              className='landingFooter__container__columns__column__nav-item'>
               Connect a wallet
             </Link>
           </div>

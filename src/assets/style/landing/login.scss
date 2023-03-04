@@ -69,14 +69,14 @@
       height: 100%;
       background-color: $background;
 
-      &[type='password'] {
-        border-radius: 0;
-      }
-
       &:-webkit-autofill {
         box-shadow: inset 10px 10px 10px 100px $background !important;
         -webkit-text-fill-color: white;
       }
+    }
+
+    #password {
+      border-radius: 0;
     }
 
     &:has(> input:focus) {

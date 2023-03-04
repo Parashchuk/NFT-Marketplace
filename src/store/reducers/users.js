@@ -31,7 +31,7 @@ export const fetchUsers = (limit) => (dispatch) => {
     .get('/users', {
       params: {
         limit,
-        sort: 'soldNfts',
+        sort: 'totalSales',
       },
     })
     .then((res) => {

@@ -40,6 +40,12 @@
         flex-direction: column;
         gap: 30px 0;
 
+        a {
+          &:hover {
+            color: $action;
+          }
+        }
+
         &__title {
           font: $SM-h5;
           color: white;
