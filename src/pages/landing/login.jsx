@@ -7,73 +7,42 @@ import eyeSlash from '../../assets/img/svg/eyeSlash.svg';
 import backgroundShape from '../../assets/img/svg/backgroundShape1.svg';
 import AuthHeader from '../../components/landing/authHeader';
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import { loginisationSubmited } from '../../store/reducers/auth';
+import { useLoginValidator } from '../../validations/login';
 import { Link, Navigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import axios from '../../axios';
-import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
-  const [error, setError] = useState(null);
+  //Require for UI display
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const [allertError, setAlertError] = useState(null);
 
-  //Create validations to login form
-  const shema = yup.object().shape({
-    email: yup.string().email('Enter a valid Email').required("Email can't be blank"),
-    password: yup
-      .string()
-      .min(4, 'Password must have at least 4 symbols')
-      .max(20, "Password can't be more then 20 symbols")
-      .required("Password can't be blank"),
-  });
+  //Require for hadnling input validation
+  const { register, handleSubmit, reset, errors } = useLoginValidator();
 
-  //Create instance of valitator to conncect to form
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(shema),
-  });
+  //Managing store
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.auth.isLoading);
 
-  const onSubmit = (data) => {
-    const { email, password } = data;
-
-    //Reset error state
-    setError(null);
-
-    setIsLoading(true);
-    axios
-      .post('/auth/login', {
-        email,
-        password,
-      })
-      .then((res) => {
-        setRegistrationSuccess(true);
-        window.localStorage.setItem('token', res.data.token);
-      })
-      .catch((err) => {
-        reset({ password: '' });
-        setError(err.response.data.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  //Submit handler
+  const submitHandler = () => {
+    return handleSubmit((data) => dispatch(loginisationSubmited({ data, setAlertError, reset })));
   };
 
-  if (registrationSuccess) return <Navigate to='/profile' />;
-  if (isLoading) return <Preloader active={isLoading} />;
+  //Show preloader if loading
+  if (isLoading) return <Preloader />;
+
+  //Redirect to Porfile page if user already made authorisation
+  //if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
+
   return (
     <>
       <AlertTemplate
         type='error'
         title='Unsuccessful Authorisation'
-        text={error}
-        setter={setError}
+        text={allertError}
+        setter={setAlertError}
       />
 
       <div style={{ backgroundImage: `url(${backgroundShape})` }} className='login'>
@@ -81,7 +50,7 @@ const Login = () => {
         <div className='login__container'>
           <div className='login__title'>Welcome Back</div>
           <div className='login__subtitle'>Enter your email and password manually</div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={submitHandler()}>
             <div className='login__form-field'>
               <label className='login__form-field__input-title' htmlFor='email'>
                 Email

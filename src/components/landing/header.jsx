@@ -6,6 +6,9 @@ import LogoText from '../../assets/img/svg/logo.svg';
 import LogoImage from '../../assets/img/svg/storefront.svg';
 import User from '../../assets/img/svg/user.svg';
 import Close from '../../assets/img/svg/close.svg';
+import Collections from '../../assets/img/svg/collections.svg';
+import BurgerWallet from '../../assets/img/svg/burger-wallet.svg';
+import Leaderboard from '../../assets/img/svg/leaderboard.svg';
 
 const LandingHeader = () => {
   const [burgerMenuStatus, setBurgerMenuStatus] = useState(false);
@@ -82,16 +85,19 @@ const LandingHeader = () => {
             }`}>
             <li>
               <Link className='burger-navigation-item ' to='register#collections'>
+                <img src={Collections} alt='collections' />
                 Collections
               </Link>
             </li>
             <li>
               <Link className='burger-navigation-item' to='/register#creators'>
+                <img src={Leaderboard} alt='leaderboard' />
                 Rankings
               </Link>
             </li>
             <li>
               <Link className='burger-navigation-item' to='/connectWallet'>
+                <img src={BurgerWallet} alt='burger-wallet' />
                 Connect a wallet
               </Link>
             </li>

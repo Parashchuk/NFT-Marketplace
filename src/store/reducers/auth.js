@@ -1,7 +1,6 @@
 import axios from '../../axios';
 
-const REGISTER = 'AUTH/REGISTER';
-const LOGIN = 'AUTH/LOGIN';
+const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 const SET_LOADING = 'AUTH/SET_LOADING';
 const SET_ERROR = 'AUTH/SET_ERROR';
 
@@ -13,10 +12,7 @@ const initialState = {
 
 const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REGISTER: {
-      return { ...state, data: action.payload };
-    }
-    case LOGIN: {
+    case SET_USER_DATA: {
       return { ...state, data: action.payload };
     }
     case SET_LOADING: {
@@ -32,15 +28,42 @@ const AuthReducer = (state = initialState, action) => {
   }
 };
 
-export const onSubmit =
+export const loginisationSubmited =
+  ({ data, setAlertError, reset }) =>
+  (dispatch) => {
+    const { email, password } = data;
+
+    //Reset error state
+    setAlertError(null);
+    setLoading(true);
+
+    axios
+      .post('/auth/login', {
+        email,
+        password,
+      })
+      .then((res) => {
+        dispatch(setUserData(res.data));
+        window.localStorage.setItem('token', res.data.token);
+      })
+      .catch((err) => {
+        reset({ password: '' });
+        setAlertError(err.response.data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+export const registrationSubmitted =
   ({ data, setError, setAlertError }) =>
   (dispatch) => {
+    const { username, password, email } = data;
+
     //Reset previous state
     setAlertError(null);
     setError(null);
     dispatch(setLoading(true));
-
-    const { username, password, email } = data;
 
     axios
       .post('/auth/register', {
@@ -49,6 +72,7 @@ export const onSubmit =
         password,
       })
       .then((res) => {
+        dispatch(setUserData(res.data));
         window.localStorage.setItem('token', res.data.token);
       })
       .catch((err) => {
@@ -63,6 +87,7 @@ export const onSubmit =
       });
   };
 
+export const setUserData = (data) => ({ type: SET_USER_DATA, payload: data });
 export const setLoading = (data) => ({ type: SET_LOADING, payload: data });
 
 export default AuthReducer;

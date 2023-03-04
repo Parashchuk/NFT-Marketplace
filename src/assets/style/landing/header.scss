@@ -93,7 +93,6 @@
 
 .landingHeader__burger-navigation {
   display: none;
-
   flex-direction: column;
   gap: 5px;
   background-color: $background-secondary;
@@ -108,6 +107,11 @@
   transition: all 0.2s ease-in-out;
 }
 
+.landingHeader__burger-navigation li:nth-last-of-type(2) img {
+  width: 28px;
+  height: 28px;
+}
+
 .burger-active {
   display: flex;
   opacity: 1;
@@ -115,10 +119,17 @@
 }
 
 .burger-navigation-item {
-  vertical-align: top;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 15px 20px;
   font: $WS-h5;
+}
+
+.burger-navigation-item img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(197deg) brightness(101%) contrast(104%);
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
 }
 
 .burger-navagation-item--button {

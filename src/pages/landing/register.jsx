@@ -9,7 +9,7 @@ import AlertTemplate from '../../components/utils/alertTemplate';
 import AuthHeader from '../../components/landing/authHeader';
 
 import { useRegisterValidator } from '../../validations/register';
-import { onSubmit } from '../../store/reducers/auth'; //////////////////
+import { registrationSubmitted } from '../../store/reducers/auth';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,11 +54,18 @@ const Register = () => {
     }
   }, []);
 
+  //Handler for submit form
+  const submitHandler = () => {
+    return handleSubmit((data) => {
+      dispatch(registrationSubmitted({ data, setError, setAlertError }));
+    });
+  };
+
   //Show preloader if loading
   if (isLoading) return <Preloader />;
 
   //Redirect to Porfile page if user already made authorisation
-  if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
+  //if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
 
   return (
     <>
@@ -82,10 +89,7 @@ const Register = () => {
           <div className='register__form-column__subtitle'>
             Welcome! enter your details and start creating, collecting and selling NFTs.
           </div>
-          <form
-            onSubmit={handleSubmit((data) =>
-              dispatch(onSubmit({ data, setError, setAlertError }))
-            )}>
+          <form onSubmit={submitHandler()}>
             <div className='register__form-column__wrapper'>
               <label className='register__form-column__input-title' htmlFor='username'>
                 Username

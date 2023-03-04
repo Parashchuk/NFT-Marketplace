@@ -23,7 +23,7 @@ const InfoAlert = ({ type, text, title, setter }) => {
           </div>
         </div>
         <img
-          className='pop-up-alert__close pop-up-alert-info__close'
+          className={`pop-up-alert__close pop-up-alert-${type}__close`}
           onClick={() => setter(false)}
           src={close}
           alt='close'

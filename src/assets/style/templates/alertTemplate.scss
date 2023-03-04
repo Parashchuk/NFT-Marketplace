@@ -22,15 +22,14 @@
 }
 
 .pop-up-alert-error {
-  color: rgb(244, 199, 199);
+  color: #f4c7c7;
 
   &__bg {
     background-color: rgba(110, 30, 30, 0.9);
   }
 
   &__img {
-    filter: invert(100%) sepia(9%) saturate(6613%) hue-rotate(188deg) brightness(120%)
-      contrast(107%);
+    filter: invert(20%) sepia(30%) saturate(6143%) hue-rotate(345deg) brightness(100%) contrast(50%);
   }
 
   &__close {
