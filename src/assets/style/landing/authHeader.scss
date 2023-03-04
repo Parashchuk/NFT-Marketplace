@@ -44,18 +44,23 @@
     }
 
     a {
-      margin-left: 10px;
-      padding: 5px;
-      color: white;
+      display: flex;
+      align-items: center;
 
-      @media (max-width: 700px) {
-        border: 1px solid $action;
-        border-radius: 20px;
-        padding: 10px 20px;
+      &:hover span {
+        color: $action;
       }
 
-      &:hover {
-        color: $action;
+      span {
+        margin-left: 10px;
+        padding: 5px;
+        color: white;
+
+        @media (max-width: 700px) {
+          border: 1px solid $action;
+          border-radius: 20px;
+          padding: 10px 20px;
+        }
       }
     }
   }

@@ -42,14 +42,16 @@ const CategoriesSection = () => {
               return (
                 <div key={id} className='categories-section__navigation-cards__card'>
                   <Link
-                    to='/register/category'
+                    to='/register#categories'
                     style={{ backgroundImage: `url(${el.placeholder})` }}
                     className='categories-section__navigation-cards__card-image'>
                     <div>
                       <img src={el.img} alt='category' />
                     </div>
                   </Link>
-                  <Link to='#' className='categories-section__navigation-cards__card-description'>
+                  <Link
+                    to='/register#categories'
+                    className='categories-section__navigation-cards__card-description'>
                     {el.name}
                   </Link>
                 </div>

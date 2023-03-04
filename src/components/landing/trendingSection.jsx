@@ -20,19 +20,19 @@ const TrendingSection = () => {
               return (
                 <div key={id} className='trending-section__images__column'>
                   <Link
-                    to='register/collection'
+                    to='register#collections'
                     className='trending-section__images__column__preview'>
                     <img src={el.images[iter++].picture} alt='collection image' />
                   </Link>
                   <div className='trending-section__images__column__minimize-images'>
-                    <Link to='register/collection'>
+                    <Link to='register#collections'>
                       <img src={el.images[iter++].picture} alt='collection image' />
                     </Link>
-                    <Link to='register/collection'>
+                    <Link to='register#collections'>
                       <img src={el.images[iter++].picture} alt='collection image' />
                     </Link>
                     <Link
-                      to='register/collection'
+                      to='register#collections'
                       className='trending-section__images__column__minimize-images__more-button'>
                       {el.images.length - iter}+
                     </Link>

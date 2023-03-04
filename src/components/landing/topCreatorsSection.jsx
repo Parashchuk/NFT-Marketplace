@@ -6,8 +6,6 @@ import rocketLauch from '../../assets/img/svg/rocketLaunch.svg';
 const TopCreatorsSection = () => {
   const topCreatorsList = useSelector((state) => state.users.data);
 
-  console.log(topCreatorsList);
-
   return (
     <section>
       <div className='top-creators-section wrapper'>
@@ -20,7 +18,7 @@ const TopCreatorsSection = () => {
               </div>
             </div>
             <Link
-              to='/register/creators'
+              to='/register#creators'
               className='top-creators-section__info-button button-template'>
               <img src={rocketLauch} alt='rocket' />
               View Rankings
@@ -45,7 +43,7 @@ const TopCreatorsSection = () => {
               );
             })}
             <Link
-              to='/register/creators'
+              to='/register#creators'
               className='top-creators-section__list-button button-template'>
               <img src={rocketLauch} alt='rocket' />
               View Rankings

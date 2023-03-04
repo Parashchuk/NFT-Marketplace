@@ -39,12 +39,12 @@ const LandingFooter = () => {
           <div className='landingFooter__container__columns__column'>
             <div className='landingFooter__container__columns__column__title'>Explore</div>
             <Link
-              to='/register/colletions'
+              to='/register#colletions'
               className='landingFooter__container__columns__column__nav-item'>
               Collections
             </Link>
             <Link
-              to='/register/creators'
+              to='/register#creators'
               className='landingFooter__container__columns__column__nav-item'>
               Rankings
             </Link>

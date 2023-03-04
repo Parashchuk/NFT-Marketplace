@@ -16,13 +16,17 @@ const AuthHeader = () => {
         <div className='auth-header__suggest'>
           {location.pathname === '/register' ? (
             <>
-              <span>Already have an account?</span>
-              <Link to='/login'>Sign in →</Link>
+              <Link to='/login'>
+                <div>Already have an account?</div>
+                <span> Sign in →</span>
+              </Link>
             </>
           ) : (
             <>
-              <span>Don't have an account?</span>
-              <Link to='/register'>Sign up →</Link>
+              <Link to='/register'>
+                <div>Don't have an account?</div>
+                <span>Sign up →</span>
+              </Link>
             </>
           )}
         </div>

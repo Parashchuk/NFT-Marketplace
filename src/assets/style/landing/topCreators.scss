@@ -78,7 +78,6 @@
 }
 
 .top-creators-section__list__card-total span {
-  white-space: normal;
   margin-right: 10px;
   font: $WS-base;
   color: $background-caption;
@@ -87,6 +86,12 @@
 .top-creators-section__container .top-creators-section__list-button {
   display: none;
   padding: 20px 50px;
+}
+
+@media screen and (max-width: 1050px) {
+  .top-creators-section__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media screen and (max-width: 834px) {
@@ -134,7 +139,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 680px) {
   .top-creators-section__list {
     grid-template-columns: minmax(0, 1fr);
   }

@@ -55,7 +55,7 @@ const Highlight = () => {
               </div>
               <div className='highlight__columns__description__title'>{collectionEvent.name}</div>
               <Link
-                to='register/highlight'
+                to='register#highlight'
                 className='highlight__columns__description__button button-template button-secondary'>
                 <img src={eye} alt='eye' />
                 See NFT

@@ -5,32 +5,76 @@ import email from '../../assets/img/svg/email.svg';
 import lock from '../../assets/img/svg/lock.svg';
 import backgroundShape from '../../assets/img/svg/backgroundShape.svg';
 import Preloader from '../../components/utils/preloader';
-import ErrorAlert from '../../components/utils/errorAlert';
+import AlertTemplate from '../../components/utils/alertTemplate';
 import AuthHeader from '../../components/landing/authHeader';
 
 import { useRegisterValidator } from '../../validations/register';
-import { onSubmit } from '../../store/reducers/auth';
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { onSubmit } from '../../store/reducers/auth'; //////////////////
+import { Link, Navigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+//Constants text for display in alerts
+const infoAlerts = {
+  collections: "To see Collections you need to login or if you don't have account register first",
+  hero: "To see more NFT and even create yours - you need to login or if you don't have account register first",
+  creators:
+    "To see Ranked of creators you need to login or if you don't have account register first",
+  categories:
+    "To see Category of NFTs you need to login or if you don't have account register first",
+  discover:
+    "To see more NFT collections you need to login or if you don't have account register first",
+  highlight:
+    "To see more NFTs and even create yours you need to login or if you don't have account register first",
+  creators:
+    "To see ranked of creators you need to login or if you don't have account register first",
+};
+
 const Register = () => {
+  //Require for UI input buttons that shows and hide password inputs
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
 
+  //Require for UI to show custom Alert pop-ups
   const [alertError, setAlertError] = useState(null);
+  const [alertInfo, setAlertInfo] = useState(null);
 
+  //Require for hadnling input validation
   const { register, handleSubmit, setError, errors } = useRegisterValidator();
 
+  //Get some essential variables
   const { isLoading } = useSelector((state) => state.auth.isLoading);
   const dispatch = useDispatch();
+  const location = useLocation();
 
+  //Read hash from url and if it's there show alert
+  useEffect(() => {
+    if (infoAlerts[location.hash.slice(1)]) {
+      setAlertInfo(infoAlerts[location.hash.slice(1)]);
+    }
+  }, []);
+
+  //Show preloader if loading
   if (isLoading) return <Preloader />;
+
+  //Redirect to Porfile page if user already made authorisation
   if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
 
   return (
     <>
-      {alertError && <ErrorAlert error={alertError} />}
+      <AlertTemplate
+        title='Unsuccessful Registration'
+        type='error'
+        text={alertError}
+        setter={setAlertError}
+      />
+      <AlertTemplate
+        type='info'
+        text={alertInfo}
+        title='You need to make authorisation first'
+        setter={setAlertInfo}
+      />
+
       <div style={{ backgroundImage: `url(${backgroundShape})` }} className='register'>
         <AuthHeader />
         <div className='register__form-column'>

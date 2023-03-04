@@ -1,4 +1,4 @@
-import ErrorAlert from '../../components/utils/errorAlert';
+import AlertTemplate from '../../components/utils/alertTemplate';
 import Preloader from '../../components/utils/preloader';
 import email from '../../assets/img/svg/email.svg';
 import password from '../../assets/img/svg/lock.svg';
@@ -66,10 +66,16 @@ const Login = () => {
   };
 
   if (registrationSuccess) return <Navigate to='/profile' />;
+  if (isLoading) return <Preloader active={isLoading} />;
   return (
     <>
-      {isLoading && <Preloader active={isLoading} />}
-      {error && <ErrorAlert error={error} />}
+      <AlertTemplate
+        type='error'
+        title='Unsuccessful Authorisation'
+        text={error}
+        setter={setError}
+      />
+
       <div style={{ backgroundImage: `url(${backgroundShape})` }} className='login'>
         <AuthHeader />
         <div className='login__container'>

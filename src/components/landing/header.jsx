@@ -45,12 +45,12 @@ const LandingHeader = () => {
           />
           <ul className='landingHeader__navigation'>
             <li>
-              <Link className='navigation-item' to='register/collections'>
+              <Link className='navigation-item' to='/register#collections'>
                 Collections
               </Link>
             </li>
             <li>
-              <Link className='navigation-item' to='/register/creators'>
+              <Link className='navigation-item' to='/register#creators'>
                 Rankings
               </Link>
             </li>
@@ -81,12 +81,12 @@ const LandingHeader = () => {
               burgerMenuStatus ? 'burger-active' : ''
             }`}>
             <li>
-              <Link className='burger-navigation-item ' to='register/collections'>
+              <Link className='burger-navigation-item ' to='register#collections'>
                 Collections
               </Link>
             </li>
             <li>
-              <Link className='burger-navigation-item' to='/register/creators'>
+              <Link className='burger-navigation-item' to='/register#creators'>
                 Rankings
               </Link>
             </li>
