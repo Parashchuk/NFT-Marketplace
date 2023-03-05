@@ -1,0 +1,1 @@
+test('Displaying register page', () => {});

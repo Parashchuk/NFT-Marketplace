@@ -4,7 +4,7 @@ import Register from './pages/landing/register';
 import Landing from './pages/landing/landing';
 import NotFound from './pages/landing/notFound';
 import Login from './pages/landing/login';
-import ConnectWallet from './pages/landing/connectWalet';
+import ConnectWallet from './pages/landing/connectWallet';
 import './assets/style/index.scss';
 
 function App() {
