@@ -65,7 +65,7 @@ const Highlight = () => {
               <div className='highlight__columns__timer__title'>Auction ends in:</div>
               <div className='highlight__columns__timer__digits'>
                 <div className='highlight__columns__timer__digits__col'>
-                  <div>{hours}</div>
+                  <div>{minutes < 24 ? `0${minutes}` : minutes}</div>
                   <span>Hours</span>
                 </div>
                 :

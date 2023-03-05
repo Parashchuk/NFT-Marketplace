@@ -23,7 +23,7 @@ const Login = () => {
 
   //Managing store
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.auth.isLoading);
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   //Submit handler
   const submitHandler = () => {
@@ -31,6 +31,7 @@ const Login = () => {
   };
 
   //Show preloader if loading
+  console.log(isLoading);
   if (isLoading) return <Preloader />;
 
   //Redirect to Porfile page if user already made authorisation

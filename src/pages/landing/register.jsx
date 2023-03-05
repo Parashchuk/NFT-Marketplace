@@ -63,6 +63,7 @@ const Register = () => {
 
   //Show preloader if loading
   if (isLoading) return <Preloader />;
+  console.log(isLoading);
 
   //Redirect to Porfile page if user already made authorisation
   //if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;

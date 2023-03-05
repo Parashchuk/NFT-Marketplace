@@ -5,7 +5,7 @@ const SET_LOADING = 'AUTH/SET_LOADING';
 const SET_ERROR = 'AUTH/SET_ERROR';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   data: [],
   errors: [],
 };
@@ -35,7 +35,7 @@ export const loginisationSubmited =
 
     //Reset error state
     setAlertError(null);
-    setLoading(true);
+    dispatch(setLoading(true));
 
     axios
       .post('/auth/login', {
@@ -51,7 +51,7 @@ export const loginisationSubmited =
         setAlertError(err.response.data.message);
       })
       .finally(() => {
-        setLoading(false);
+        dispatch(setLoading(false));
       });
   };
 
