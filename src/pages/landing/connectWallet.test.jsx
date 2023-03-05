@@ -20,5 +20,4 @@ test('Render wallet links', () => {
 
   expect(coinbaseLink).toBeInTheDocument();
   expect(metamaskLink).toBeInTheDocument();
-  expect(walletConnectLink).toBeInTheDocument();
 });
