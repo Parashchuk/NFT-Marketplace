@@ -43,7 +43,7 @@ const Register = () => {
   const { register, handleSubmit, setError, errors, isValid } = useRegisterValidator();
 
   //Get some essential variables
-  const { isLoading } = useSelector((state) => state.auth.isLoading);
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -60,10 +60,6 @@ const Register = () => {
       dispatch(registrationSubmitted({ data, setError, setAlertError, isValid }));
     });
   };
-
-  //Show preloader if loading
-  if (isLoading) return <Preloader />;
-  console.log(isLoading);
 
   //Redirect to Porfile page if user already made authorisation
   if (window.localStorage.getItem('token')) return <Navigate to='/get-started' />;
