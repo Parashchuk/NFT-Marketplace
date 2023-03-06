@@ -127,12 +127,22 @@
     &__input-submit {
       margin-top: 20px;
       cursor: pointer;
-      background-color: $action;
+      background-color: $background;
       display: flex;
       width: 100%;
       justify-content: center;
       font: $WS-base;
       color: white;
+
+      &:disabled {
+        cursor: not-allowed;
+        filter: grayscale(100%);
+        color: grey;
+      }
+
+      &:disabled:hover {
+        background-color: $background !important;
+      }
     }
 
     &__login-suggest {

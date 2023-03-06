@@ -146,6 +146,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(100%);
+      color: grey;
+    }
+
+    &:disabled:hover {
+      background-color: $background !important;
+    }
   }
 
   &__register-suggest {

@@ -18,10 +18,10 @@ export const useLoginValidator = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(shema),
   });
 
-  return { register, handleSubmit, reset, errors };
+  return { register, handleSubmit, reset, errors, isValid };
 };

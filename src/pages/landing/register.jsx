@@ -40,7 +40,7 @@ const Register = () => {
   const [alertInfo, setAlertInfo] = useState(null);
 
   //Require for hadnling input validation
-  const { register, handleSubmit, setError, errors } = useRegisterValidator();
+  const { register, handleSubmit, setError, errors, isValid } = useRegisterValidator();
 
   //Get some essential variables
   const { isLoading } = useSelector((state) => state.auth.isLoading);
@@ -57,7 +57,7 @@ const Register = () => {
   //Handler for submit form
   const submitHandler = () => {
     return handleSubmit((data) => {
-      dispatch(registrationSubmitted({ data, setError, setAlertError }));
+      dispatch(registrationSubmitted({ data, setError, setAlertError, isValid }));
     });
   };
 
@@ -66,7 +66,7 @@ const Register = () => {
   console.log(isLoading);
 
   //Redirect to Porfile page if user already made authorisation
-  //if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
+  if (window.localStorage.getItem('token')) return <Navigate to='/get-started' />;
 
   return (
     <>
@@ -196,6 +196,7 @@ const Register = () => {
               </div>
             </div>
             <button
+              disabled={!isValid}
               className='register__form-column__input-submit button-template button-tertiary'
               type='submit'>
               Create Account

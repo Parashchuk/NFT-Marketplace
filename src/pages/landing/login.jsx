@@ -19,7 +19,7 @@ const Login = () => {
   const [allertError, setAlertError] = useState(null);
 
   //Require for hadnling input validation
-  const { register, handleSubmit, reset, errors } = useLoginValidator();
+  const { register, handleSubmit, reset, errors, isValid } = useLoginValidator();
 
   //Managing store
   const dispatch = useDispatch();
@@ -31,11 +31,10 @@ const Login = () => {
   };
 
   //Show preloader if loading
-  console.log(isLoading);
   if (isLoading) return <Preloader />;
 
   //Redirect to Porfile page if user already made authorisation
-  //if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
+  if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
 
   return (
     <>
@@ -96,7 +95,10 @@ const Login = () => {
               <input id='rememberMe' type='checkbox' />
               <label htmlFor='rememberMe'>Remember me</label>
             </div>
-            <button className='login__button button-template button-tertiary' type='submit'>
+            <button
+              disabled={!isValid}
+              className='login__button button-template button-tertiary'
+              type='submit'>
               Login
             </button>
           </form>

@@ -25,7 +25,7 @@ const Main = () => {
     dispatch(fetchUsers(12));
   }, []);
 
-  if (isCollectionsLoading || isUsersLoading) return <Preloader />;
+  if (isCollectionsLoading || isUsersLoading) return <Preloader type={'preloader'} />;
   return (
     <main>
       <div className='main'>

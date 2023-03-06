@@ -29,9 +29,9 @@ export const useRegisterValidator = () => {
     register,
     handleSubmit,
     setError,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(shcema),
   });
-  return { register, handleSubmit, setError, errors };
+  return { register, handleSubmit, setError, errors, isValid };
 };

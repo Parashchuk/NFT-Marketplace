@@ -5,6 +5,7 @@ import Landing from './pages/landing/landing';
 import NotFound from './pages/landing/notFound';
 import Login from './pages/landing/login';
 import ConnectWallet from './pages/landing/connectWallet';
+import GetStarted from './pages/landing/getStarted';
 import './assets/style/index.scss';
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/connectWallet' element={<ConnectWallet />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/register/:component' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/get-started' element={<GetStarted />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
