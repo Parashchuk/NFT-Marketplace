@@ -70,18 +70,24 @@ const Register = () => {
 
   return (
     <>
+      {/* Show alert error */}
       <AlertTemplate
         title='Unsuccessful Registration'
         type='error'
         text={alertError}
         setter={setAlertError}
       />
+
+      {/* Show alert info */}
       <AlertTemplate
         type='info'
         text={alertInfo}
         title='You need to make authorisation first'
         setter={setAlertInfo}
       />
+
+      {/* Show loading */}
+      {isLoading && <Preloader />}
 
       <div style={{ backgroundImage: `url(${backgroundShape})` }} className='register'>
         <AuthHeader />

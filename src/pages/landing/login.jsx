@@ -30,20 +30,21 @@ const Login = () => {
     return handleSubmit((data) => dispatch(loginisationSubmited({ data, setAlertError, reset })));
   };
 
-  //Show preloader if loading
-  if (isLoading) return <Preloader />;
-
   //Redirect to Porfile page if user already made authorisation
   if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
 
   return (
     <>
+      {/* Show alert error */}
       <AlertTemplate
         type='error'
         title='Unsuccessful Authorisation'
         text={allertError}
         setter={setAlertError}
       />
+
+      {/* Show loading */}
+      {isLoading && <Preloader />}
 
       <div style={{ backgroundImage: `url(${backgroundShape})` }} className='login'>
         <AuthHeader />
