@@ -7,17 +7,20 @@ import ConnectWallet from './connectWallet';
 
 const render = (component) => tlrRender(<Provider store={store}>{component}</Provider>);
 
-test('Render wallet links', () => {
-  render(
-    <HashRouter basename='/'>
-      <ConnectWallet />
-    </HashRouter>
-  );
+describe('Connect Wallet Page', () => {
+  test('Render wallet links', () => {
+    render(
+      <HashRouter basename='/'>
+        <ConnectWallet />
+      </HashRouter>
+    );
 
-  const metamaskLink = screen.getByText(/metamask/i);
-  const coinbaseLink = screen.getByText(/coinbase/i);
-  const walletConnectLink = screen.getByText(/wallet connect/i);
+    const metamaskLink = screen.getByText(/metamask/i);
+    const coinbaseLink = screen.getByText(/coinbase/i);
+    const walletConnectLink = screen.getByText(/wallet connect/i);
 
-  expect(coinbaseLink).toBeInTheDocument();
-  expect(metamaskLink).toBeInTheDocument();
+    expect(coinbaseLink).toBeInTheDocument();
+    expect(metamaskLink).toBeInTheDocument();
+    expect(walletConnectLink).toBeInTheDocument();
+  });
 });
