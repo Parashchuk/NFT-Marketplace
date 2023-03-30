@@ -1,0 +1,134 @@
+@use '../variables' as *;
+
+.main-header {
+  background-position: center;
+  background-size: cover;
+  height: 350px;
+
+  &__container {
+    margin: 0px 60px;
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 1160px) {
+      margin: 0 30px;
+    }
+
+    & :nth-child(1) {
+      @media (max-width: 110px) {
+        display: none;
+      }
+    }
+
+    &__row {
+      display: flex;
+      align-items: center;
+
+      &__logo {
+        margin-right: 30px;
+      }
+
+      &__search {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        cursor: pointer;
+
+        img {
+          width: 20px;
+          height: 20px;
+        }
+
+        input {
+          min-width: 200px;
+          border: none;
+          background: transparent;
+          color: white;
+          padding: 0px 20px;
+          font-size: 16px;
+
+          &::placeholder {
+            color: white;
+            font: $PJS-500;
+          }
+        }
+      }
+
+      &__navigation {
+        padding: 0;
+        margin-right: 50px;
+        display: flex;
+        gap: 30px;
+        font: $PJS-700;
+        font-size: 16px;
+
+        @media (max-width: 1160px) {
+          margin-right: 30px;
+        }
+
+        li {
+          cursor: pointer;
+
+          img {
+            margin-left: 12px;
+          }
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        font-size: 0;
+        gap: 10px;
+        cursor: pointer;
+
+        div {
+          padding: 17px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 100%;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  &__navigation {
+    height: calc(100% - 136px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+      font: $PJS-700;
+      font-size: 52px;
+      margin-bottom: 15px;
+    }
+
+    &__history {
+      display: flex;
+      gap: 8px;
+      font: $PJS-500;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+
+      span {
+        cursor: pointer;
+      }
+
+      &__active {
+        color: white;
+      }
+
+      &__symb {
+        cursor: default !important;
+      }
+    }
+  }
+}

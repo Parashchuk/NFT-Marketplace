@@ -12,6 +12,7 @@ import { fetchUsers } from './store/reducers/users';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Profile from './pages/main/profile';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/get-started' element={<GetStarted />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </>
   );
