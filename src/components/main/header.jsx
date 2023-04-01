@@ -8,7 +8,7 @@ import closeButton from '../../assets/img/svg/closeButton.svg';
 import backArrow from '../../assets/img/svg/backArrow.svg';
 import user from '../../assets/img/svg/user.svg';
 
-import { Link, useAsyncError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const MainHeader = () => {
@@ -58,7 +58,10 @@ const MainHeader = () => {
                 <img className='auth-header__logo-text' src={LogoText} alt='LogoText' />
               </Link>
             </div>
-            <div className='main-header__container__row__search'>
+            <form
+              autoComplete='off'
+              onSubmit={() => console.log('submit')}
+              className='main-header__container__row__search'>
               <label htmlFor='searchInput'>
                 <img src={magnifyingGlass} alt='search' />
               </label>
@@ -69,7 +72,7 @@ const MainHeader = () => {
                 type='text'
                 placeholder='Search here'
               />
-            </div>
+            </form>
           </div>
           <div className='main-header__container__row'>
             <nav>
@@ -114,6 +117,9 @@ const MainHeader = () => {
               }>
               <nav>
                 <ul className='main-header__container__burger-menu__container__navigation'>
+                  <li className='main-header__container__burger-menu__container__navigation__profile'>
+                    Profile <img src={bottomArrow} alt='bottomArrow' />
+                  </li>
                   <li>
                     Explore <img src={bottomArrow} alt='bottomArrow' />
                   </li>
@@ -134,24 +140,31 @@ const MainHeader = () => {
         className='main-header__adaptive-search'
         style={{ display: `${serachbarStatus ? 'block' : 'none'}` }}>
         <div className='main-header__adaptive-search__input'>
-          <div className='main-header__adaptive-search__input__wrap'>
+          <form
+            autoComplete='off'
+            onSubmit={() => console.log('submit')}
+            className='main-header__adaptive-search__input__wrap'>
             <img
               onClick={() => setSearchbarStatus((status) => !status)}
               src={backArrow}
               alt='back'
             />
             <input
+              id='adaptiveSearch'
               type='text'
               placeholder='Search'
               value={searchbarContent}
               onChange={(e) => setSearchbarContent(e.target.value)}
             />
-          </div>
-          <img
-            style={{ display: `${searchbarContent ? 'block' : 'none'}` }}
-            src={closeButton}
-            alt='clear'
-          />
+          </form>
+          <label htmlFor='adaptiveSearch'>
+            <img
+              onClick={() => setSearchbarContent('')}
+              style={{ display: `${searchbarContent ? 'block' : 'none'}` }}
+              src={closeButton}
+              alt='clear'
+            />
+          </label>
         </div>
         <div className='main-header__adaptive-search__result'>
           <span>No items found</span>
