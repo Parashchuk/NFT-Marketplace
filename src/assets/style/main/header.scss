@@ -9,15 +9,11 @@
 }
 
 .main-header {
-  position: relative;
-  background-position: center;
-  background-size: cover;
-  height: 350px;
-
   &__container {
-    padding: 40px 60px;
+    padding: 30px 60px;
     display: flex;
     justify-content: space-between;
+    transition: all ease-in-out 0.2s;
 
     @media (max-width: 1160px) {
       padding: 20px 30px;
@@ -31,8 +27,16 @@
       display: flex;
       align-items: center;
 
+      &:nth-of-type(1) {
+        flex: 1;
+        margin-right: 40px;
+
+        @media (max-width: 1100px) {
+          margin-right: 15px;
+        }
+      }
+
       @media (max-width: 1100px) {
-        width: 100%;
         justify-content: space-between;
       }
 
@@ -50,16 +54,42 @@
 
       &__logo {
         margin-right: 30px;
+
+        img:nth-of-type(1) {
+          @media (max-width: 550px) {
+            height: 28px;
+          }
+        }
+
+        img:nth-of-type(2) {
+          @media (max-width: 550px) {
+            height: 18px;
+          }
+        }
       }
 
       &__search {
         display: flex;
+        width: 100%;
         align-items: center;
         padding: 10px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
+        border-radius: 10px;
+        font-size: 0;
 
-        @media (max-width: 700px) {
+        &:has(> input:focus) {
+          border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        &__adaptive {
+          display: none;
+
+          @media (max-width: 730px) {
+            display: block;
+          }
+        }
+
+        @media (max-width: 730px) {
           display: none;
         }
 
@@ -67,27 +97,29 @@
           cursor: pointer;
           width: 20px;
           height: 20px;
+          margin-right: 10px;
         }
 
         input {
           min-width: 200px;
+          width: 100%;
+          color: white;
           border: none;
           background: transparent;
-          color: white;
           padding: 0px 20px;
           font-size: 16px;
           padding: 5px;
 
           &::placeholder {
-            color: white;
             font: $PJS-500;
+            font-size: 16px;
           }
         }
       }
 
       &__navigation {
         padding: 0;
-        margin-right: 50px;
+        margin-right: 40px;
         display: flex;
         gap: 30px;
         font: $PJS-700;
@@ -112,6 +144,10 @@
         gap: 20px;
         cursor: pointer;
 
+        @media (max-width: 500px) {
+          gap: 10px;
+        }
+
         @media (max-width: 1100px) {
           margin-left: 20px;
         }
@@ -120,6 +156,12 @@
           padding: 10px;
           border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 100%;
+
+          &:nth-of-type(2) {
+            @media (max-width: 500px) {
+              display: none;
+            }
+          }
 
           img {
             width: 20px;
@@ -133,6 +175,10 @@
       font-size: 0;
       margin-left: 20px;
       display: none;
+
+      @media (max-width: 500px) {
+        margin-left: 13px;
+      }
 
       &__button,
       &__button__close {
@@ -190,37 +236,68 @@
     }
   }
 
-  &__navigation {
-    height: calc(100% - 136px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  &__adaptive-search {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    background-color: $background;
+    margin: 0 10px;
 
-    &__title {
-      font: $PJS-700;
-      font-size: 52px;
-      margin-bottom: 15px;
+    @media (min-width: 731px) {
+      display: none !important;
     }
 
-    &__history {
+    &__input {
+      position: relative;
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #363840;
+
+      img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        padding: 2px;
+        filter: invert(74%) sepia(0%) saturate(0%) hue-rotate(347deg) brightness(95%) contrast(79%);
+      }
+
+      input {
+        color: white;
+        font: $PJS-500;
+        font-size: 18px;
+        background: transparent;
+        border: none;
+        padding: 20px;
+        width: 100%;
+
+        &::placeholder {
+          font: $PJS-500;
+          font-size: 18px;
+        }
+      }
+
+      &__wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 30px;
+          height: 30px;
+          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(108deg) brightness(118%)
+            contrast(101%);
+        }
+      }
+    }
+
+    &__result {
       font: $PJS-500;
       font-size: 16px;
-      color: rgba(255, 255, 255, 0.5);
-
-      span {
-        cursor: pointer;
-      }
-
-      &__active {
-        color: white;
-      }
-
-      &__symb {
-        cursor: default !important;
-      }
+      color: rgb(138, 147, 155);
+      margin: 20px 10px;
     }
   }
 }

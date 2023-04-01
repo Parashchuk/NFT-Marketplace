@@ -2,22 +2,54 @@ import bottomArrow from '../../assets/img/svg/arrowBottom.svg';
 import magnifyingGlass from '../../assets/img/svg/magnifyingGlass.svg';
 import LogoText from '../../assets/img/svg/logo.svg';
 import LogoImage from '../../assets/img/svg/storefront.svg';
-import headerBackground from '../../assets/img/placeholders/headerBackground.jpg';
 import shoppingCart from '../../assets/img/svg/shoppingCart.svg';
 import list from '../../assets/img/svg/list.svg';
 import closeButton from '../../assets/img/svg/closeButton.svg';
+import backArrow from '../../assets/img/svg/backArrow.svg';
+import user from '../../assets/img/svg/user.svg';
 
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useAsyncError } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const MainHeader = () => {
   const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
+  const [serachbarStatus, setSearchbarStatus] = useState(false);
+  const [searchbarContent, setSearchbarContent] = useState('');
+  const [isScrollOnTop, setIsScrollOnTop] = useState(false);
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      setIsScrollOnTop(!!window.scrollY);
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+
+    return () => {
+      window.removeEventListener('croll', scrollHandler);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (burgerMenuToggle) {
+      document.body.classList.add('disable-scroll');
+      window.scrollTo(0, 0);
+    } else {
+      document.body.classList.remove('disable-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('disable-scroll');
+    };
+  }, [burgerMenuToggle]);
 
   return (
-    <header>
-      <div className='main-header' style={{ backgroundImage: `url(${headerBackground})` }}>
+    <header style={{ position: 'sticky', top: '0' }}>
+      <div className='main-header'>
         <div
-          style={{ backgroundColor: `${burgerMenuToggle ? 'rgba(0, 0, 0, 0.2)' : ''}` }}
+          style={{
+            backgroundColor: `${isScrollOnTop ? '' : '#363840'}`,
+            borderBottom: `${isScrollOnTop ? '1px solid rgba(255, 255, 255, 0.1)' : ''}`,
+          }}
           className='main-header__container'>
           <div className='main-header__container__row'>
             <div className='main-header__container__row__logo'>
@@ -27,8 +59,16 @@ const MainHeader = () => {
               </Link>
             </div>
             <div className='main-header__container__row__search'>
-              <input type='text' placeholder='Search here' />
-              <img src={magnifyingGlass} alt='search' />
+              <label htmlFor='searchInput'>
+                <img src={magnifyingGlass} alt='search' />
+              </label>
+              <input
+                id='searchInput'
+                value={searchbarContent}
+                onChange={(e) => setSearchbarContent(e.target.value)}
+                type='text'
+                placeholder='Search here'
+              />
             </div>
           </div>
           <div className='main-header__container__row'>
@@ -46,11 +86,16 @@ const MainHeader = () => {
               </ul>
             </nav>
             <div className='main-header__container__row__buttons'>
+              <div
+                onClick={() => setSearchbarStatus((status) => !status)}
+                className='main-header__container__row__search__adaptive'>
+                <img src={magnifyingGlass} alt='search' />
+              </div>
               <div>
                 <img src={shoppingCart} alt='shopCart' />
               </div>
               <div>
-                <img src={shoppingCart} alt='profile' />
+                <img src={user} alt='profile' />
               </div>
             </div>
           </div>
@@ -84,13 +129,32 @@ const MainHeader = () => {
             </div>
           </div>
         </div>
-        <div className='main-header__navigation'>
-          <div className='main-header__navigation__title'>My Profile</div>
-          <div className='main-header__navigation__history'>
-            <span>Home</span>
-            <span className='main-header__navigation__history__symb'>/</span>
-            <span className='main-header__navigation__history__active'>Profile</span>
+      </div>
+      <div
+        className='main-header__adaptive-search'
+        style={{ display: `${serachbarStatus ? 'block' : 'none'}` }}>
+        <div className='main-header__adaptive-search__input'>
+          <div className='main-header__adaptive-search__input__wrap'>
+            <img
+              onClick={() => setSearchbarStatus((status) => !status)}
+              src={backArrow}
+              alt='back'
+            />
+            <input
+              type='text'
+              placeholder='Search'
+              value={searchbarContent}
+              onChange={(e) => setSearchbarContent(e.target.value)}
+            />
           </div>
+          <img
+            style={{ display: `${searchbarContent ? 'block' : 'none'}` }}
+            src={closeButton}
+            alt='clear'
+          />
+        </div>
+        <div className='main-header__adaptive-search__result'>
+          <span>No items found</span>
         </div>
       </div>
     </header>
