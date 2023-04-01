@@ -4,14 +4,21 @@ import LogoText from '../../assets/img/svg/logo.svg';
 import LogoImage from '../../assets/img/svg/storefront.svg';
 import headerBackground from '../../assets/img/placeholders/headerBackground.jpg';
 import shoppingCart from '../../assets/img/svg/shoppingCart.svg';
+import list from '../../assets/img/svg/list.svg';
+import closeButton from '../../assets/img/svg/closeButton.svg';
 
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const MainHeader = () => {
+  const [burgerMenuToggle, setBurgerMenuToggle] = useState(false);
+
   return (
     <header>
       <div className='main-header' style={{ backgroundImage: `url(${headerBackground})` }}>
-        <div className='main-header__container'>
+        <div
+          style={{ backgroundColor: `${burgerMenuToggle ? 'rgba(0, 0, 0, 0.2)' : ''}` }}
+          className='main-header__container'>
           <div className='main-header__container__row'>
             <div className='main-header__container__row__logo'>
               <Link to='/' className='auth-header__logo'>
@@ -45,6 +52,35 @@ const MainHeader = () => {
               <div>
                 <img src={shoppingCart} alt='profile' />
               </div>
+            </div>
+          </div>
+          <div className='main-header__container__burger-menu'>
+            <div
+              className={
+                'main-header__container__burger-menu__button' + (burgerMenuToggle ? '__close' : '')
+              }
+              onClick={() => setBurgerMenuToggle((status) => !status)}>
+              <img src={burgerMenuToggle ? closeButton : list} alt='list' />
+            </div>
+            <div
+              className={
+                'main-header__container__burger-menu__container' +
+                (burgerMenuToggle ? ' burger-menu__active' : '')
+              }>
+              <nav>
+                <ul className='main-header__container__burger-menu__container__navigation'>
+                  <li>
+                    Explore <img src={bottomArrow} alt='bottomArrow' />
+                  </li>
+                  <li>
+                    Stats <img src={bottomArrow} alt='bottomArrow' />
+                  </li>
+                  <li>
+                    <Link to='/create'>Create</Link>
+                  </li>
+                </ul>
+              </nav>
+              <div className='main-header__container__burger-menu__container__buttons'></div>
             </div>
           </div>
         </div>
