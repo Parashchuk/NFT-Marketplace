@@ -47,7 +47,7 @@ const MainHeader = () => {
       <div className='main-header'>
         <div
           style={{
-            backgroundColor: `${isScrollOnTop ? '' : '#363840'}`,
+            backgroundColor: `${isScrollOnTop ? '#2b2b2b' : '#363840'}`,
             borderBottom: `${isScrollOnTop ? '1px solid rgba(255, 255, 255, 0.1)' : ''}`,
           }}
           className='main-header__container'>

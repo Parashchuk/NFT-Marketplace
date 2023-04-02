@@ -4,6 +4,8 @@ import NotFound from './pages/landing/notFound';
 import Login from './pages/landing/login';
 import ConnectWallet from './pages/landing/connectWallet';
 import GetStarted from './pages/landing/getStarted';
+import Profile from './pages/main/profile';
+import Header from './components/main/header';
 import Preloader from './components/utils/preloader';
 import './assets/style/index.scss';
 
@@ -12,7 +14,6 @@ import { fetchUsers } from './store/reducers/users';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import Profile from './pages/main/profile';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,19 +27,30 @@ function App() {
 
   if (isCollectionsLoading || isUsersLoading) return <Preloader type={'preloader'} />;
 
-  return (
-    <>
-      <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route path='/connectWallet' element={<ConnectWallet />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/get-started' element={<GetStarted />} />
-        <Route path='*' element={<NotFound />} />
-        <Route path='/profile' element={<Profile />} />
-      </Routes>
-    </>
-  );
+  if (!window.localStorage.getItem('token')) {
+    return (
+      <>
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/connectWallet' element={<ConnectWallet />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/get-started' element={<GetStarted />} />
+          <Route path='*' element={<NotFound />} />
+          <Route path='/profile' element={<Profile />} />
+        </Routes>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Profile />} />
+        </Routes>
+      </>
+    );
+  }
 }
 
 export default App;
