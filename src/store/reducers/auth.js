@@ -3,11 +3,15 @@ import axios from '../../axios';
 const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 const SET_LOADING = 'AUTH/SET_LOADING';
 const SET_ERROR = 'AUTH/SET_ERROR';
+const SET_IS_AUtH = 'AUTH/SET_IS_AUTH';
+
+const isAuthInitial = !!window.localStorage.getItem('token');
 
 const initialState = {
   isLoading: false,
   data: [],
   errors: [],
+  isAuth: isAuthInitial,
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -20,6 +24,9 @@ const AuthReducer = (state = initialState, action) => {
     }
     case SET_ERROR: {
       return { ...state, errors: [...action.payload] };
+    }
+    case SET_IS_AUtH: {
+      return { ...state, isAuth: action.payload };
     }
 
     default: {
@@ -44,6 +51,7 @@ export const loginisationSubmited =
       })
       .then((res) => {
         dispatch(setUserData(res.data));
+        dispatch(setIsAuth(true));
         window.localStorage.setItem('token', res.data.token);
       })
       .catch((err) => {
@@ -73,6 +81,7 @@ export const registrationSubmitted =
       })
       .then((res) => {
         dispatch(setUserData(res.data));
+        dispatch(setIsAuth(true));
         window.localStorage.setItem('token', res.data.token);
       })
       .catch((err) => {
@@ -89,5 +98,6 @@ export const registrationSubmitted =
 
 export const setUserData = (data) => ({ type: SET_USER_DATA, payload: data });
 export const setLoading = (data) => ({ type: SET_LOADING, payload: data });
+export const setIsAuth = (data) => ({ type: SET_IS_AUtH, payload: data });
 
 export default AuthReducer;

@@ -43,12 +43,11 @@ const MainHeader = () => {
   }, [burgerMenuToggle]);
 
   return (
-    <header style={{ position: 'sticky', top: '0' }}>
+    <header style={{ position: 'sticky', top: '0', zIndex: 10 }}>
       <div className='main-header'>
         <div
           style={{
-            backgroundColor: `${isScrollOnTop ? '#2b2b2b' : '#363840'}`,
-            borderBottom: `${isScrollOnTop ? '1px solid rgba(255, 255, 255, 0.1)' : ''}`,
+            borderBottom: `${isScrollOnTop ? '1px solid #4c505c' : ''}`,
           }}
           className='main-header__container'>
           <div className='main-header__container__row'>

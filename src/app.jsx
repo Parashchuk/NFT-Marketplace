@@ -19,38 +19,37 @@ function App() {
   const dispatch = useDispatch();
   const isCollectionsLoading = useSelector((state) => state.collections.isLoading);
   const isUsersLoading = useSelector((state) => state.users.isLoading);
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
   useEffect(() => {
     dispatch(fetchCollections(5));
     dispatch(fetchUsers(12));
   }, []);
 
+  useEffect(() => {
+    document.body.style.backgroundColor = isAuth ? '#202225' : '#2b2b2b';
+  }, [isAuth]);
+
   if (isCollectionsLoading || isUsersLoading) return <Preloader type={'preloader'} />;
 
-  if (!window.localStorage.getItem('token')) {
-    return (
-      <>
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/connectWallet' element={<ConnectWallet />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/get-started' element={<GetStarted />} />
-          <Route path='*' element={<NotFound />} />
-          <Route path='/profile' element={<Profile />} />
-        </Routes>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Header />
-        <Routes>
+  return (
+    <>
+      {isAuth && <Header />}
+      <Routes>
+        {isAuth ? (
           <Route path='/' element={<Profile />} />
-        </Routes>
-      </>
-    );
-  }
+        ) : (
+          <Route path='/' element={<Landing />} />
+        )}
+        <Route path='/connectWallet' element={<ConnectWallet />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/get-started' element={<GetStarted />} />
+        <Route path='*' element={<NotFound />} />
+        <Route path='/profile' element={<Profile />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;

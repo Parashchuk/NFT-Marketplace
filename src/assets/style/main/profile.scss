@@ -4,13 +4,96 @@
   font: $PJS-500;
   font-size: 16px;
 
-  img {
-    width: 20px;
-  }
+  &__images {
+    position: relative;
+    height: 320px;
+    width: 100%;
+    margin-bottom: 50px;
+    background-color: #282a2e;
 
-  &__background {
-    max-width: 320px;
-    margin-bottom: 30px;
+    &__background-wrap {
+      position: relative;
+      display: block;
+      height: 100%;
+
+      &__background {
+        object-fit: cover;
+        width: 100vw;
+        height: 100%;
+      }
+
+      &__changeHover {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        transition: opacity ease-in-out 0.1s;
+        opacity: 0;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        img {
+          width: 25px;
+          height: 25px;
+          filter: invert(100%) sepia(14%) saturate(7422%) hue-rotate(188deg) brightness(115%)
+            contrast(115%);
+        }
+      }
+    }
+
+    &__avatar-wrap {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 50%;
+      left: 2%;
+      width: 200px;
+      height: 200px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px 0px;
+      background-color: $background-main;
+      border-radius: 100%;
+
+      &__changeHover {
+        cursor: pointer;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 175px;
+        width: 175px;
+        border-radius: 100%;
+        background-color: black;
+        transition: opacity ease-in-out 0.1s;
+        opacity: 0;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        img {
+          width: 25px;
+          height: 25px;
+          filter: invert(100%) sepia(14%) saturate(7422%) hue-rotate(188deg) brightness(115%)
+            contrast(115%);
+        }
+      }
+
+      &__avatar {
+        width: 170px;
+        height: 170px;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }
   }
 
   &__container {
@@ -85,6 +168,18 @@
     }
 
     &__filters {
+      padding: 20px 0;
+      position: sticky;
+      top: 80.5px;
+
+      @media (max-width: 760px) {
+        top: 72px;
+      }
+
+      @media (max-width: 500px) {
+        top: 66px;
+      }
+
       &__active {
         border-bottom: 2px solid white;
       }

@@ -4,6 +4,10 @@ import share from '../../assets/img/svg/share.svg';
 import more from '../../assets/img/svg/more.svg';
 import filters from '../../assets/img/svg/filters.svg';
 import magnifyingGlass from '../../assets/img/svg/magnifyingGlass.svg';
+import edit from '../../assets/img/svg/edit.svg';
+import side from '../../assets/img/svg/side.svg';
+import gallery from '../../assets/img/svg/gallery.svg';
+import grid from '../../assets/img/svg/grid.svg';
 
 import { useState } from 'react';
 
@@ -15,8 +19,25 @@ const Profile = () => {
 
   return (
     <div className='profile'>
-      <div className='profile__background'>
-        <img className='profile__avatar' src={user} alt='avatar' />
+      <div className='profile__images'>
+        <label className='profile__images__background-wrap'>
+          <input type='file' accept='image/*' style={{ display: 'none' }} tabIndex='-1' />
+          <img
+            className='profile__images__background-wrap__background'
+            src={user}
+            alt='background'
+          />
+          <div className='profile__images__background-wrap__changeHover'>
+            <img src={edit} alt='change avatar' />
+          </div>
+        </label>
+        <label className='profile__images__avatar-wrap'>
+          <input type='file' accept='image/*' style={{ display: 'none' }} tabIndex='-1' />
+          <img className='profile__images__avatar-wrap__avatar' src={user} alt='avatar' />
+          <div className='profile__images__avatar-wrap__changeHover'>
+            <img src={edit} alt='change avatar' />
+          </div>
+        </label>
       </div>
       <div className='profile__container'>
         <div className='profile__container__wrap'>
@@ -39,6 +60,7 @@ const Profile = () => {
             {LIST_OF_TAGS.map((el, i) => {
               return (
                 <li
+                  key={i}
                   className={activeTag == i ? 'profile__container__filters__active' : ''}
                   onClick={() => setActiveTag(i)}>
                   {el}
@@ -55,9 +77,9 @@ const Profile = () => {
             <div className='profile__container__filters__search__sortBy'></div>
             <div className='profile__container__filters__search__showMods'>
               <img src='' alt='list' />
-              <img src='' alt='large_gallery' />
-              <img src='' alt='smaller_gallery' />
-              <img src='' alt='side' />
+              <img src={gallery} alt='gallery' />
+              <img src={grid} alt='grid' />
+              <img src={side} alt='side' />
             </div>
           </div>
         </div>

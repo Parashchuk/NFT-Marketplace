@@ -24,6 +24,7 @@ const Login = () => {
   //Managing store
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.isLoading);
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
   //Submit handler
   const submitHandler = () => {
@@ -31,7 +32,7 @@ const Login = () => {
   };
 
   //Redirect to Porfile page if user already made authorisation
-  if (window.localStorage.getItem('token')) return <Navigate to='/profile' />;
+  if (isAuth) return <Navigate to='/profile' />;
 
   return (
     <>
