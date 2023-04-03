@@ -10,6 +10,8 @@
     width: 100%;
     margin-bottom: 50px;
     background-color: #282a2e;
+    max-height: 340px;
+    min-height: 90px;
 
     &__background-wrap {
       position: relative;
@@ -41,6 +43,7 @@
         }
 
         img {
+          user-select: none;
           width: 25px;
           height: 25px;
           filter: invert(100%) sepia(14%) saturate(7422%) hue-rotate(188deg) brightness(115%)
@@ -56,28 +59,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      top: 10vw;
+      top: calc(22.5vw / 2.1);
       left: 2%;
       width: 15vw;
       height: 15vw;
       box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px 0px;
       background-color: $background-main;
       border-radius: 100%;
+      max-width: 200px;
+      max-height: 200px;
 
-      @media (max-width: 1100px) {
-        top: 11.5vw;
-      }
-
-      @media (max-width: 800px) {
-        top: 13vw;
-      }
-
-      @media (max-width: 570px) {
-        top: 10vw;
-      }
-
-      @media (max-width: 450px) {
-        top: 8vw;
+      @media (min-width: 1477px) {
+        top: 170px;
       }
 
       &__changeHover {
@@ -94,12 +87,15 @@
         background-color: black;
         transition: opacity ease-in-out 0.1s;
         opacity: 0;
+        max-width: 190px;
+        max-height: 190px;
 
         &:hover {
           opacity: 0.9;
         }
 
         img {
+          user-select: none;
           width: 25px;
           height: 25px;
           filter: invert(100%) sepia(14%) saturate(7422%) hue-rotate(188deg) brightness(115%)
@@ -114,12 +110,19 @@
         height: 12.5vw;
         border-radius: 100%;
         object-fit: cover;
+
+        max-width: 185px;
+        max-height: 185px;
       }
     }
   }
 
   &__container {
-    margin: 0 32px;
+    margin: 0 64px;
+
+    @media (max-width: 1600px) {
+      margin: 0 32px;
+    }
 
     @media (max-width: 1100px) {
       margin: 0 16px;
@@ -162,10 +165,12 @@
         }
 
         img {
+          user-select: none;
           width: 100%;
           height: 100%;
           filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(336deg) brightness(101%)
             contrast(100%);
+          user-select: none;
         }
       }
     }
@@ -189,24 +194,7 @@
       }
     }
 
-    &__filters {
-      padding: 20px 0;
-      position: sticky;
-      top: 80.5px;
-
-      img {
-        width: 20px;
-        height: 20px;
-      }
-
-      @media (max-width: 760px) {
-        top: 72px;
-      }
-
-      @media (max-width: 500px) {
-        top: 66px;
-      }
-
+    &__sort {
       &__active {
         border-bottom: 2px solid white;
       }
@@ -215,6 +203,7 @@
         display: flex;
         padding: 0;
         gap: 25px;
+        border-bottom: 1px solid $background-main-active;
 
         li {
           padding: 5px 5px 10px;
@@ -224,6 +213,94 @@
 
           &:hover {
             color: white;
+          }
+        }
+      }
+    }
+
+    &__filters {
+      position: sticky;
+      top: 80.5px;
+      margin-top: 35px;
+      padding-top: 15px;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 760px) {
+        top: 72px;
+      }
+
+      @media (max-width: 500px) {
+        top: 66px;
+      }
+
+      &__img {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 100%;
+
+        img {
+          user-select: none;
+          filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(336deg) brightness(101%)
+            contrast(100%);
+        }
+
+        &:hover {
+          background-color: #4d505c;
+          filter: unset;
+        }
+      }
+
+      &__showMods {
+        display: flex;
+        padding: 0;
+        margin-left: 12px;
+
+        &__item {
+          font-size: 0;
+          padding: 14.75px 18px;
+          border: 1px solid $background-main-active;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $background-main-hover;
+          }
+
+          &:nth-of-type(1) {
+            border-radius: 12px 0 0 12px;
+          }
+
+          &:nth-of-type(2) {
+            border-left: none;
+            border-right: none;
+          }
+
+          &:nth-of-type(3) {
+            border-right: none;
+          }
+
+          &:nth-of-type(4) {
+            border-radius: 0 12px 12px 0;
+          }
+
+          &__active {
+            background-color: $background-main-active;
+            img {
+              filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(336deg) brightness(101%)
+                contrast(100%) !important;
+            }
+          }
+
+          img {
+            user-select: none;
+            width: 19px;
+            height: 19px;
+            filter: invert(74%) sepia(0%) saturate(0%) hue-rotate(347deg) brightness(95%)
+              contrast(79%);
           }
         }
       }

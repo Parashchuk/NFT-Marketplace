@@ -8,14 +8,20 @@ import edit from '../../assets/img/svg/edit.svg';
 import side from '../../assets/img/svg/side.svg';
 import gallery from '../../assets/img/svg/gallery.svg';
 import grid from '../../assets/img/svg/grid.svg';
+import closeButton from '../../assets/img/svg/closeButton.svg';
+import list from '../../assets/img/svg/list_v2.svg';
 
 import { useState } from 'react';
 
 const Profile = () => {
   const LIST_OF_TAGS = ['Collected', 'Created', 'Favorited'];
   const LIST_OF_SORTS = ['Most recent', 'Price high to low', 'Price low to high', 'Most viewed'];
+  const DISPLAY_MODS_NAMES = ['list', 'gallery', 'grid', 'side'];
+  const DISPLAY_MODS = [list, gallery, grid, side];
 
+  const [activeDisplayMode, setActiveDisplayMode] = useState(0);
   const [activeTag, setActiveTag] = useState(0);
+  const [searchbarContent, setSearchbarContent] = useState('');
 
   return (
     <div className='profile'>
@@ -55,33 +61,65 @@ const Profile = () => {
           <div className='profile__container__userinfo__hash'>0xB92a...Aa37</div>
           <div className='profile__container__userinfo__joinedSince'>Joined April 2023</div>
         </div>
-        <div className='profile__container__filters'>
+        <div className='profile__container__sort'>
           <ul>
             {LIST_OF_TAGS.map((el, i) => {
               return (
                 <li
                   key={i}
-                  className={activeTag == i ? 'profile__container__filters__active' : ''}
+                  className={activeTag == i ? 'profile__container__sort__active' : ''}
                   onClick={() => setActiveTag(i)}>
                   {el}
                 </li>
               );
             })}
           </ul>
-          <div className='profile__container__filters__search'>
+        </div>
+        <div className='profile__container__filters'>
+          <div className='profile__container__filters__img'>
             <img src={filters} alt='filters' />
-            <div className='profile__container__filters__search__input'>
-              <img src={magnifyingGlass} alt='magnifyingGlass' />
-              <input type='text' />
-            </div>
-            <div className='profile__container__filters__search__sortBy'></div>
-            <div className='profile__container__filters__search__showMods'>
-              <img src='' alt='list' />
-              <img src={gallery} alt='gallery' />
-              <img src={grid} alt='grid' />
-              <img src={side} alt='side' />
-            </div>
           </div>
+          <form
+            autoComplete='off'
+            onSubmit={() => console.log('submit')}
+            className='main-header__container__row__search'>
+            <label htmlFor='searchInput'>
+              <img src={magnifyingGlass} alt='search' />
+            </label>
+            <input
+              id='searchInput'
+              value={searchbarContent}
+              onChange={(e) => setSearchbarContent(e.target.value)}
+              type='text'
+              placeholder='Search here'
+            />
+            <label htmlFor='adaptiveSearch'>
+              <img
+                onClick={() => setSearchbarContent('')}
+                style={{ display: `${searchbarContent ? 'block' : 'none'}` }}
+                src={closeButton}
+                alt='clear'
+              />
+            </label>
+          </form>
+          <div className='profile__container__filters__sortBy'></div>
+          <ul className='profile__container__filters__showMods'>
+            {DISPLAY_MODS_NAMES.map((name, i) => {
+              return (
+                <div
+                  key={i}
+                  onClick={() => setActiveDisplayMode(i)}
+                  className={
+                    'profile__container__filters__showMods__item' +
+                    (activeDisplayMode == i
+                      ? ' profile__container__filters__showMods__item__active'
+                      : '')
+                  }>
+                  <img src={DISPLAY_MODS[i]} alt={name} />
+                </div>
+              );
+            })}
+          </ul>
         </div>
         <div className='profile__container__items'>No items found for this search</div>
       </div>

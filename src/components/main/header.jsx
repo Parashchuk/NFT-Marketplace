@@ -71,6 +71,14 @@ const MainHeader = () => {
                 type='text'
                 placeholder='Search here'
               />
+              <label htmlFor='adaptiveSearch'>
+                <img
+                  onClick={() => setSearchbarContent('')}
+                  style={{ display: `${searchbarContent ? 'block' : 'none'}` }}
+                  src={closeButton}
+                  alt='clear'
+                />
+              </label>
             </form>
           </div>
           <div className='main-header__container__row'>

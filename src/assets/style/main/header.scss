@@ -91,6 +91,18 @@
           border: 1px solid $background-main-caption;
         }
 
+        label:nth-of-type(2) {
+          img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            padding: 2px;
+            margin: 0;
+            filter: invert(74%) sepia(0%) saturate(0%) hue-rotate(347deg) brightness(95%)
+              contrast(79%);
+          }
+        }
+
         &__adaptive {
           display: none;
 
