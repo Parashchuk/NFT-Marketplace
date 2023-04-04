@@ -16,11 +16,18 @@ const MainHeader = () => {
   const [serachbarStatus, setSearchbarStatus] = useState(false);
   const [searchbarContent, setSearchbarContent] = useState('');
   const [isScrollOnTop, setIsScrollOnTop] = useState(false);
+  const [isScrollOnSecondStickyElement, setIsScrollOnSecondStickyElement] = useState(false);
 
   useEffect(() => {
     const scrollHandler = () => {
       setIsScrollOnTop(!!window.scrollY);
     };
+
+    if (window.scrollY == 385) {
+      setIsScrollOnSecondStickyElement(true);
+    } else {
+      setIsScrollOnSecondStickyElement(false);
+    }
 
     window.addEventListener('scroll', scrollHandler);
 
