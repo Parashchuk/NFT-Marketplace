@@ -71,7 +71,7 @@ const MainHeader = () => {
                 type='text'
                 placeholder='Search here'
               />
-              <label htmlFor='adaptiveSearch'>
+              <label htmlFor='searchInput'>
                 <img
                   onClick={() => setSearchbarContent('')}
                   style={{ display: `${searchbarContent ? 'block' : 'none'}` }}

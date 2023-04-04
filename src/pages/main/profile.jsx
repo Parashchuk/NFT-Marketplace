@@ -1,4 +1,5 @@
 import user from '../../assets/img/svg/user.svg';
+import bottomArrow from '../../assets/img/svg/arrowBottom.svg';
 import sortBy from '../../assets/img/svg/sortBy.svg';
 import share from '../../assets/img/svg/share.svg';
 import more from '../../assets/img/svg/more.svg';
@@ -83,17 +84,17 @@ const Profile = () => {
             autoComplete='off'
             onSubmit={() => console.log('submit')}
             className='main-header__container__row__search'>
-            <label htmlFor='searchInput'>
+            <label htmlFor='nftSearch'>
               <img src={magnifyingGlass} alt='search' />
             </label>
             <input
-              id='searchInput'
+              id='nftSearch'
               value={searchbarContent}
               onChange={(e) => setSearchbarContent(e.target.value)}
               type='text'
               placeholder='Search here'
             />
-            <label htmlFor='adaptiveSearch'>
+            <label htmlFor='nftSearch'>
               <img
                 onClick={() => setSearchbarContent('')}
                 style={{ display: `${searchbarContent ? 'block' : 'none'}` }}
@@ -102,7 +103,10 @@ const Profile = () => {
               />
             </label>
           </form>
-          <div className='profile__container__filters__sortBy'></div>
+          <div className='profile__container__filters__sortBy'>
+            <span>Recently received</span>
+            <img src={bottomArrow} alt='show more sorts' />
+          </div>
           <ul className='profile__container__filters__showMods'>
             {DISPLAY_MODS_NAMES.map((name, i) => {
               return (
@@ -121,7 +125,10 @@ const Profile = () => {
             })}
           </ul>
         </div>
-        <div className='profile__container__items'>No items found for this search</div>
+        <div className='profile__container__items'>
+          <span>No items found for this search</span>
+          <button type='button'>Back to all items</button>
+        </div>
       </div>
     </div>
   );
