@@ -13,6 +13,7 @@ import closeButton from '../../assets/img/svg/closeButton.svg';
 import list from '../../assets/img/svg/list_v2.svg';
 
 import { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const LIST_OF_TAGS = ['Collected', 'Created', 'Favorited'];
@@ -25,6 +26,9 @@ const Profile = () => {
   const [searchbarContent, setSearchbarContent] = useState('');
   const [isScrollOnSecondStickyElement, setIsScrollOnSecondStickyElement] = useState(false);
   const filtersElement = useRef();
+
+  const userData = useSelector((state) => state.auth.data);
+  console.log(userData);
 
   useEffect(() => {
     const screenPosition = filtersElement.current.getBoundingClientRect();
@@ -54,7 +58,7 @@ const Profile = () => {
           <input type='file' accept='image/*' style={{ display: 'none' }} tabIndex='-1' />
           <img
             className='profile__images__background-wrap__background'
-            src={user}
+            src={userData.headerImage}
             alt='background'
           />
           <div className='profile__images__background-wrap__changeHover'>
@@ -63,7 +67,11 @@ const Profile = () => {
         </label>
         <label className='profile__images__avatar-wrap'>
           <input type='file' accept='image/*' style={{ display: 'none' }} tabIndex='-1' />
-          <img className='profile__images__avatar-wrap__avatar' src={user} alt='avatar' />
+          <img
+            className='profile__images__avatar-wrap__avatar'
+            src={userData.avatar}
+            alt='avatar'
+          />
           <div className='profile__images__avatar-wrap__changeHover'>
             <img src={edit} alt='change avatar' />
           </div>
@@ -71,7 +79,7 @@ const Profile = () => {
       </div>
       <div className='profile__container'>
         <div className='profile__container__wrap'>
-          <div className='profile__container__wrap__username'>Anypaster</div>
+          <div className='profile__container__wrap__username'>{userData.username}</div>
           <div className='profile__container__wrap__actions'>
             <div className='profile__container__wrap__actions__img'>
               <img src={share} alt='share' />

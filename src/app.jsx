@@ -11,6 +11,7 @@ import './assets/style/index.scss';
 
 import { fetchCollections } from './store/reducers/collections';
 import { fetchUsers } from './store/reducers/users';
+import { authMe } from './store/reducers/auth';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -24,6 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchCollections(5));
     dispatch(fetchUsers(12));
+    dispatch(authMe());
   }, []);
 
   useEffect(() => {

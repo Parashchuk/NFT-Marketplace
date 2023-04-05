@@ -3,7 +3,7 @@ import axios from '../../axios';
 const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 const SET_LOADING = 'AUTH/SET_LOADING';
 const SET_ERROR = 'AUTH/SET_ERROR';
-const SET_IS_AUtH = 'AUTH/SET_IS_AUTH';
+const SET_IS_AUTH = 'AUTH/SET_IS_AUTH';
 
 const isAuthInitial = !!window.localStorage.getItem('token');
 
@@ -25,7 +25,7 @@ const AuthReducer = (state = initialState, action) => {
     case SET_ERROR: {
       return { ...state, errors: [...action.payload] };
     }
-    case SET_IS_AUtH: {
+    case SET_IS_AUTH: {
       return { ...state, isAuth: action.payload };
     }
 
@@ -33,6 +33,19 @@ const AuthReducer = (state = initialState, action) => {
       return state;
     }
   }
+};
+
+export const authMe = () => (dispatch) => {
+  axios
+    .post('/auth/me')
+    .then((res) => {
+      dispatch(setUserData(res.data));
+      dispatch(setIsAuth(true));
+    })
+    .catch((err) => {
+      window.localStorage.removeItem('token');
+      dispatch(setIsAuth(false));
+    });
 };
 
 export const loginisationSubmited =
@@ -98,6 +111,6 @@ export const registrationSubmitted =
 
 export const setUserData = (data) => ({ type: SET_USER_DATA, payload: data });
 export const setLoading = (data) => ({ type: SET_LOADING, payload: data });
-export const setIsAuth = (data) => ({ type: SET_IS_AUtH, payload: data });
+export const setIsAuth = (data) => ({ type: SET_IS_AUTH, payload: data });
 
 export default AuthReducer;
