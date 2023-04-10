@@ -4,12 +4,13 @@ const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 const SET_LOADING = 'AUTH/SET_LOADING';
 const SET_ERROR = 'AUTH/SET_ERROR';
 const SET_IS_AUTH = 'AUTH/SET_IS_AUTH';
+const SET_USER_INVENTORY = 'AUTH/SET_USER_INVENTORY';
 
 const isAuthInitial = !!window.localStorage.getItem('token');
 
 const initialState = {
   isLoading: false,
-  data: [],
+  data: {},
   errors: [],
   isAuth: isAuthInitial,
 };
@@ -18,6 +19,15 @@ const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA: {
       return { ...state, data: action.payload };
+    }
+    case SET_USER_INVENTORY: {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          inventory: { ...state.data.inventory, [action.payload.sort]: action.payload.data },
+        },
+      };
     }
     case SET_LOADING: {
       return { ...state, isLoading: action.payload };
@@ -45,6 +55,26 @@ export const authMe = () => (dispatch) => {
     .catch((err) => {
       window.localStorage.removeItem('token');
       dispatch(setIsAuth(false));
+    });
+};
+
+export const getUserInventory = (sort) => (dispatch) => {
+  dispatch(setLoading(true));
+
+  axios
+    .get('/users/inventory', {
+      params: {
+        sort,
+      },
+    })
+    .then((res) => {
+      dispatch(setUserInventory({ data: res.data, sort }));
+    })
+    .catch((err) => {
+      alert(err);
+    })
+    .finally(() => {
+      dispatch(setLoading(false));
     });
 };
 
@@ -112,5 +142,6 @@ export const registrationSubmitted =
 export const setUserData = (data) => ({ type: SET_USER_DATA, payload: data });
 export const setLoading = (data) => ({ type: SET_LOADING, payload: data });
 export const setIsAuth = (data) => ({ type: SET_IS_AUTH, payload: data });
+export const setUserInventory = (data) => ({ type: SET_USER_INVENTORY, payload: data });
 
 export default AuthReducer;

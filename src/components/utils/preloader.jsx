@@ -20,7 +20,7 @@ const Preloader = ({ type }) => {
           (type == 'preloader' && isServerLoading ? ' preloader-message-active' : '')
         }>
         <span>Please wait till we start server</span>
-        <span>It's always about 15 seconds</span>
+        <span>It's always about 30 seconds</span>
       </div>
     </div>
   );

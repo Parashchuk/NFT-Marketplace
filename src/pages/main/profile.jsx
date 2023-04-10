@@ -13,10 +13,11 @@ import closeButton from '../../assets/img/svg/closeButton.svg';
 import list from '../../assets/img/svg/list_v2.svg';
 
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserInventory } from '../../store/reducers/auth';
 
 const Profile = () => {
-  const LIST_OF_TAGS = ['Collected', 'Created', 'Favorited'];
+  const LIST_OF_TAGS = ['Collections', 'Collected', 'Created', 'Favorited'];
   const LIST_OF_SORTS = ['Most recent', 'Price high to low', 'Price low to high', 'Most viewed'];
   const DISPLAY_MODS_NAMES = ['list', 'gallery', 'grid', 'side'];
   const DISPLAY_MODS = [list, gallery, grid, side];
@@ -25,19 +26,58 @@ const Profile = () => {
   const [activeTag, setActiveTag] = useState(0);
   const [searchbarContent, setSearchbarContent] = useState('');
   const [isScrollOnSecondStickyElement, setIsScrollOnSecondStickyElement] = useState(false);
+  const [copiedStatus, setcopiedStatus] = useState(false);
   const filtersElement = useRef();
 
   const userData = useSelector((state) => state.auth.data);
   console.log(userData);
+  const dispatch = useDispatch();
+
+  const copyToClipboard = () => {
+    setcopiedStatus(true);
+    navigator.clipboard.writeText('0xB92a...Aa37');
+  };
+
+  const tagsContentHandler = (index) => {
+    setActiveTag(index);
+
+    switch (LIST_OF_TAGS[index]) {
+      case 'Collections': {
+        if (userData.inventory.collections.length) {
+          dispatch(getUserInventory('collections'));
+        }
+        break;
+      }
+      case 'Collected': {
+        if (userData.inventory.nfts.length) {
+          dispatch(getUserInventory('nfts'));
+        }
+        break;
+      }
+      case 'Created': {
+        if (userData.inventory.nfts.length) {
+          dispatch(getUserInventory('nfts'));
+        }
+        break;
+      }
+      case 'Favorited': {
+        if (userData.inventory.nfts.length) {
+          dispatch(getUserInventory('nfts'));
+        }
+        break;
+      }
+    }
+  };
 
   useEffect(() => {
+    dispatch(getUserInventory('collections'));
+
     const screenPosition = filtersElement.current.getBoundingClientRect();
     const top = screenPosition.top;
     const CSSMargin = 30;
 
     const scrollHandler = () => {
       if (window.scrollY >= top - CSSMargin) {
-        console.log(filtersElement.current);
         setIsScrollOnSecondStickyElement(true);
       } else {
         setIsScrollOnSecondStickyElement(false);
@@ -69,7 +109,7 @@ const Profile = () => {
           <input type='file' accept='image/*' style={{ display: 'none' }} tabIndex='-1' />
           <img
             className='profile__images__avatar-wrap__avatar'
-            src={userData.avatar}
+            src={userData.avatar ? userData.avatar : user}
             alt='avatar'
           />
           <div className='profile__images__avatar-wrap__changeHover'>
@@ -81,8 +121,9 @@ const Profile = () => {
         <div className='profile__container__wrap'>
           <div className='profile__container__wrap__username'>{userData.username}</div>
           <div className='profile__container__wrap__actions'>
-            <div className='profile__container__wrap__actions__img'>
+            <div className='profile__container__wrap__actions__img profile-hover-container'>
               <img src={share} alt='share' />
+              <span className='profile-hover-hint'>Share</span>
             </div>
             <div className='profile__container__wrap__actions__img'>
               <img src={more} alt='settings' />
@@ -90,7 +131,15 @@ const Profile = () => {
           </div>
         </div>
         <div className='profile__container__userinfo'>
-          <div className='profile__container__userinfo__hash'>0xB92a...Aa37</div>
+          <div className='profile__container__userinfo__hash profile-hover-container'>
+            <span
+              onMouseOut={() => setcopiedStatus(false)}
+              onClick={copyToClipboard}
+              className='profile__container__userinfo__hash-content'>
+              0xB92a...Aa37
+            </span>
+            <span className='profile-hover-hint'>{copiedStatus ? 'Copyed' : 'Copy'}</span>
+          </div>
           <div className='profile__container__userinfo__joinedSince'>Joined April 2023</div>
         </div>
         <div className='profile__container__sort'>
@@ -100,7 +149,7 @@ const Profile = () => {
                 <li
                   key={i}
                   className={activeTag == i ? 'profile__container__sort__active' : ''}
-                  onClick={() => setActiveTag(i)}>
+                  onClick={() => tagsContentHandler(i)}>
                   {el}
                 </li>
               );

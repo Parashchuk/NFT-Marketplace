@@ -1,5 +1,38 @@
 @use '../variables' as *;
 
+.profile-hover-container {
+  position: relative;
+
+  &:hover .profile-hover-hint {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.profile-hover-hint {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 150%;
+  background-color: $background-main-active;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px 0px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid $background-main-active;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 .profile {
   font: $PJS-500;
   font-size: 16px;
@@ -82,8 +115,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 13.9vw;
-        height: 13.9vw;
+        width: 14vw;
+        height: 14vw;
         border-radius: 100%;
         background-color: black;
         transition: opacity ease-in-out 0.1s;
@@ -105,8 +138,8 @@
       }
 
       &__avatar {
-        min-width: 75px;
-        min-height: 75px;
+        min-width: 85px;
+        min-height: 85px;
         width: 13.9vw;
         height: 13.9vw;
         border-radius: 100%;
@@ -179,14 +212,19 @@
 
     &__userinfo {
       display: flex;
+      align-items: center;
       margin-bottom: 30px;
       gap: 25px;
 
       &__hash {
-        cursor: pointer;
+        &-content {
+          display: inline-block;
+          padding: 2px;
+          cursor: pointer;
 
-        &:hover {
-          color: rgba(229, 232, 235, 0.8);
+          &:hover {
+            color: rgba(229, 232, 235, 0.8);
+          }
         }
       }
 
@@ -234,6 +272,10 @@
         top: 72px;
       }
 
+      @media (max-width: 600px) {
+        margin: 20px 0;
+      }
+
       @media (max-width: 500px) {
         top: 66px;
       }
@@ -245,7 +287,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 10px;
+        padding: 10px 20px;
         cursor: pointer;
         border-radius: 100%;
 

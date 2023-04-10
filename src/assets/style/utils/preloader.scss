@@ -16,9 +16,8 @@
 }
 
 .preloader-message {
-  position: absolute;
-  top: calc(50vh + 175px);
-  transform: translateY(-50%);
+  margin: 0 20px;
+  margin-top: 40px;
   text-align: center;
   font: $WS-h3;
   padding: 10px 20px;
