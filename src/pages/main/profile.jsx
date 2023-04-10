@@ -226,4 +226,11 @@ const Profile = () => {
   );
 };
 
+//You have to decide either you every click load from bd and it will sort or you will sort it by hands with sort method
+//Don't forget that you have seral different styles to display content
+
+//You load everythin on start, you need that switchcase, you no need to useState for it. You have two cases to render neither
+//it's collections or it's nfts, and you only have to reset redux state with nfts to sort it with backend help. For favorites the same
+//just reset nfts to favorited. now it's sounds not too good because it will cause rerender every time.
+
 export default Profile;

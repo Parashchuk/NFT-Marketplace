@@ -45,10 +45,20 @@
 
 .loading {
   position: relative;
-  width: 125px;
-  height: 125px;
+  width: 250px;
+  height: 250px;
   transform-style: preserve-3d;
   perspective: 800px;
+
+  @media (max-width: 1200px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (max-width: 600px) {
+    width: 150px;
+    height: 150px;
+  }
 
   .arc {
     position: absolute;

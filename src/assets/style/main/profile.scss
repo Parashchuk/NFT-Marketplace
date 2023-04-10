@@ -240,10 +240,17 @@
       }
 
       ul {
+        overflow: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         display: flex;
         padding: 0;
         gap: 25px;
         border-bottom: 1px solid $background-main-active;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         li {
           padding: 5px 5px 10px;
