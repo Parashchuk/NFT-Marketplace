@@ -30,7 +30,6 @@ const Profile = () => {
   const filtersElement = useRef();
 
   const userData = useSelector((state) => state.auth.data);
-  console.log(userData);
   const dispatch = useDispatch();
 
   const copyToClipboard = () => {
@@ -167,7 +166,7 @@ const Profile = () => {
           </div>
           <form
             autoComplete='off'
-            onSubmit={() => console.log('submit')}
+            onSubmit={() => {}}
             className='main-header__container__row__search profile__container__filters__search'>
             <label htmlFor='nftSearch'>
               <img src={magnifyingGlass} alt='search' />

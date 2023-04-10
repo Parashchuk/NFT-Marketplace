@@ -66,7 +66,7 @@ const MainHeader = () => {
             </div>
             <form
               autoComplete='off'
-              onSubmit={() => console.log('submit')}
+              onSubmit={() => {}}
               className='main-header__container__row__search'>
               <label htmlFor='searchInput'>
                 <img src={magnifyingGlass} alt='search' />
@@ -156,7 +156,7 @@ const MainHeader = () => {
         <div className='main-header__adaptive-search__input'>
           <form
             autoComplete='off'
-            onSubmit={() => console.log('submit')}
+            onSubmit={() => {}}
             className='main-header__adaptive-search__input__wrap'>
             <img
               onClick={() => setSearchbarStatus((status) => !status)}
