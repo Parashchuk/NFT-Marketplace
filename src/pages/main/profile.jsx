@@ -17,7 +17,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserInventory } from '../../store/reducers/auth';
 
 const Profile = () => {
-  const LIST_OF_TAGS = ['Collections', 'Collected', 'Created', 'Favorited'];
+  const LIST_OF_TAGS = [
+    { name: 'Collections', value: 'collections' },
+    { name: 'Collected', value: 'nfts' },
+    { name: 'Created', value: 'nfts' },
+    { name: 'Favorited', value: 'nfts' },
+  ];
+
+  console.log('render');
+
   const LIST_OF_SORTS = ['Most recent', 'Price high to low', 'Price low to high', 'Most viewed'];
   const DISPLAY_MODS_NAMES = ['list', 'gallery', 'grid', 'side'];
   const DISPLAY_MODS = [list, gallery, grid, side];
@@ -40,30 +48,13 @@ const Profile = () => {
   const tagsContentHandler = (index) => {
     setActiveTag(index);
 
-    switch (LIST_OF_TAGS[index]) {
-      case 'Collections': {
-        if (userData.inventory.collections.length) {
-          dispatch(getUserInventory('collections'));
-        }
-        break;
+    if (index == 0) {
+      if (userData.inventory.collections.length ? !userData.inventory.collections[0].images : '') {
+        dispatch(getUserInventory(LIST_OF_TAGS[index].value));
       }
-      case 'Collected': {
-        if (userData.inventory.nfts.length) {
-          dispatch(getUserInventory('nfts'));
-        }
-        break;
-      }
-      case 'Created': {
-        if (userData.inventory.nfts.length) {
-          dispatch(getUserInventory('nfts'));
-        }
-        break;
-      }
-      case 'Favorited': {
-        if (userData.inventory.nfts.length) {
-          dispatch(getUserInventory('nfts'));
-        }
-        break;
+    } else if (index >= 1) {
+      if (userData.inventory.nfts.length ? !userData.inventory.nfts[0].picture : '') {
+        dispatch(getUserInventory(LIST_OF_TAGS[index].value));
       }
     }
   };
@@ -149,7 +140,7 @@ const Profile = () => {
                   key={i}
                   className={activeTag == i ? 'profile__container__sort__active' : ''}
                   onClick={() => tagsContentHandler(i)}>
-                  {el}
+                  {el.name}
                 </li>
               );
             })}
@@ -217,19 +208,38 @@ const Profile = () => {
           </ul>
         </div>
         <div className='profile__container__items'>
-          <span>No items found for this search</span>
-          <button type='button'>Back to all items</button>
+          {!userData.inventory[LIST_OF_TAGS[activeTag].value].length && (
+            <>
+              <span>No items found for this search</span>
+              <button type='button'>Back to all items</button>
+            </>
+          )}
+          {userData.inventory[LIST_OF_TAGS[activeTag].value].map((el, id) => {
+            return (
+              <div key={id} className='profile__container__items__item'>
+                <img
+                  className='profile__container__items__item__preview'
+                  src={el.images ? el.images[0].picture : el.picture}
+                  alt='prewiew'
+                />
+                <div className='profile__container__items__item__title'>{el.name}</div>
+                <div className='profile__container__items__item__info'>
+                  <div className='profile__container__items__item__info__item'>
+                    <span>FLOOR</span>
+                    <span>{'0.20' + ' ETH'}</span>
+                  </div>
+                  <div className='profile__container__items__item__info__item'>
+                    <span>VOLUME</span>
+                    <span>{'807' + ' ETH'}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
-
-//You have to decide either you every click load from bd and it will sort or you will sort it by hands with sort method
-//Don't forget that you have seral different styles to display content
-
-//You load everythin on start, you need that switchcase, you no need to useState for it. You have two cases to render neither
-//it's collections or it's nfts, and you only have to reset redux state with nfts to sort it with backend help. For favorites the same
-//just reset nfts to favorited. now it's sounds not too good because it will cause rerender every time.
 
 export default Profile;

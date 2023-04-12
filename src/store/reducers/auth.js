@@ -10,7 +10,13 @@ const isAuthInitial = !!window.localStorage.getItem('token');
 
 const initialState = {
   isLoading: false,
-  data: {},
+  data: {
+    inventory: {
+      collections: [],
+      nfts: [],
+      favorited: [],
+    },
+  },
   errors: [],
   isAuth: isAuthInitial,
 };
